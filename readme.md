@@ -20,28 +20,22 @@ Alternatively, you may pull any module into your own config. At this time, `lua/
 
 All modules are loaded in `init.lua`. If using a standalone module, please include `lua/lil-helpers.lua`.
 
-**lil-ui**
-
+**lil-ui**\
 Interface elements such as colorscheme and statusline
 
-**lil-editing**
-
+**lil-editing**\
 General options and keymaps
 
-**lil-completions**
-
+**lil-completions**\
 Completions and snippets
 
-**lil-lsp**
-
+**lil-lsp**\
 Language servers and diagnostics
 
-**lil-search**
-
+**lil-search**\
 File and text search
 
-**lil-helpers**
-
+**lil-helpers**\
 Shared utility functions used by other modules
 
 ## Principles
@@ -50,16 +44,16 @@ Shared utility functions used by other modules
 
 ### Minimal and modular by design
 
-Modules should be self-contained; Changing options, setting up keymaps, and installing plugins are all handled on a per-module basis. Any shared utilites can be found in `lil-helpers.lua`.
+This project includes several self-contained modules which handle their own options, keymaps, and plugins. Any shared utilites can be found in `lil-helpers`.
 
 ### Prioritise built-in Neovim functionality
 
-While Neovim does not come with as much out of the box compared to Emacs, we try to push this idea to the limits. There are currently more plugins than necessary – and those may disappear once we have comparable, competing solutions.
+We have designed lilvim to demonstrate the capabilities of vanilla Neovim and lower the platform's barrier to entry for new users. Our approach encourages users to enjoy the benefits of a lightweight environment by first embracing the platform, then supplementing with plugins as needed.
 
 ## Related
 
-There are plenty of projects that provide a framework of abstractions to simplify the learning curve of using Neovim over something like VSCode. I would encourage checking out [LunarVim](https://github.com/LunarVim/LunarVim) if you want a great batteries-included Neovim configuration.
+There are plenty of projects that provide a framework of abstractions to simplify the learning curve of using Neovim over something like VSCode. Check out [LunarVim](https://github.com/LunarVim/LunarVim) or [AstroVim](https://github.com/kabinspace/AstroVim) if you want a great batteries-included Neovim configuration.
 
 ## Contributing
 
-We welcome and encourage all contributions; Especially if it includes removing plugins 😉
+We welcome and appreciate all contributions, especially ones that involve removing plugins 😉
