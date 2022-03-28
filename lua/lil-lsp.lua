@@ -45,7 +45,6 @@ use({
 			'cssls',
 			'html',
 			'jsonls',
-			'rust_analyzer',
 			'svelte',
 			'tailwindcss',
 			'tsserver',
@@ -67,13 +66,9 @@ use({
 		local null_ls = require('null-ls')
 		null_ls.setup({
 			sources = {
-				null_ls.builtins.code_actions.xo,
-				null_ls.builtins.diagnostics.xo,
-				null_ls.builtins.formatting.fish_indent,
 				null_ls.builtins.formatting.prettierd.with({
-					extra_filetypes = { 'svelte', 'jsonc' },
+					extra_filetypes = { 'svelte' },
 				}),
-				null_ls.builtins.formatting.rustfmt,
 				null_ls.builtins.formatting.stylua,
 			},
 			on_attach = function(client)
