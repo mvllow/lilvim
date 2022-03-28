@@ -5,7 +5,7 @@
 ## Features
 
 - 🪴 Self-contained modules
-- 📦 Prioritised builtin functionality
+- 📦 Prioritised built-in functionality
 - 🥟 Deliciously simple to extend
 
 ## Usage
@@ -56,4 +56,4 @@ There are plenty of projects that provide a framework of abstractions to simplif
 
 ## Contributing
 
-We welcome and appreciate all contributions, especially ones that involve removing plugins 😉
+We welcome and appreciate contributions of any kind. Please open an issue to discuss the addition of new modules.
