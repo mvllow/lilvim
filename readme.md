@@ -20,22 +20,22 @@ Alternatively, you may pull any module into your own config. At this time, `lua/
 
 All modules are loaded in `init.lua`. If using a standalone module, please include `lua/lil-helpers.lua`.
 
-**lil-ui**\
+_**[lil-ui](lua/lil-ui.lua)**_\
 Interface elements such as colorscheme and statusline
 
-**lil-editing**\
+_**[lil-editing](lua/lil-editing.lua)**_\
 General options and keymaps
 
-**lil-completions**\
+_**[lil-completions](lua/lil-completions.lua)**_\
 Completions and snippets
 
-**lil-lsp**\
+_**[lil-lsp](lua/lil-lsp.lua)**_\
 Language servers and diagnostics
 
-**lil-search**\
+_**[lil-search](lua/lil-search.lua)**_\
 File and text search
 
-**lil-helpers**\
+_**[lil-helpers](lua/lil-helpers.lua)**_\
 Shared utility functions used by other modules
 
 ## Principles
