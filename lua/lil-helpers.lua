@@ -1,33 +1,39 @@
 local M = {}
+local packer = nil
+local installed_plugins = {}
 
---- Magical module loader
--- Dependencies are installed and sourced if not already. No restart necessary.
-M.setup_module = function(module, plugins)
-	local run_post_install = false
-	local plugins_path = vim.fn.stdpath('data') .. '/site/pack/lil/start'
-
-	for _, plugin in ipairs(plugins) do
-		local install_path = plugins_path .. '/' .. plugin:gsub('/', '_')
+M.use = function(package)
+	if packer == nil then
+		local install_path = vim.fn.stdpath('data')
+			.. '/site/pack/packer/start/packer.nvim'
 		if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-			print('(lil): Downloading ' .. plugin)
-
 			vim.fn.execute(
-				'!git clone --depth 1 https://github.com/'
-					.. plugin
-					.. ' '
+				'!git clone --depth 1 https://github.com/wbthomason/packer.nvim '
 					.. install_path
 			)
-
-			-- At least one plugin has been installed
-			run_post_install = true
 		end
+
+		packer = require('packer')
+		packer.init()
+
+		-- Initialise shared plugins
+		packer.use('wbthomason/packer.nvim')
 	end
 
-	if run_post_install then
-		vim.cmd('packloadall')
+	-- Get package name from string or table
+	-- Eg. use('some/package') or use({'some/package', ...})
+	local package_name = ''
+	if type(package) == 'string' then
+		package_name = package
+	else
+		package_name = package[1]
 	end
 
-	pcall(module)
+	-- Prevent package duplication
+	if not vim.tbl_contains(installed_plugins, package_name) then
+		packer.use(package)
+	end
+	table.insert(installed_plugins, package_name)
 end
 
 return M
