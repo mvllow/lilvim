@@ -6,7 +6,12 @@
 local use = require('lil-helpers').use
 
 use('editorconfig/editorconfig-vim')
-use('numToStr/Comment.nvim')
+use({
+	'numToStr/Comment.nvim',
+	config = function()
+		require('comment').setup()
+	end,
+})
 
 vim.opt.mouse = 'a'
 vim.opt.tabstop = 3
@@ -47,8 +52,3 @@ vim.api.nvim_create_autocmd('BufEnter', {
 	pattern = '*',
 	command = 'setlocal formatoptions-=o',
 })
-
-local has_comment, comment = pcall(require, 'comment')
-if has_comment then
-	comment.setup()
-end
