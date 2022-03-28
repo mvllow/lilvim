@@ -38,6 +38,8 @@ File and text search
 _**[lil-helpers](lua/lil-helpers.lua)**_\
 Shared utility functions used by other modules
 
+_For more snippets, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
+
 ## Principles
 
 > Heavily inspired by [Rational Emacs](https://github.com/SystemCrafters/rational-emacs)
