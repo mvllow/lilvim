@@ -11,9 +11,7 @@ use({
 	config = function()
 		require('nvim-treesitter.configs').setup({
 			ensure_installed = 'maintained',
-			ignore_install = { 'haskell' },
 			highlight = { enable = true },
-			indent = { enable = true },
 		})
 	end,
 })
