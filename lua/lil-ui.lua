@@ -10,7 +10,8 @@ use({
 	run = ':TSUpdate',
 	config = function()
 		require('nvim-treesitter.configs').setup({
-			ensure_installed = 'maintained',
+			ensure_installed = 'all',
+			ignore_install = { 'phpdoc' },
 			highlight = { enable = true },
 		})
 	end,
