@@ -1,3 +1,8 @@
+--- lil-helpers.lua
+--- https://github.com/mvllow/lilvim
+
+--- Shared utility functions.
+
 local M = {}
 local packer = nil
 local installed_plugins = {}
