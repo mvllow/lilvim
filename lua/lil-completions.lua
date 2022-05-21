@@ -16,8 +16,8 @@ use({
 					require('luasnip').lsp_expand(args.body)
 				end,
 			},
-			mapping = {
-				['<c-space>'] = cmp.mapping.complete(),
+			mapping = cmp.mapping.preset.insert({
+				['<c-space>'] = cmp.mapping.complete({ select = false }),
 				['<cr>'] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = false,
@@ -36,7 +36,7 @@ use({
 						fallback()
 					end
 				end,
-			},
+			}),
 			sources = {
 				{ name = 'nvim_lsp' },
 			},
