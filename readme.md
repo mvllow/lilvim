@@ -35,6 +35,9 @@ Language servers and diagnostics
 _**[lil-search](lua/lil-search.lua)**_\
 File and text search
 
+_**[lil-extras](lua/lil-extras.lua)**_\
+Not so lil enhancements
+
 _**[lil-helpers](lua/lil-helpers.lua)**_\
 Shared utility functions used by other modules
 
