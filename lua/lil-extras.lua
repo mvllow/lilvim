@@ -1,7 +1,8 @@
 --- lil-extras.lua
 --- https://github.com/mvllow/lilvim
 
---- Setup not so lil enhancements.
+--- Setup not so lil enhancements. This includes plugins to replace or improve
+--- built-in functionality.
 
 local use = require('lil-helpers').use
 
@@ -47,30 +48,6 @@ use({
 		})
 	end,
 })
-use({
-	'nvim-telescope/telescope.nvim',
-	config = function()
-		require('telescope').setup({
-			defaults = {
-				layout_config = {
-					horizontal = {
-						-- Increase preview width
-						preview_width = 0.6,
-					},
-				},
-			},
-			pickers = {
-				find_files = {
-					theme = 'dropdown',
-					previewer = false,
-					find_command = { 'fd', '-t', 'f', '--strip-cwd-prefix' },
-				},
-			},
-		})
-	end,
-})
 
 local opts = { silent = true }
 vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<cr>', opts)
-vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>', opts)
-vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>', opts)
