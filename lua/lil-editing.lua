@@ -31,12 +31,7 @@ vim.keymap.set('v', '<', '<gv', opts) -- dedent (keep selection)
 vim.keymap.set('v', '>', '>gv', opts) -- indent (keep selection)
 
 -- Goto
-vim.keymap.set('n', 'g.', '`.', opts) -- goto last modification
 vim.keymap.set('n', 'go', '<c-o>', opts) -- goto previous position
-vim.keymap.set('n', 'gO', '<c-i>', opts) -- goto next position (<tab> also does this)
-vim.keymap.set('n', 'gp', '<c-^>', opts) -- goto previous buffer (cycles between two buffers, rather than looping through all buffers)
-vim.keymap.set('n', 'gn', ':bnext<cr>', opts) -- goto next buffer
-vim.keymap.set('n', 'gm', '%', opts) -- goto matching character: '()', '{}', '[]'
 
 -- Window
 vim.keymap.set('n', '<leader>wh', '<c-w><c-h>', opts) -- jump to split to the left
