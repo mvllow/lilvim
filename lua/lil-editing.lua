@@ -47,3 +47,9 @@ vim.keymap.set('n', '<leader>e', ':Lex!<cr>', opts) -- toggle file explorer
 vim.api.nvim_create_autocmd('BufEnter', {
 	command = 'setlocal formatoptions-=o',
 })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
