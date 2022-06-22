@@ -34,6 +34,9 @@ use({
 					},
 				},
 			},
+			trash = {
+				cmd = 'trash',
+			},
 			view = {
 				mappings = {
 					list = {
