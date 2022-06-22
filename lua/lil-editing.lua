@@ -41,6 +41,7 @@ vim.keymap.set('n', '<leader>wl', '<c-w><c-l>', opts) -- jump to split to the ri
 vim.keymap.set('n', '<leader>wr', '<c-w><c-r>', opts) -- swap split positions
 vim.keymap.set('n', '<leader>ww', '<c-w><c-w>', opts) -- focus next window
 vim.keymap.set('n', '<leader>wo', ':only<cr>', opts) -- close other windows
+vim.keymap.set('n', '<leader>e', ':Lex!<cr>', opts) -- toggle file explorer
 
 -- Stop 'o' continuing comments
 vim.api.nvim_create_autocmd('BufEnter', {
