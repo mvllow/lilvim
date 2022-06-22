@@ -44,6 +44,5 @@ vim.keymap.set('n', '<leader>wo', ':only<cr>', opts) -- close other windows
 
 -- Stop 'o' continuing comments
 vim.api.nvim_create_autocmd('BufEnter', {
-	pattern = '*',
 	command = 'setlocal formatoptions-=o',
 })

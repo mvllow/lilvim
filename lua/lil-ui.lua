@@ -33,6 +33,5 @@ vim.opt.shortmess:append('c')
 
 -- Equally resize splits
 vim.api.nvim_create_autocmd('VimResized', {
-	pattern = '*',
 	command = 'tabdo wincmd =',
 })
