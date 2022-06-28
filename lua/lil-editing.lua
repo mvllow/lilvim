@@ -33,6 +33,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>l', ':normal gq80l<cr>', opts) -- wrap lin
 
 -- Goto
 vim.keymap.set('n', 'go', '<c-o>', opts) -- goto previous position
+vim.keymap.set('n', 'gp', '<c-^>', opts) -- goto previous buffer
+vim.keymap.set('n', 'gm', '%', opts) -- goto matching pair
 
 -- Window
 vim.keymap.set('n', '<leader>wh', '<c-w><c-h>', opts) -- jump to split to the left
