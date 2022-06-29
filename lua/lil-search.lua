@@ -21,7 +21,15 @@ use({
 				find_files = {
 					theme = 'dropdown',
 					previewer = false,
-					find_command = { 'fd', '-t', 'f', '--strip-cwd-prefix' },
+					find_command = {
+						'fd',
+						'-t',
+						'f',
+						'-H',
+						'-E',
+						'.git',
+						'--strip-cwd-prefix',
+					},
 				},
 			},
 		})
