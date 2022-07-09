@@ -53,13 +53,16 @@ use({
 	requires = 'nvim-lua/plenary.nvim',
 	config = function()
 		local null_ls = require('null-ls')
+
+		-- TODO(user): Add sources
+		-- Source cmd must be available in your path.
+		-- https:// https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+		local sources = {
+			null_ls.builtins.formatting.stylua,
+		}
+
 		null_ls.setup({
-			-- TODO(user): Add sources
-			-- Source cmd must be available in your path.
-			-- https:// https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
-			sources = {
-				null_ls.builtins.formatting.stylua,
-			},
+			sources = sources,
 			on_attach = function(client, bufnr)
 				if client.supports_method('textDocument/formatting') then
 					vim.api.nvim_create_autocmd('BufWritePre', {
