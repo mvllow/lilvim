@@ -36,18 +36,10 @@ use({
 			},
 		}))
 
-		-- Language servers to setup. Servers must be available in your path.
+		-- TODO(user): Add language servers
+		-- Servers must be available in your path.
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-		local servers = {
-			'cssls',
-			'html',
-			'jsonls',
-			'svelte',
-			'tailwindcss',
-			'tsserver',
-			'volar',
-		}
-
+		local servers = {}
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({
 				on_attach = on_attach,
@@ -62,10 +54,10 @@ use({
 	config = function()
 		local null_ls = require('null-ls')
 		null_ls.setup({
+			-- TODO(user): Add sources
+			-- Source cmd must be available in your path.
+			-- https:// https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 			sources = {
-				null_ls.builtins.formatting.prettierd.with({
-					extra_filetypes = { 'svelte' },
-				}),
 				null_ls.builtins.formatting.stylua,
 			},
 			on_attach = function(client, bufnr)
