@@ -45,6 +45,9 @@ vim.keymap.set('v', '>', '>gv', opts) -- indent (keep selection)
 vim.keymap.set('n', 'go', '<c-o>', opts) -- goto previous position
 vim.keymap.set('n', 'gp', '<c-^>', opts) -- goto previously focused buffer
 vim.keymap.set('n', 'gm', '%', opts) -- goto matching pair
+vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts) -- goto previous diagnostic
+vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts) -- goto next diagnostic
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts) -- goto line diagnostic message
 
 -- Buffer
 vim.keymap.set('n', '<leader>bp', ':bp<cr>', opts) -- focus previous buffer
