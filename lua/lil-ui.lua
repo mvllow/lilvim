@@ -35,10 +35,10 @@ vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 0
 vim.g.netrw_winsize = 25
 
-local opts = { silent = true }
-vim.keymap.set('n', '<leader>e', ':Lex!<cr>', opts) -- toggle file explorer
-
 -- Equally resize splits
 vim.api.nvim_create_autocmd('VimResized', {
 	command = 'tabdo wincmd =',
 })
+
+local opts = { silent = true }
+vim.keymap.set('n', '<leader>e', ':Lex!<cr>', opts) -- toggle file explorer

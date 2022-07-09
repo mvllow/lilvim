@@ -23,6 +23,17 @@ vim.opt.splitright = true
 vim.opt.scrolloff = 3
 vim.opt.breakindent = true
 
+-- Stop 'o' continuing comments
+vim.api.nvim_create_autocmd('BufEnter', {
+	command = 'setlocal formatoptions-=o',
+})
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
 local opts = { silent = true }
 vim.keymap.set('i', 'jk', '<esc>', opts) -- escape alternative
 vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts) -- move through wrapped lines
@@ -44,14 +55,3 @@ vim.keymap.set('n', '<leader>wl', '<c-w><c-l>', opts) -- jump to split to the ri
 vim.keymap.set('n', '<leader>wr', '<c-w><c-r>', opts) -- swap split positions
 vim.keymap.set('n', '<leader>ww', '<c-w><c-w>', opts) -- focus next window
 vim.keymap.set('n', '<leader>wo', ':only<cr>', opts) -- close other windows
-
--- Stop 'o' continuing comments
-vim.api.nvim_create_autocmd('BufEnter', {
-	command = 'setlocal formatoptions-=o',
-})
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
