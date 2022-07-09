@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 local opts = { silent = true }
-vim.keymap.set('i', 'jk', '<esc>', opts) -- escape alternative
+vim.keymap.set('i', 'jk', '<esc>', opts) -- alternative to <esc>
 vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts) -- move through wrapped lines
 vim.keymap.set({ 'n', 'v' }, 'k', 'gk', opts) -- move through wrapped lines
 vim.keymap.set('v', '<', '<gv', opts) -- dedent (keep selection)
@@ -43,14 +43,23 @@ vim.keymap.set('v', '>', '>gv', opts) -- indent (keep selection)
 
 -- Goto
 vim.keymap.set('n', 'go', '<c-o>', opts) -- goto previous position
-vim.keymap.set('n', 'gp', '<c-^>', opts) -- goto previous buffer
+vim.keymap.set('n', 'gp', '<c-^>', opts) -- goto previously focused buffer
 vim.keymap.set('n', 'gm', '%', opts) -- goto matching pair
 
+-- Buffer
+vim.keymap.set('n', '<leader>bp', ':bp<cr>', opts) -- focus previous buffer
+vim.keymap.set('n', '<leader>bn', ':bn<cr>', opts) -- focus next buffer
+vim.keymap.set('n', '<leader>bm', ':bm<cr>', opts) -- focus modified buffer
+vim.keymap.set('n', '<leader>bd', ':bd<cr>', opts) -- delete buffer
+
 -- Window
-vim.keymap.set('n', '<leader>wh', '<c-w><c-h>', opts) -- jump to split to the left
-vim.keymap.set('n', '<leader>wj', '<c-w><c-j>', opts) -- jump to split below
-vim.keymap.set('n', '<leader>wk', '<c-w><c-k>', opts) -- jump to split above
-vim.keymap.set('n', '<leader>wl', '<c-w><c-l>', opts) -- jump to split to the right
-vim.keymap.set('n', '<leader>wr', '<c-w><c-r>', opts) -- swap split positions
-vim.keymap.set('n', '<leader>ww', '<c-w><c-w>', opts) -- focus next window
+vim.keymap.set('n', '<leader>wh', '<c-w>h', opts) -- move to left window
+vim.keymap.set('n', '<leader>wj', '<c-w>j', opts) -- move to below window
+vim.keymap.set('n', '<leader>wk', '<c-w>k', opts) -- move to above window
+vim.keymap.set('n', '<leader>wl', '<c-w>l', opts) -- move to right window
+vim.keymap.set('n', '<leader>wr', '<c-w>r', opts) -- swap split positions
+vim.keymap.set('n', '<leader>ws', '<c-w>s', opts) -- open horizontal split
+vim.keymap.set('n', '<leader>wv', '<c-w>v', opts) -- open vertical split
+vim.keymap.set('n', '<leader>ww', '<c-w>w', opts) -- focus next window
+vim.keymap.set('n', '<leader>wc', '<c-w>c', opts) -- close current window
 vim.keymap.set('n', '<leader>wo', ':only<cr>', opts) -- close other windows
