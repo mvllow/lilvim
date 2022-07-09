@@ -17,7 +17,7 @@ use({
 			},
 			filters = {
 				-- Hide ".git" folder
-				custom = { '.git$' },
+				custom = { '^.git$' },
 			},
 			git = {
 				-- Do not hide gitignored files
