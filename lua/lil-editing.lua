@@ -40,7 +40,6 @@ vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts) -- move through wrapped lines
 vim.keymap.set({ 'n', 'v' }, 'k', 'gk', opts) -- move through wrapped lines
 vim.keymap.set('v', '<', '<gv', opts) -- dedent (keep selection)
 vim.keymap.set('v', '>', '>gv', opts) -- indent (keep selection)
-vim.keymap.set({ 'n', 'v' }, '<leader>l', ':normal gq80l<cr>', opts) -- wrap lines at column 80, respecting word breaks
 
 -- Goto
 vim.keymap.set('n', 'go', '<c-o>', opts) -- goto previous position
