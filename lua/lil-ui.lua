@@ -35,6 +35,10 @@ vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 0
 vim.g.netrw_winsize = 25
 
+-- Add virtual color column per line only when necessary
+vim.cmd('hi LilColorColumn cterm=reverse gui=reverse')
+vim.fn.matchadd('LilColorColumn', '\\%81v', 100)
+
 -- Equally resize splits
 vim.api.nvim_create_autocmd('VimResized', {
 	command = 'tabdo wincmd =',
