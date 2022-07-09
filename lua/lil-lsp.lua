@@ -10,14 +10,14 @@ use({
 	requires = 'folke/lua-dev.nvim',
 	config = function()
 		local function on_attach(_, bufnr)
-			local b_opts = { buffer = bufnr, silent = true }
-			vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, b_opts)
-			vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, b_opts)
-			vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, b_opts)
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, b_opts)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, b_opts)
-			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, b_opts)
-			vim.keymap.set('n', 'gr', vim.lsp.buf.references, b_opts)
+			local opts = { buffer = bufnr, silent = true }
+			vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, opts)
+			vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
+			vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
+			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+			vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
