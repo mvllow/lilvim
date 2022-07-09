@@ -86,7 +86,3 @@ local opts = { silent = true }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- goto previous diagnostic
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- goto next diagnostic
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts) -- show diagnostic message
-
-vim.diagnostic.config({
-	virtual_text = false,
-})
