@@ -33,7 +33,7 @@ use({
 		-- Improve compatibility with nvim-cmp completions
 		local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 		if has_cmp_nvim_lsp then
-			capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+			capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 		end
 
 		-- Automatically setup servers installed via `:MasonInstall`
