@@ -8,12 +8,13 @@ local use = require('lil-helpers').use
 use({
 	'neovim/nvim-lspconfig',
 	requires = {
-		'folke/lua-dev.nvim',
+		'folke/neodev.nvim',
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
 		'WhoIsSethDaniel/mason-tool-installer.nvim',
 	},
 	config = function()
+		require('neodev').setup()
 		require('mason').setup()
 		require('mason-tool-installer').setup({})
 
@@ -39,19 +40,10 @@ use({
 		-- Automatically setup servers installed via `:MasonInstall`
 		require('mason-lspconfig').setup_handlers({
 			function(server_name)
-				if server_name == 'sumneko_lua' then
-					require('lspconfig')[server_name].setup(
-						require('lua-dev').setup({
-							on_attach = on_attach,
-							capabilities = capabilities,
-						})
-					)
-				else
-					require('lspconfig')[server_name].setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-					})
-				end
+				require('lspconfig')[server_name].setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
 			end,
 		})
 	end,
