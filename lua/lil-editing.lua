@@ -34,6 +34,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 local opts = { silent = true }
+
+-- General
 vim.keymap.set('i', 'jk', '<esc>', opts) -- alternative to <esc>
 vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts) -- move through wrapped lines
 vim.keymap.set({ 'n', 'v' }, 'k', 'gk', opts) -- move through wrapped lines

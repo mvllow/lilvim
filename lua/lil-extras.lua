@@ -35,13 +35,14 @@ use({
 				},
 			},
 			trash = {
+				-- Use cross-platform trash command
+				-- https://github.com/sindresorhus/trash-cli
 				cmd = 'trash',
 			},
 			view = {
 				mappings = {
 					list = {
-						-- Replace destructive default with trash program
-						-- E.g. https://github.com/sindresorhus/trash-cli
+						-- Replace destructive default with trash command
 						{ key = 'd', action = 'trash' },
 						{ key = 'D', action = 'remove' },
 					},
