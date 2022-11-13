@@ -41,6 +41,7 @@ vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts) -- move through wrapped lines
 vim.keymap.set({ 'n', 'v' }, 'k', 'gk', opts) -- move through wrapped lines
 vim.keymap.set('v', '<', '<gv', opts) -- dedent (keep selection)
 vim.keymap.set('v', '>', '>gv', opts) -- indent (keep selection)
+vim.keymap.set('n', '=', 'mxggVG=`x', opts) -- indent file contents
 vim.keymap.set('n', 'S', ':%s/<c-r><c-w>/', opts) -- replace selection
 
 -- Goto
