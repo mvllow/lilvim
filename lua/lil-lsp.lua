@@ -59,7 +59,10 @@ use({
 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 		local sources = {
 			null_ls.builtins.formatting.prettierd.with({
-				extra_filetypes = { 'svelte' },
+				-- Add additional filetypes to be formatted with prettier.
+				-- Note that in `/ftplugin/json.lua` we override the json
+				-- filetype to be jsonc.
+				extra_filetypes = { 'jsonc' },
 			}),
 			null_ls.builtins.formatting.stylua,
 		}
