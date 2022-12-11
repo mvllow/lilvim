@@ -32,9 +32,9 @@ use({
 })
 
 -- Indentation levels.
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 3
+vim.opt.softtabstop = 3
+vim.opt.shiftwidth = 3
 
 -- Persistent undo between sessions.
 vim.opt.undofile = true
