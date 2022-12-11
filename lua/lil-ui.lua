@@ -42,6 +42,9 @@ for _, type in pairs(signs) do
 	vim.fn.sign_define(hl, { text = '●', texthl = hl, numhl = hl })
 end
 
+-- Use block cursor in all modes.
+vim.opt.guicursor = ''
+
 -- Always show sign column.
 vim.opt.signcolumn = 'yes'
 
