@@ -50,42 +50,49 @@ use({
 })
 use({
 	'jose-elias-alvarez/null-ls.nvim',
-	requires = 'nvim-lua/plenary.nvim',
+	requires = {
+		'nvim-lua/plenary.nvim',
+		'jayp0521/mason-null-ls.nvim',
+	},
 	config = function()
-		local null_ls = require('null-ls')
-
-		-- TODO(user): Add sources
-		-- Source cmd must be available in your path. Try `:MasonInstall stylua`.
-		-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
-		local sources = {
-			null_ls.builtins.formatting.prettierd.with({
-				-- Add additional filetypes to be formatted with prettier.
-				-- Note that in `/ftplugin/json.lua` we override the json
-				-- filetype to be jsonc.
-				extra_filetypes = { 'jsonc' },
-			}),
-			null_ls.builtins.formatting.stylua,
-		}
-
+		-- TIP: Format on save is disabled by default and instead mapped to
+		-- <space><space>. To enable format on save, pass the format_on_save
+		-- function to the null-ls on_attach below.
 		local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-		null_ls.setup({
-			sources = sources,
-			on_attach = function(client, bufnr)
-				-- Format on save
-				if client.supports_method('textDocument/formatting') then
-					vim.api.nvim_clear_autocmds({
-						group = augroup,
-						buffer = bufnr,
-					})
-					vim.api.nvim_create_autocmd('BufWritePre', {
-						group = augroup,
-						buffer = bufnr,
-						callback = function()
-							vim.lsp.buf.format({ bufnr = bufnr })
-						end,
-					})
-				end
-			end,
+		local function format_on_save(client, bufnr)
+			if client.supports_method('textDocument/formatting') then
+				vim.api.nvim_clear_autocmds({
+					group = augroup,
+					buffer = bufnr,
+				})
+				vim.api.nvim_create_autocmd('BufWritePre', {
+					group = augroup,
+					buffer = bufnr,
+					callback = function()
+						vim.lsp.buf.format({ bufnr = bufnr })
+					end,
+				})
+			end
+		end
+
+		-- Automatically setup linters/formatters installed via Mason.
+		-- @usage :NullLsInstall <source>
+		-- @example :NullLsInstall prettierd
+		require('mason-null-ls').setup({ automatic_setup = true })
+		require('null-ls').setup({
+			-- Edit source defaults
+			sources = {
+				require('null-ls').builtins.formatting.prettierd.with({
+					extra_filetypes = { 'jsonc', 'astro', 'svelte' },
+				}),
+			},
+			-- Uncomment the below to enable format on save.
+			-- on_attach = format_on_save,
 		})
+		require('mason-null-ls').setup_handlers()
 	end,
 })
+
+local opts = { silent = true }
+
+vim.keymap.set('n', '<space><space>', vim.lsp.buf.format, opts)
