@@ -7,6 +7,19 @@
 local use = require('lil-helpers').use
 
 use({
+	'folke/which-key.nvim',
+	config = function()
+		require('which-key').setup({
+			plugins = {
+				spelling = {
+					enabled = true,
+				},
+			},
+		})
+	end,
+})
+
+use({
 	'kyazdani42/nvim-tree.lua',
 	config = function()
 		require('nvim-tree').setup({
