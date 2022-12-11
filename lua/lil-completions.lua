@@ -1,6 +1,6 @@
 --- lil-completions.lua
 --- https://github.com/mvllow/lilvim
-
+---
 --- Setup completions and snippets.
 
 local use = require('lil-helpers').use
@@ -44,5 +44,8 @@ use({
 	end,
 })
 
+-- Show completions in a popup menu.
 vim.opt.completeopt = 'menu,menuone,noselect'
+
+-- Number of items to show in popup menu.
 vim.opt.pumheight = 3

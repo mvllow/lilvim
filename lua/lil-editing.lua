@@ -1,11 +1,12 @@
 --- lil-editing.lua
 --- https://github.com/mvllow/lilvim
-
+---
 --- Setup options related to editing.
 
 local use = require('lil-helpers').use
 
 use('editorconfig/editorconfig-vim')
+
 use({
 	'numToStr/Comment.nvim',
 	requires = {
@@ -30,20 +31,30 @@ use({
 	end,
 })
 
+-- Indentation levels.
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+
+-- Persistent undo between sessions.
 vim.opt.undofile = true
+
+-- Natural split directions.
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- Start scrolling before reaching screen edge.
 vim.opt.scrolloff = 3
+
+-- Continue wrapped lines with matching indentation.
 vim.opt.breakindent = true
 
--- Stop 'o' continuing comments
+-- Stop 'o' continuing comments.
 vim.api.nvim_create_autocmd('BufEnter', {
 	command = 'setlocal formatoptions-=o',
 })
 
+-- Temporarily highlight yanked text.
 vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function()
 		vim.highlight.on_yank()

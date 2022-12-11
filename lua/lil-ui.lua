@@ -1,6 +1,6 @@
 --- lil-ui.lua
 --- https://github.com/mvllow/lilvim
-
+---
 --- Setup interface elements including colorscheme and statusline.
 
 local use = require('lil-helpers').use
@@ -10,25 +10,31 @@ use({
 	run = ':TSUpdate',
 	config = function()
 		require('nvim-treesitter.configs').setup({
+			-- Install treesitter parsers for all languages.
 			ensure_installed = 'all',
+
+			-- Enable treesitter syntax highlight groups.
 			highlight = { enable = true },
 		})
 	end,
 })
+
 use({
 	'rose-pine/neovim',
 	as = 'rose-pine',
 	config = function()
-		require('rose-pine').setup({ disable_italics = true })
+		require('rose-pine').setup({
+			disable_italics = true,
+		})
 		vim.cmd('colorscheme rose-pine')
 	end,
 })
 
 vim.diagnostic.config({
+	-- Disable inline messages.
 	virtual_text = false,
 })
 
-vim.opt.updatetime = 250
 -- Use lil dots for diagnostic signs.
 local signs = { 'Error', 'Warn', 'Hint', 'Info' }
 for _, type in pairs(signs) do
@@ -36,24 +42,36 @@ for _, type in pairs(signs) do
 	vim.fn.sign_define(hl, { text = '●', texthl = hl, numhl = hl })
 end
 
+-- Always show sign column.
 vim.opt.signcolumn = 'yes'
+
+-- Time in ms to update vim events.
+vim.opt.updatetime = 250
+
+-- Opioniated global statusline.
+vim.opt.statusline = ' %f %m %= %l:%c ♥ '
 vim.opt.laststatus = 3
-vim.opt.statusline = ' %f %M %= %l:%c ♥ '
-vim.opt.shortmess:append('c')
 
 -- Improve netrw defaults
 vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 0
 vim.g.netrw_winsize = 25
+-- Shorter vim messages.
+vim.opt.shortmess:append('c')
 
--- Add virtual color column per line only when necessary
+-- Create highlight group and assign to the first character over 80 columns.
+-- Useful reference to wrap lines. Use the `gw` motion to wrap a visual
+-- selection at 80 columns.
 vim.cmd('hi LilColorColumn cterm=reverse gui=reverse')
 vim.fn.matchadd('LilColorColumn', '\\%81v', 100)
 
--- Equally resize splits
+-- Equally resize buffer splits.
 vim.api.nvim_create_autocmd('VimResized', {
 	command = 'tabdo wincmd =',
 })
 
 local opts = { silent = true }
-vim.keymap.set('n', '<leader>e', ':Lex!<cr>', opts) -- toggle file explorer
+
+-- Toggle built-in file explorer, Netrw. If using the lil-extras module, this
+-- will replaced with nvim-tree.
+vim.keymap.set('n', '<leader>e', '<cmd>Ex<cr>', opts)
