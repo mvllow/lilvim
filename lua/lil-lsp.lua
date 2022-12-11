@@ -18,16 +18,59 @@ use({
 		require('mason-lspconfig').setup()
 
 		local function on_attach(_, bufnr)
-			local opts = { buffer = bufnr, silent = true }
-			vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, opts)
-			vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
-			vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-			vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
-			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-			vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+			vim.keymap.set(
+				'i',
+				'<c-k>',
+				vim.lsp.buf.signature_help,
+				{ buffer = bufnr, silent = true, desc = 'Signature help' }
+			)
+			vim.keymap.set(
+				'n',
+				'<leader>a',
+				vim.lsp.buf.code_action,
+				{ buffer = bufnr, silent = true, desc = 'Code actions' }
+			)
+			vim.keymap.set(
+				'n',
+				'<leader>r',
+				vim.lsp.buf.rename,
+				{ buffer = bufnr, silent = true, desc = 'Rename symbol' }
+			)
+			vim.keymap.set(
+				'n',
+				'K',
+				vim.lsp.buf.hover,
+				{ buffer = bufnr, silent = true, desc = 'Documentation' }
+			)
+			vim.keymap.set(
+				'n',
+				'gD',
+				vim.lsp.buf.declaration,
+				{ buffer = bufnr, silent = true, desc = 'Goto declaration' }
+			)
+			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {
+				buffer = bufnr,
+				silent = true,
+				desc = 'Goto definition',
+			})
+			vim.keymap.set(
+				'n',
+				'gt',
+				vim.lsp.buf.type_definition,
+				{ buffer = bufnr, silent = true, desc = 'Goto type definition' }
+			)
+			vim.keymap.set(
+				'n',
+				'gi',
+				vim.lsp.buf.implementation,
+				{ buffer = bufnr, silent = true, desc = 'Goto implementation' }
+			)
+			vim.keymap.set(
+				'n',
+				'gr',
+				vim.lsp.buf.references,
+				{ buffer = bufnr, silent = true, desc = 'Goto references' }
+			)
 		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -119,6 +162,9 @@ use({
 	end,
 })
 
-local opts = { silent = true }
-
-vim.keymap.set('n', '<space><space>', vim.lsp.buf.format, opts)
+vim.keymap.set(
+	'n',
+	'<space><space>',
+	vim.lsp.buf.format,
+	{ silent = true, desc = 'Format file' }
+)

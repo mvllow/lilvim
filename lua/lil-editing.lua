@@ -61,40 +61,108 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
-local opts = { silent = true }
-
 -- Move through wrapped lines.
-vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts)
-vim.keymap.set({ 'n', 'v' }, 'k', 'gk', opts)
+vim.keymap.set(
+	{ 'n', 'v' },
+	'j',
+	'gj',
+	{ silent = true, desc = 'Move down wrapped lines' }
+)
+vim.keymap.set(
+	{ 'n', 'v' },
+	'k',
+	'gk',
+	{ silent = true, desc = 'Move up wrapped lines' }
+)
 
 -- Bubble lines.
-vim.keymap.set('n', '<c-j>', ':m .+1<cr>==', opts)
-vim.keymap.set('n', '<c-k>', ':m .-2<cr>==', opts)
-vim.keymap.set('v', '<c-j>', ":m '>+1<cr>gv=gv", opts)
-vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv", opts)
+vim.keymap.set(
+	'n',
+	'<c-j>',
+	':m .+1<cr>==',
+	{ silent = true, desc = 'Bubble line down' }
+)
+vim.keymap.set(
+	'n',
+	'<c-k>',
+	':m .-2<cr>==',
+	{ silent = true, desc = 'Bubble line up' }
+)
+vim.keymap.set(
+	'v',
+	'<c-j>',
+	":m '>+1<cr>gv=gv",
+	{ silent = true, desc = 'Bubble line down' }
+)
+vim.keymap.set(
+	'v',
+	'<c-k>',
+	":m '<-2<cr>gv=gv",
+	{ silent = true, desc = 'Bubble line up' }
+)
 
 -- Keep selection after indenting.
-vim.keymap.set('v', '<', '<gv', opts)
-vim.keymap.set('v', '>', '>gv', opts)
+vim.keymap.set('v', '<', '<gv', { silent = true, desc = 'Dedent selection' })
+vim.keymap.set('v', '>', '>gv', { silent = true, desc = 'Indent selection' })
 
 -- Indent file contents.
-vim.keymap.set('n', '=', 'mxggVG=`x', opts)
+vim.keymap.set(
+	'n',
+	'=',
+	'mxggVG=`x',
+	{ silent = true, desc = 'Indent file contents' }
+)
 
 -- Substitute current word.
-vim.keymap.set('n', 'S', ':%s/<c-r><c-w>//g<left><left>')
+vim.keymap.set(
+	'n',
+	'S',
+	':%s/<c-r><c-w>//g<left><left>',
+	{ desc = 'Substitute current word' }
+)
 
 -- Goto previous position.
-vim.keymap.set('n', 'go', '<c-o>', opts)
+vim.keymap.set(
+	'n',
+	'go',
+	'<c-o>',
+	{ silent = true, desc = 'Goto previous position' }
+)
 
 -- Goto previously focused buffer.
-vim.keymap.set('n', 'gp', '<c-^>', opts)
+vim.keymap.set(
+	'n',
+	'gp',
+	'<c-^>',
+	{ silent = true, desc = 'Goto previously focused buffer' }
+)
 
 -- Goto matching pair.
-vim.keymap.set({ 'n', 'v' }, 'gm', '%', opts)
+vim.keymap.set(
+	{ 'n', 'v' },
+	'gm',
+	'%',
+	{ silent = true, desc = 'Goto matching pair' }
+)
 
 -- Goto diagnostic.
-vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
+vim.keymap.set(
+	'n',
+	'g[',
+	vim.diagnostic.goto_prev,
+	{ silent = true, desc = 'Goto previous diagnostic' }
+)
+vim.keymap.set(
+	'n',
+	'g]',
+	vim.diagnostic.goto_next,
+	{ silent = true, desc = 'Goto next diagnostic' }
+)
 
 -- Show line diagnostics.
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+vim.keymap.set(
+	'n',
+	'gl',
+	vim.diagnostic.open_float,
+	{ silent = true, desc = 'Show line diagnostics' }
+)

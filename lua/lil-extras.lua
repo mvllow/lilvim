@@ -53,6 +53,10 @@ use({
 	end,
 })
 
-local opts = { silent = true }
-
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<cr>', opts)
+-- Toggle file tree at your current file.
+vim.keymap.set(
+	'n',
+	'<leader>e',
+	':NvimTreeFindFileToggle<cr>',
+	{ silent = true, desc = 'Toggle file tree' }
+)

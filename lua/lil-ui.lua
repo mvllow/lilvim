@@ -69,8 +69,11 @@ vim.api.nvim_create_autocmd('VimResized', {
 	command = 'tabdo wincmd =',
 })
 
-local opts = { silent = true }
-
 -- Toggle built-in file explorer, Netrw. If using the lil-extras module, this
--- will replaced with nvim-tree.
-vim.keymap.set('n', '<leader>e', '<cmd>Ex<cr>', opts)
+-- will be replaced with nvim-tree.
+vim.keymap.set(
+	'n',
+	'<leader>e',
+	'<cmd>Ex<cr>',
+	{ silent = true, desc = 'Toggle file tree' }
+)

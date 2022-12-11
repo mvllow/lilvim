@@ -17,20 +17,38 @@ use({
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-local opts = { silent = true }
-
 -- Clear search highlights.
-vim.keymap.set('n', '<esc>', ':noh<cr>', opts)
+vim.keymap.set(
+	'n',
+	'<esc>',
+	':noh<cr>',
+	{ silent = true, desc = 'Clear search highlights' }
+)
 
 -- Keep position when searching for word under cursor.
-vim.keymap.set('n', '*', '*N', opts)
-vim.keymap.set('v', '*', [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)
+vim.keymap.set('n', '*', '*N', { silent = true, desc = 'Search hovered word' })
+vim.keymap.set(
+	'v',
+	'*',
+	[[y/\V<c-r>=escape(@",'/\')<cr><cr>N]],
+	{ silent = true, desc = 'Search hovered word' }
+)
 
 vim.keymap.set(
 	'n',
 	'<leader>f',
 	':Telescope find_files find_command=fd,-t,f,-H,-E,.git,--strip-cwd-prefix theme=dropdown previewer=false<cr>',
-	opts
+	{ silent = true, desc = 'Find files' }
 )
-vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>', opts)
-vim.keymap.set('n', '<leader>p', ':Telescope commands theme=dropdown<cr>', opts)
+vim.keymap.set(
+	'n',
+	'<leader>/',
+	':Telescope live_grep<cr>',
+	{ silent = true, desc = 'Search' }
+)
+vim.keymap.set(
+	'n',
+	'<leader>p',
+	':Telescope commands theme=dropdown<cr>',
+	{ silent = true, desc = 'Command palette' }
+)
