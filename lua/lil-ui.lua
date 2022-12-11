@@ -52,10 +52,6 @@ vim.opt.updatetime = 250
 vim.opt.statusline = ' %f %m %= %l:%c ♥ '
 vim.opt.laststatus = 3
 
--- Improve netrw defaults
-vim.g.netrw_banner = 0
-vim.g.netrw_browse_split = 0
-vim.g.netrw_winsize = 25
 -- Shorter vim messages.
 vim.opt.shortmess:append('c')
 
