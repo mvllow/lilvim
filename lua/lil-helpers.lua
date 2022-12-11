@@ -1,34 +1,42 @@
 --- lil-helpers.lua
 --- https://github.com/mvllow/lilvim
-
+---
 --- Shared utility functions.
 
 local M = {}
 local packer = nil
 local installed_plugins = {}
 
+-- Abstraction of packer.use to install plugins without duplication.
+-- @usage use('<package>') or use({'<package>', ...})
+-- @example
+-- use({
+--		'mvllow/modes.nvim'
+--		config = function()
+--			require('modes.nvim').setup()
+--		end
+-- })
 M.use = function(package)
 	if packer == nil then
 		local install_path = vim.fn.stdpath('data')
-			.. '/site/pack/packer/start/packer.nvim'
+			 .. '/site/pack/packer/start/packer.nvim'
 		if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 			vim.fn.execute(
 				'!git clone --depth 1 https://github.com/wbthomason/packer.nvim '
-					.. install_path
+				.. install_path
 			)
 		end
 
 		packer = require('packer')
 
-		-- Initialise shared plugins
+		-- Initialise shared plugins.
 		if packer ~= nil then
 			packer.init()
 			packer.use('wbthomason/packer.nvim')
 		end
 	end
 
-	-- Get package name from string or table
-	-- Eg. use('some/package') or use({'some/package', ...})
+	-- Get package name from string or table.
 	local package_name = ''
 	if type(package) == 'string' then
 		package_name = package
@@ -36,7 +44,7 @@ M.use = function(package)
 		package_name = package[1]
 	end
 
-	-- Prevent package duplication
+	-- Prevent package duplication.
 	if not vim.tbl_contains(installed_plugins, package_name) then
 		if packer ~= nil then
 			packer.use(package)

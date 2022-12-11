@@ -1,6 +1,6 @@
 --- lil-extras.lua
 --- https://github.com/mvllow/lilvim
-
+---
 --- Setup not so lil enhancements. This includes plugins to replace or improve
 --- built-in functionality.
 
@@ -16,16 +16,16 @@ use({
 				},
 			},
 			filters = {
-				-- Hide ".git" folder
+				-- Hide ".git" folder.
 				custom = { '^.git$' },
 			},
 			git = {
-				-- Do not hide gitignored files
+				-- Do not hide gitignored files.
 				ignore = false,
 			},
 			renderer = {
 				icons = {
-					-- Do not show tree icons
+					-- Do not show tree icons.
 					show = {
 						file = false,
 						folder = false,
@@ -35,14 +35,14 @@ use({
 				},
 			},
 			trash = {
-				-- Use cross-platform trash command
+				-- Use cross-platform trash command.
 				-- https://github.com/sindresorhus/trash-cli
 				cmd = 'trash',
 			},
 			view = {
 				mappings = {
 					list = {
-						-- Replace destructive default with trash command
+						-- Replace destructive default with trash command.
 						{ key = 'd', action = 'trash' },
 						{ key = 'D', action = 'remove' },
 					},
@@ -54,4 +54,5 @@ use({
 })
 
 local opts = { silent = true }
+
 vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<cr>', opts)

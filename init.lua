@@ -1,6 +1,6 @@
 --- init.lua
 --- https://github.com/mvllow/lilvim
-
+---
 --- Combines all modules of lilvim.
 
 vim.g.mapleader = ' '

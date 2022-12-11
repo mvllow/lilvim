@@ -1,6 +1,6 @@
 --- lil-lsp.lua
 --- https://github.com/mvllow/lilvim
-
+---
 --- Setup language servers, diagnostics and formatting.
 
 local use = require('lil-helpers').use
@@ -34,13 +34,15 @@ use({
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-		-- Improve compatibility with nvim-cmp completions
+		-- Improve compatibility with nvim-cmp completions.
 		local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 		if has_cmp_nvim_lsp then
 			capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 		end
 
-		-- Automatically setup servers installed via `:MasonInstall`
+		-- Automatically setup servers installed via Mason.
+		-- @usage :MasonInstall <server>
+		-- @example :MasonInstall denols tsserver
 		require('mason-lspconfig').setup_handlers({
 			function(server_name)
 				require('lspconfig')[server_name].setup({
@@ -48,6 +50,7 @@ use({
 					capabilities = capabilities,
 				})
 			end,
+
 			-- Remove ".git" from denols and tsserver root detection to prevent
 			-- overlap.
 			-- https://deno.land/manual@v1.28.3/getting_started/setup_your_environment#neovim-06-using-the-built-in-language-server
@@ -72,6 +75,7 @@ use({
 		})
 	end,
 })
+
 use({
 	'jose-elias-alvarez/null-ls.nvim',
 	requires = {
