@@ -17,6 +17,7 @@ use({
 		require('neodev').setup()
 		require('mason').setup()
 		require('mason-tool-installer').setup({})
+		require('mason-lspconfig').setup()
 
 		local function on_attach(_, bufnr)
 			local opts = { buffer = bufnr, silent = true }
@@ -24,7 +25,9 @@ use({
 			vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
 			vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+			vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
 			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 			vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 		end
@@ -43,6 +46,27 @@ use({
 				require('lspconfig')[server_name].setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
+				})
+			end,
+			-- Remove ".git" from denols and tsserver root detection to prevent
+			-- overlap.
+			-- https://deno.land/manual@v1.28.3/getting_started/setup_your_environment#neovim-06-using-the-built-in-language-server
+			['denols'] = function()
+				require('lspconfig').denols.setup({
+					on_attach = on_attach,
+					root_dir = require('lspconfig').util.root_pattern(
+						'deno.json',
+						'deno.jsonc'
+					),
+				})
+			end,
+
+			['tsserver'] = function()
+				require('lspconfig').tsserver.setup({
+					on_attach = on_attach,
+					root_dir = require('lspconfig').util.root_pattern(
+						'package.json'
+					),
 				})
 			end,
 		})
