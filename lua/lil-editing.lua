@@ -8,20 +8,19 @@ local use = require('lil-helpers').use
 use('editorconfig/editorconfig-vim')
 use({
 	'numToStr/Comment.nvim',
-	-- Use treesitter context to determine correct commentstring for single
-	-- files containing multiple languages, e.g. html `style` tags
-	requires = 'JoosepAlviste/nvim-ts-context-commentstring',
+	requires = {
+		'nvim-treesitter/nvim-treesitter',
+		'JoosepAlviste/nvim-ts-context-commentstring',
+	},
 	config = function()
-		local has_treesitter_configs, treesitter_configs =
-			pcall(require, 'nvim-treesitter.configs')
-		if has_treesitter_configs then
-			treesitter_configs.setup({
-				context_commentstring = {
-					enable = true,
-					enable_autocmd = false,
-				},
-			})
-		end
+		require('nvim-treesitter.configs').setup({
+			-- Get comment string from treesitter. Useful for files with multiple
+			-- languages, e.g. html `style` tags.
+			context_commentstring = {
+				enable = true,
+				enable_autocmd = false,
+			},
+		})
 
 		require('Comment').setup({
 			pre_hook = require(
