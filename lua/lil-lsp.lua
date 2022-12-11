@@ -8,13 +8,11 @@ local use = require('lil-helpers').use
 use({
 	'neovim/nvim-lspconfig',
 	requires = {
-		'folke/neodev.nvim',
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
 		'WhoIsSethDaniel/mason-tool-installer.nvim',
 	},
 	config = function()
-		require('neodev').setup()
 		require('mason').setup()
 		require('mason-tool-installer').setup({})
 		require('mason-lspconfig').setup()
