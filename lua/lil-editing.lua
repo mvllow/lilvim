@@ -63,37 +63,38 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 local opts = { silent = true }
 
--- General
-vim.keymap.set('i', 'jk', '<esc>', opts) -- alternative to <esc>
-vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts) -- move through wrapped lines
-vim.keymap.set({ 'n', 'v' }, 'k', 'gk', opts) -- move through wrapped lines
-vim.keymap.set('v', '<', '<gv', opts) -- dedent (keep selection)
-vim.keymap.set('v', '>', '>gv', opts) -- indent (keep selection)
-vim.keymap.set('n', '=', 'mxggVG=`x', opts) -- indent file contents
-vim.keymap.set('n', 'S', ':%s/<c-r><c-w>/', opts) -- replace selection
+-- Move through wrapped lines.
+vim.keymap.set({ 'n', 'v' }, 'j', 'gj', opts)
+vim.keymap.set({ 'n', 'v' }, 'k', 'gk', opts)
 
--- Goto
-vim.keymap.set('n', 'go', '<c-o>', opts) -- goto previous position
-vim.keymap.set('n', 'gp', '<c-^>', opts) -- goto previously focused buffer
-vim.keymap.set('n', 'gm', '%', opts) -- goto matching pair
-vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts) -- goto previous diagnostic
-vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts) -- goto next diagnostic
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts) -- goto line diagnostic message
+-- Bubble lines.
+vim.keymap.set('n', '<c-j>', ':m .+1<cr>==', opts)
+vim.keymap.set('n', '<c-k>', ':m .-2<cr>==', opts)
+vim.keymap.set('v', '<c-j>', ":m '>+1<cr>gv=gv", opts)
+vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv", opts)
 
--- Buffer
-vim.keymap.set('n', '<leader>bp', ':bp<cr>', opts) -- focus previous buffer
-vim.keymap.set('n', '<leader>bn', ':bn<cr>', opts) -- focus next buffer
-vim.keymap.set('n', '<leader>bm', ':bm<cr>', opts) -- focus modified buffer
-vim.keymap.set('n', '<leader>bd', ':bd<cr>', opts) -- delete buffer
+-- Keep selection after indenting.
+vim.keymap.set('v', '<', '<gv', opts)
+vim.keymap.set('v', '>', '>gv', opts)
 
--- Window
-vim.keymap.set('n', '<leader>wh', '<c-w>h', opts) -- move to left window
-vim.keymap.set('n', '<leader>wj', '<c-w>j', opts) -- move to below window
-vim.keymap.set('n', '<leader>wk', '<c-w>k', opts) -- move to above window
-vim.keymap.set('n', '<leader>wl', '<c-w>l', opts) -- move to right window
-vim.keymap.set('n', '<leader>wr', '<c-w>r', opts) -- swap split positions
-vim.keymap.set('n', '<leader>ws', '<c-w>s', opts) -- open horizontal split
-vim.keymap.set('n', '<leader>wv', '<c-w>v', opts) -- open vertical split
-vim.keymap.set('n', '<leader>ww', '<c-w>w', opts) -- focus next window
-vim.keymap.set('n', '<leader>wc', '<c-w>c', opts) -- close current window
-vim.keymap.set('n', '<leader>wo', ':only<cr>', opts) -- close other windows
+-- Indent file contents.
+vim.keymap.set('n', '=', 'mxggVG=`x', opts)
+
+-- Substitute current word.
+vim.keymap.set('n', 'S', ':%s/<c-r><c-w>//g<left><left>')
+
+-- Goto previous position.
+vim.keymap.set('n', 'go', '<c-o>', opts)
+
+-- Goto previously focused buffer.
+vim.keymap.set('n', 'gp', '<c-^>', opts)
+
+-- Goto matching pair.
+vim.keymap.set({ 'n', 'v' }, 'gm', '%', opts)
+
+-- Goto diagnostic.
+vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
+
+-- Show line diagnostics.
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
