@@ -4,7 +4,6 @@
 --- Combines all modules of lilvim.
 
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<space>', '<nop>', { silent = true })
 
 require('lil-ui')
 require('lil-editing')
