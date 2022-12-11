@@ -29,6 +29,13 @@ vim.diagnostic.config({
 })
 
 vim.opt.updatetime = 250
+-- Use lil dots for diagnostic signs.
+local signs = { 'Error', 'Warn', 'Hint', 'Info' }
+for _, type in pairs(signs) do
+	local hl = string.format('DiagnosticSign%s', type)
+	vim.fn.sign_define(hl, { text = '●', texthl = hl, numhl = hl })
+end
+
 vim.opt.signcolumn = 'yes'
 vim.opt.laststatus = 3
 vim.opt.statusline = ' %f %M %= %l:%c ♥ '
