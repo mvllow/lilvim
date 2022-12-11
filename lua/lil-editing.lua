@@ -148,15 +148,15 @@ vim.keymap.set(
 -- Goto diagnostic.
 vim.keymap.set(
 	'n',
-	'g[',
-	vim.diagnostic.goto_prev,
-	{ silent = true, desc = 'Goto previous diagnostic' }
+	']d',
+	vim.diagnostic.goto_next,
+	{ silent = true, desc = 'Goto next diagnostic' }
 )
 vim.keymap.set(
 	'n',
-	'g]',
-	vim.diagnostic.goto_next,
-	{ silent = true, desc = 'Goto next diagnostic' }
+	'[d',
+	vim.diagnostic.goto_prev,
+	{ silent = true, desc = 'Goto previous diagnostic' }
 )
 
 -- Show line diagnostics.
