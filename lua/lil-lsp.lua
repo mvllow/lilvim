@@ -18,78 +18,66 @@ use({
 		require('mason-lspconfig').setup()
 
 		local function on_attach(_, bufnr)
-			vim.keymap.set(
-				'i',
-				'<c-k>',
-				vim.lsp.buf.signature_help,
-				{ buffer = bufnr, silent = true, desc = 'Signature help' }
-			)
-			vim.keymap.set(
-				'n',
-				'<leader>a',
-				vim.lsp.buf.code_action,
-				{ buffer = bufnr, silent = true, desc = 'Code actions' }
-			)
-			vim.keymap.set(
-				'n',
-				'<leader>r',
-				vim.lsp.buf.rename,
-				{ buffer = bufnr, silent = true, desc = 'Rename symbol' }
-			)
-			vim.keymap.set(
-				'n',
-				'K',
-				vim.lsp.buf.hover,
-				{ buffer = bufnr, silent = true, desc = 'Documentation' }
-			)
-			vim.keymap.set(
-				'n',
-				'gD',
-				vim.lsp.buf.declaration,
-				{ buffer = bufnr, silent = true, desc = 'Goto declaration' }
-			)
-			vim.keymap.set(
-				'n',
-				'gd',
-				vim.lsp.buf.definition,
-				{ buffer = bufnr, silent = true, desc = 'Goto definition' }
-			)
-			vim.keymap.set(
-				'n',
-				'gt',
-				vim.lsp.buf.type_definition,
-				{ buffer = bufnr, silent = true, desc = 'Goto type definition' }
-			)
-			vim.keymap.set(
-				'n',
-				'gi',
-				vim.lsp.buf.implementation,
-				{ buffer = bufnr, silent = true, desc = 'Goto implementation' }
-			)
-			vim.keymap.set(
-				'n',
-				'gr',
-				vim.lsp.buf.references,
-				{ buffer = bufnr, silent = true, desc = 'Goto references' }
-			)
-			vim.keymap.set(
-				'n',
-				'gl',
-				vim.diagnostic.open_float,
-				{ buffer = bufnr, silent = true, desc = 'Diagnostics' }
-			)
-			vim.keymap.set(
-				'n',
-				']d',
-				vim.diagnostic.goto_next,
-				{ buffer = bufnr, silent = true, desc = 'Next diagnostic' }
-			)
-			vim.keymap.set(
-				'n',
-				'[d',
-				vim.diagnostic.goto_prev,
-				{ buffer = bufnr, silent = true, desc = 'Previous diagnostic' }
-			)
+			vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, {
+				desc = 'Signature help',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, {
+				desc = 'Code actions',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {
+				desc = 'Rename symbol',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {
+				desc = 'Documentation',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {
+				desc = 'Goto declaration',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {
+				desc = 'Goto definition',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, {
+				desc = 'Goto type definition',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {
+				desc = 'Goto implementation',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', 'gr', vim.lsp.buf.references, {
+				desc = 'Goto references',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', 'gl', vim.diagnostic.open_float, {
+				desc = 'Diagnostics',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {
+				desc = 'Next diagnostic',
+				buffer = bufnr,
+				silent = true,
+			})
+			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {
+				desc = 'Previous diagnostic',
+				buffer = bufnr,
+				silent = true,
+			})
 		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -181,9 +169,7 @@ use({
 	end,
 })
 
-vim.keymap.set(
-	'n',
-	'<space><space>',
-	vim.lsp.buf.format,
-	{ silent = true, desc = 'Format file' }
-)
+vim.keymap.set('n', '<space><space>', vim.lsp.buf.format, {
+	desc = 'Format file',
+	silent = true,
+})

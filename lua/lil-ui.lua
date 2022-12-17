@@ -73,10 +73,8 @@ vim.api.nvim_create_autocmd('VimResized', {
 -- will be replaced with nvim-tree.
 local has_nvim_tree, _ = pcall(require, 'nvim-tree')
 if not has_nvim_tree then
-	vim.keymap.set(
-		'n',
-		'<leader>e',
-		vim.cmd.Ex,
-		{ silent = true, desc = 'Toggle file tree' }
-	)
+	vim.keymap.set('n', '<leader>e', vim.cmd.Ex, {
+		desc = 'File tree',
+		silent = true,
+	})
 end

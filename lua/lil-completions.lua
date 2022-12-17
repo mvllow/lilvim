@@ -32,16 +32,10 @@ vim.keymap.set('i', '<cr>', function()
 	end
 end, { expr = true })
 
-vim.keymap.set(
-	'i',
-	'<tab>',
-	'pumvisible() ? "<c-n>" : "<tab>"',
-	{ expr = true }
-)
+vim.keymap.set('i', '<tab>', 'pumvisible() ? "<c-n>" : "<tab>"', {
+	expr = true,
+})
 
-vim.keymap.set(
-	'i',
-	'<s-tab>',
-	'pumvisible() ? "<c-p>" : "<s-tab>"',
-	{ expr = true }
-)
+vim.keymap.set('i', '<s-tab>', 'pumvisible() ? "<c-p>" : "<s-tab>"', {
+	expr = true,
+})
