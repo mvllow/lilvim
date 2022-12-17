@@ -54,13 +54,6 @@ vim.api.nvim_create_autocmd('BufEnter', {
 	command = 'setlocal formatoptions-=o',
 })
 
--- Temporarily highlight yanked text.
-vim.api.nvim_create_autocmd('TextYankPost', {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
 -- Move through wrapped lines.
 vim.keymap.set(
 	{ 'n', 'v' },
