@@ -6,46 +6,42 @@
 local use = require('lil-helpers').use
 
 use({
-	'hrsh7th/nvim-cmp',
-	requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip' },
+	'echasnovski/mini.completion',
 	config = function()
-		local cmp = require('cmp')
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					require('luasnip').lsp_expand(args.body)
-				end,
-			},
-			mapping = cmp.mapping.preset.insert({
-				['<c-space>'] = cmp.mapping.complete({ select = false }),
-				['<cr>'] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = false,
-				}),
-				['<tab>'] = function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					else
-						fallback()
-					end
-				end,
-				['<s-tab>'] = function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					else
-						fallback()
-					end
-				end,
-			}),
-			sources = {
-				{ name = 'nvim_lsp' },
-			},
-		})
+		require('mini.completion').setup()
 	end,
 })
 
--- Show completions in a popup menu.
-vim.opt.completeopt = 'menu,menuone,noselect'
-
 -- Number of items to show in popup menu.
 vim.opt.pumheight = 3
+
+local keys = {
+	['cr'] = vim.api.nvim_replace_termcodes('<cr>', true, true, true),
+	['c-y'] = vim.api.nvim_replace_termcodes('<c-y>', true, true, true),
+	['c-y_cr'] = vim.api.nvim_replace_termcodes('<c-y><cr>', true, true, true),
+}
+
+vim.keymap.set('i', '<cr>', function()
+	if vim.fn.pumvisible() ~= 0 then
+		-- If popup is visible, confirm selected item or add new line otherwise
+		local item_selected = vim.fn.complete_info()['selected'] ~= -1
+		return item_selected and keys['c-y'] or keys['c-y_cr']
+	else
+		-- If popup is not visible, use plain `<cr>`.
+		return keys['cr']
+	end
+end, { expr = true })
+
+vim.keymap.set(
+	'i',
+	'<tab>',
+	'pumvisible() ? "<c-n>" : "<tab>"',
+	{ expr = true }
+)
+
+vim.keymap.set(
+	'i',
+	'<s-tab>',
+	'pumvisible() ? "<c-p>" : "<s-tab>"',
+	{ expr = true }
+)
