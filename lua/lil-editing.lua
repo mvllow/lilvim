@@ -137,25 +137,3 @@ vim.keymap.set(
 	'%',
 	{ silent = true, desc = 'Goto matching pair' }
 )
-
--- Goto diagnostic.
-vim.keymap.set(
-	'n',
-	']d',
-	vim.diagnostic.goto_next,
-	{ silent = true, desc = 'Goto next diagnostic' }
-)
-vim.keymap.set(
-	'n',
-	'[d',
-	vim.diagnostic.goto_prev,
-	{ silent = true, desc = 'Goto previous diagnostic' }
-)
-
--- Show line diagnostics.
-vim.keymap.set(
-	'n',
-	'gl',
-	vim.diagnostic.open_float,
-	{ silent = true, desc = 'Show line diagnostics' }
-)

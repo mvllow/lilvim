@@ -48,11 +48,12 @@ use({
 				vim.lsp.buf.declaration,
 				{ buffer = bufnr, silent = true, desc = 'Goto declaration' }
 			)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {
-				buffer = bufnr,
-				silent = true,
-				desc = 'Goto definition',
-			})
+			vim.keymap.set(
+				'n',
+				'gd',
+				vim.lsp.buf.definition,
+				{ buffer = bufnr, silent = true, desc = 'Goto definition' }
+			)
 			vim.keymap.set(
 				'n',
 				'gt',
@@ -70,6 +71,24 @@ use({
 				'gr',
 				vim.lsp.buf.references,
 				{ buffer = bufnr, silent = true, desc = 'Goto references' }
+			)
+			vim.keymap.set(
+				'n',
+				'gl',
+				vim.diagnostic.open_float,
+				{ buffer = bufnr, silent = true, desc = 'Diagnostics' }
+			)
+			vim.keymap.set(
+				'n',
+				']d',
+				vim.diagnostic.goto_next,
+				{ buffer = bufnr, silent = true, desc = 'Next diagnostic' }
+			)
+			vim.keymap.set(
+				'n',
+				'[d',
+				vim.diagnostic.goto_prev,
+				{ buffer = bufnr, silent = true, desc = 'Previous diagnostic' }
 			)
 		end
 
