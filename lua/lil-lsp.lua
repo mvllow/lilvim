@@ -159,6 +159,7 @@ use({
 		require('null-ls').setup({
 			-- Edit source defaults
 			sources = {
+				require('null-ls').builtins.completion.spell,
 				require('null-ls').builtins.formatting.prettierd.with({
 					extra_filetypes = { 'jsonc', 'astro', 'svelte' },
 				}),
