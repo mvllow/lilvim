@@ -11,7 +11,11 @@
 ## Usage
 
 ```sh
-git clone https://github.com/mvllow/lilvim ~/.config/nvim
+# Notice the destination folder is lilvim, not nvim
+git clone https://github.com/mvllow/lilvim ~/.config/lilvim
+
+# Run lilvim by setting the NVIM_APPNAME environment variable
+NVIM_APPNAME=lilvim nvim
 ```
 
 Alternatively, you may pull any module into your own config. At this time, `lua/lil-helpers.lua` is where shared module code lives, and is necessary in addition to your desired module(s).
