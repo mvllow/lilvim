@@ -4,12 +4,12 @@
 --- Setup not so lil enhancements. This includes plugins to replace or improve
 --- built-in functionality.
 
-local use = require('lil-helpers').use
+local use = require("lil-helpers").use
 
 use({
-	'folke/which-key.nvim',
+	"folke/which-key.nvim",
 	config = function()
-		require('which-key').setup({
+		require("which-key").setup({
 			plugins = {
 				spelling = {
 					enabled = true,
@@ -20,9 +20,9 @@ use({
 })
 
 use({
-	'kyazdani42/nvim-tree.lua',
+	"kyazdani42/nvim-tree.lua",
 	config = function()
-		require('nvim-tree').setup({
+		require("nvim-tree").setup({
 			actions = {
 				open_file = {
 					quit_on_open = true,
@@ -30,7 +30,7 @@ use({
 			},
 			filters = {
 				-- Hide ".git" folder.
-				custom = { '^.git$' },
+				custom = { "^.git$" },
 			},
 			git = {
 				-- Do not hide gitignored files.
@@ -50,24 +50,24 @@ use({
 			trash = {
 				-- Use cross-platform trash command.
 				-- https://github.com/sindresorhus/trash-cli
-				cmd = 'trash',
+				cmd = "trash",
 			},
 			view = {
 				mappings = {
 					list = {
 						-- Replace destructive default with trash command.
-						{ key = 'd', action = 'trash' },
-						{ key = 'D', action = 'remove' },
+						{ key = "d", action = "trash" },
+						{ key = "D", action = "remove" },
 					},
 				},
-				side = 'right',
+				side = "right",
 			},
 		})
 	end,
 })
 
 -- Toggle file tree at your current file.
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<cr>', {
-	desc = 'Toggle file tree',
+vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>", {
+	desc = "Toggle file tree",
 	silent = true,
 })

@@ -19,27 +19,23 @@ local installed_plugins = {}
 M.use = function(package)
 	if packer == nil then
 		-- Install packer if not already.
-		local install_path = vim.fn.stdpath('data')
-			.. '/site/pack/packer/start/packer.nvim'
+		local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 		if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-			vim.fn.execute(
-				'!git clone --depth 1 https://github.com/wbthomason/packer.nvim '
-				.. install_path
-			)
+			vim.fn.execute("!git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. install_path)
 		end
 
-		packer = require('packer')
+		packer = require("packer")
 
 		-- Initialise shared plugins.
 		if packer ~= nil then
 			packer.init()
-			packer.use('wbthomason/packer.nvim')
+			packer.use("wbthomason/packer.nvim")
 		end
 	end
 
 	-- Get package name from string or table.
-	local package_name = ''
-	if type(package) == 'string' then
+	local package_name = ""
+	if type(package) == "string" then
 		package_name = package
 	else
 		package_name = package[1]
