@@ -5,8 +5,6 @@
 
 local use = require('lil-helpers').use
 
-use('editorconfig/editorconfig-vim')
-
 use({
 	'numToStr/Comment.nvim',
 	requires = {
