@@ -6,26 +6,9 @@
 local use = require('lil-helpers').use
 
 use({
-	'numToStr/Comment.nvim',
-	requires = {
-		'nvim-treesitter/nvim-treesitter',
-		'JoosepAlviste/nvim-ts-context-commentstring',
-	},
+	'echasnovski/mini.comment',
 	config = function()
-		require('nvim-treesitter.configs').setup({
-			-- Get comment string from treesitter. Useful for files with multiple
-			-- languages, e.g. html `style` tags.
-			context_commentstring = {
-				enable = true,
-				enable_autocmd = false,
-			},
-		})
-
-		require('Comment').setup({
-			pre_hook = require(
-				'ts_context_commentstring.integrations.comment_nvim'
-			).create_pre_hook(),
-		})
+		require('mini.comment').setup()
 	end,
 })
 
