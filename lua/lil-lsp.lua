@@ -112,10 +112,7 @@ use({
 
 use({
 	"jose-elias-alvarez/null-ls.nvim",
-	requires = {
-		"nvim-lua/plenary.nvim",
-		"jayp0521/mason-null-ls.nvim",
-	},
+	requires = "nvim-lua/plenary.nvim",
 	config = function()
 		-- TIP: Format on save is disabled by default and instead mapped to
 		-- <space><space>. To enable format on save, pass the format_on_save
@@ -137,22 +134,19 @@ use({
 			end
 		end
 
-		-- Automatically setup linters/formatters installed via Mason.
-		-- @usage :NullLsInstall <source>
-		-- @example :NullLsInstall prettierd
-		require("mason-null-ls").setup({ automatic_setup = true })
+		-- Setup linters and formatters.
+		-- @usage :MasonInstall <source>
+		-- @example :MasonInstall stylua prettierd
 		require("null-ls").setup({
-			-- Edit source defaults
 			sources = {
-				require("null-ls").builtins.completion.spell,
+				require("null-ls").builtins.formatting.stylua,
 				require("null-ls").builtins.formatting.prettierd.with({
-					extra_filetypes = { "jsonc", "astro", "svelte" },
+					extra_filetypes = { "astro", "svelte" },
 				}),
 			},
 			-- Uncomment the below to enable format on save.
 			-- on_attach = format_on_save,
 		})
-		require("mason-null-ls").setup_handlers()
 	end,
 })
 
