@@ -79,13 +79,6 @@ use({
 		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities.offsetEncoding = { 'utf-16' }
-
-		-- Improve compatibility with nvim-cmp completions.
-		local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-		if has_cmp_nvim_lsp then
-			capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-		end
 
 		-- Automatically setup servers installed via Mason.
 		-- @usage :MasonInstall <server>
