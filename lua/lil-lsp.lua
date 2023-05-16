@@ -117,18 +117,21 @@ use({
 		-- TIP: Format on save is disabled by default and instead mapped to
 		-- <space><space>. To enable format on save, pass the format_on_save
 		-- function to the null-ls on_attach below.
-		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+		local lsp_formatting = vim.api.nvim_create_augroup("LspFormatting", {})
 		local function format_on_save(client, bufnr)
 			if client.supports_method("textDocument/formatting") then
-				vim.api.nvim_clear_autocmds({
-					group = augroup,
-					buffer = bufnr,
-				})
+				vim.api.nvim_clear_autocmds({ group = lsp_formatting, buffer = bufnr })
 				vim.api.nvim_create_autocmd("BufWritePre", {
-					group = augroup,
+					group = lsp_formatting,
 					buffer = bufnr,
 					callback = function()
-						vim.lsp.buf.format({ bufnr = bufnr })
+						vim.lsp.buf.format({
+							bufnr = bufnr,
+							filter = function(lsp_client)
+								-- Use null-ls for all formatting.
+								return lsp_client.name == "null-ls"
+							end,
+						})
 					end,
 				})
 			end
