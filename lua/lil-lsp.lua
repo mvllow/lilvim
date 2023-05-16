@@ -10,11 +10,9 @@ use({
 	requires = {
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
-		'WhoIsSethDaniel/mason-tool-installer.nvim',
 	},
 	config = function()
 		require('mason').setup()
-		require('mason-tool-installer').setup({})
 		require('mason-lspconfig').setup()
 
 		local function on_attach(_, bufnr)
