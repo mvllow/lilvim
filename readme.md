@@ -53,6 +53,19 @@ This project includes several self-contained modules which handle their own opti
 
 We have designed lilvim to demonstrate the capabilities of vanilla Neovim and lower the platform's barrier to entry for new users. Our approach encourages users to enjoy the benefits of a lightweight environment by first embracing the platform, then supplementing with plugins as needed.
 
+### Statistics
+
+```
+~/.config/lilvim (main)> tokei **/*.lua
+===============================================================================
+ Language            Files        Lines         Code     Comments       Blanks
+===============================================================================
+ Lua                     6          308          159          122           27
+===============================================================================
+ Total                   6          308          159          122           27
+===============================================================================
+```
+
 ## Related
 
 There are plenty of projects that provide a framework of abstractions to simplify the learning curve of using Neovim over something like VSCode. Check out [LunarVim](https://github.com/LunarVim/LunarVim) or [AstroVim](https://github.com/kabinspace/AstroVim) if you want a great batteries-included Neovim configuration.
