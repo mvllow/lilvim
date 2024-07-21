@@ -18,34 +18,28 @@ git clone https://github.com/mvllow/lilvim ~/.config/lilvim
 NVIM_APPNAME=lilvim nvim
 ```
 
-Alternatively, you may pull any module into your own config. At this time, `lua/lil-helpers.lua` is where shared module code lives, and is necessary in addition to your desired module(s).
+Alternatively, you may pull any module into your own config. Individual modules rely on [mini.deps](https://github.com/echasnovski/mini.deps) for managing packages. You may opt for your own package manager or manually cloning the required dependencies. See `:h packages` for more information on the builtin package manager.
 
 ## Modules
 
-All modules are loaded in `init.lua`. If using a standalone module, please include `lua/lil-helpers.lua`.
-
-_**[lil-ui](lua/lil-ui.lua)**_\
-Interface elements such as colorscheme and statusline
+All modules are loaded in `init.lua`. If using a standalone module, please handle installing the necessary dependencies. For the best support, we recommended installing [mini.deps](https://github.com/echasnovski/mini.deps?tab=readme-ov-file#installation).
 
 _**[lil-editing](lua/lil-editing.lua)**_\
 General options and keymaps
 
-_**[lil-completions](lua/lil-completions.lua)**_\
-Completions and snippets
+_**[lil-formatting](lua/lil-formatting.lua)**_\
+Formatters and only formatters
 
 _**[lil-lsp](lua/lil-lsp.lua)**_\
 Language servers and diagnostics
 
 _**[lil-search](lua/lil-search.lua)**_\
-File and text search
+File discovery and text navigation
 
-_**[lil-extras](lua/lil-extras.lua)**_\
-Not so lil enhancements
+_**[lil-ui](lua/lil-ui.lua)**_\
+Treesitter and interface options
 
-_**[lil-helpers](lua/lil-helpers.lua)**_\
-Shared utility functions used by other modules
-
-_For more snippets, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
+_For not-so-lil module extensions, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
 
 ## Principles
 

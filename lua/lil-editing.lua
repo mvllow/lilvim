@@ -1,96 +1,42 @@
+---
 --- lil-editing.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Setup options related to editing.
+--- Setup general editing options and keymaps.
+---
+---@keymaps
+--- |NORMAL|
+--- gcc : comment line
+--- |VISUAL|
+--- gc  : comment selection
 
-local use = require("lil-helpers").use
-
-use({
-	"echasnovski/mini.comment",
-	config = function()
-		require("mini.comment").setup()
-	end,
-})
-
--- Indentation levels.
+-- Indentation
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
--- Persistent undo between sessions.
+-- Continue wrapped lines with matching indentation
+vim.opt.breakindent = true
+vim.opt.linebreak = true
+-- Visually show indented lines, e.g. if this line were to naturally wrap
+-- \\you would see "\\" as demonstrated at the start of this line
+vim.opt.showbreak = [[\\]]
+
+-- Persistent undo between sessions
 vim.opt.undofile = true
 
--- Natural split directions.
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-
--- Start scrolling before reaching screen edge.
+-- Start scrolling before reaching the edge of the screen
 vim.opt.scrolloff = 3
 
--- Continue wrapped lines with matching indentation.
-vim.opt.breakindent = true
+-- Copy and paste via clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
--- Stop 'o' continuing comments.
-vim.api.nvim_create_autocmd("BufEnter", {
-	command = "setlocal formatoptions-=o",
-})
+-- Navigate through wrapped lines via j/<down>, k/<up>
+vim.keymap.set({ "n", "v" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+vim.keymap.set({ "n", "v" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+vim.keymap.set({ "n", "v" }, "<up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+vim.keymap.set({ "n", "v" }, "<down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
 
--- Move through wrapped lines.
-vim.keymap.set({ "n", "v" }, "j", "gj", {
-	desc = "Move down wrapped lines",
-	silent = true,
-})
-vim.keymap.set({ "n", "v" }, "k", "gk", {
-	desc = "Move up wrapped lines",
-	silent = true,
-})
-
--- Bubble lines.
-vim.keymap.set("n", "<c-j>", ":m .+1<cr>==", {
-	desc = "Bubble line down",
-	silent = true,
-})
-vim.keymap.set("n", "<c-k>", ":m .-2<cr>==", {
-	desc = "Bubble line up",
-	silent = true,
-})
-vim.keymap.set("v", "<c-j>", ":m '>+1<cr>gv=gv", {
-	desc = "Bubble line down",
-	silent = true,
-})
-vim.keymap.set("v", "<c-k>", ":m '<-2<cr>gv=gv", {
-	desc = "Bubble line up",
-	silent = true,
-})
-
--- Keep selection after indenting.
-vim.keymap.set("v", "<", "<gv", { desc = "Dedent selection", silent = true })
-vim.keymap.set("v", ">", ">gv", { desc = "Indent selection", silent = true })
-
--- Indent file contents.
-vim.keymap.set("n", "=", "mxggVG=`x", {
-	desc = "Indent file contents",
-	silent = true,
-})
-
--- Substitute current word.
-vim.keymap.set("n", "S", ":%s/<c-r><c-w>//g<left><left>", {
-	desc = "Substitute current word",
-})
-
--- Goto previous position.
-vim.keymap.set("n", "go", "<c-o>", {
-	desc = "Goto previous position",
-	silent = true,
-})
-
--- Goto previously focused buffer.
-vim.keymap.set("n", "gp", "<c-^>", {
-	desc = "Goto previously focused buffer",
-	silent = true,
-})
-
--- Goto matching pair.
-vim.keymap.set({ "n", "v" }, "gm", "%", {
-	desc = "Goto matching pair",
-	silent = true,
-})
+-- Navigate quickfix list
+vim.keymap.set("n", "]q", ":cnext<cr>zz", { desc = "Next quickfix" })
+vim.keymap.set("n", "[q", ":cprev<cr>zz", { desc = "Previous quickfix" })

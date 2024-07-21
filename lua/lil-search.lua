@@ -1,49 +1,46 @@
+---
 --- lil-search.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Setup search.
+--- Setup file management and search.
+---
+---@commands
+--- :Explore
+---   Open file explorer (:help explore)
+--- :grep <string>
+---   Fuzzy search file contents, sending the results to the quickfix list
+--- :copen
+---   Open the quickfix list (:help quickfix)
+--- :cnext
+---   Goto next quickfix item
+--- :cprev
+---   Goto previous quickfix item
+--- :FZF <directory?>
+---   Fuzzy search files
+---
+---@keymaps
+--- |EXPLORE|
+--- <cr>  : Open file
+--- %     : Create a new file
+--- d     : Create a new directory
+--- D     : Delete a file or empty directory
+--- |FZF|
+--- <cr>  : Open file
+---	<tab> : Mark file
+---
 
-local use = require("lil-helpers").use
-
-use({
-	"nvim-telescope/telescope.nvim",
-	requires = "nvim-lua/plenary.nvim",
-	config = function()
-		require("telescope").setup({})
-	end,
-})
-
--- Case-insensitive search, unless search contains uppercase.
+-- Case-insensitive search, unless search contains uppercase
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Clear search highlights.
-vim.keymap.set("n", "<esc>", ":noh<cr>", {
-	desc = "Clear search highlights",
-	silent = true,
-})
+vim.keymap.set("n", "<leader>e", ":Ex<cr>")
 
--- Keep position when searching for word under cursor.
-vim.keymap.set("n", "*", "*N", { desc = "Search word", silent = true })
-vim.keymap.set("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], {
-	desc = "Search word",
-	silent = true,
-})
+if vim.fn.executable("rg") ~= 0 then
+	-- Use `:grep some-text` to search
+	vim.o.grepprg = "rg --vimgrep"
+end
 
-vim.keymap.set(
-	"n",
-	"<leader>f",
-	"<cmd>Telescope find_files find_command=fd,-t,f,-H,-E,.git,--strip-cwd-prefix theme=dropdown previewer=false<cr>",
-	{
-		desc = "Find files",
-		silent = true,
-	}
-)
-vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>", {
-	desc = "Search",
-	silent = true,
-})
-vim.keymap.set("n", "<leader>p", "<cmd>Telescope commands theme=dropdown<cr>", {
-	desc = "Command palette",
-	silent = true,
-})
+if vim.fn.executable("fzf") ~= 0 then
+	vim.opt.runtimepath:append("/opt/homebrew/opt/fzf")
+	vim.keymap.set("n", "<leader>f", ":FZF<cr>")
+end
