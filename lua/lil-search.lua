@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>e", ":Ex<cr>")
 
 if vim.fn.executable("rg") ~= 0 then
 	-- Use `:grep some-text` to search
-	vim.o.grepprg = "rg --vimgrep"
+	vim.o.grepprg = "rg --vimgrep --smart-case"
 end
 
 if vim.fn.executable("fzf") ~= 0 then
