@@ -32,19 +32,6 @@
 
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
-vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "⏺",
-			[vim.diagnostic.severity.WARN] = "⏺",
-			[vim.diagnostic.severity.INFO] = "⏺",
-			[vim.diagnostic.severity.HINT] = "⏺",
-		},
-	},
-	virtual_text = {
-		prefix = "⏺",
-	},
-})
 
 MiniDeps.add({
 	source = "neovim/nvim-lspconfig",
