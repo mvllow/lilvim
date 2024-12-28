@@ -7,9 +7,6 @@
 --- Servers must be available in your |runtimepath|.
 ---
 ---@commands
---- |lspconfig|
---- :Lsp<tab>
----   Autocomplete all available commands
 --- :checkhealth lsp
 ---   Show current LSP status
 ---
@@ -33,7 +30,6 @@
 --- <c-p>      : focus previous result
 --- <c-y>      : select result
 
-MiniDeps.add("neovim/nvim-lspconfig")
 vim.keymap.set("n", "gq", function()
 	vim.lsp.buf.format()
 	-- Workaround for diagnostics disappearing when formatting with no changes
@@ -41,10 +37,15 @@ vim.keymap.set("n", "gq", function()
 	vim.diagnostic.enable()
 end, { desc = "Format file" })
 
-local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	root_markers = { ".editorconfig", ".git", ".luarc.json", ".luarc.jsonc", vim.uv.cwd() },
 	settings = {
 		Lua = {
+			runtime = {
+				version = "LuaJIT"
+			},
 			workspace = {
 				checkThirdParty = false,
 				library = { vim.env.VIMRUNTIME, "${3rd}/luv/library" },
@@ -52,6 +53,7 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+vim.lsp.enable("lua_ls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("CustomLspAttach", { clear = false }),
