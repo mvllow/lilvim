@@ -4,11 +4,10 @@
 ---
 --- Setup formatters with format on save.
 ---
+--- Formatters must be available in your runtimepath.
+---@see |runtimepath|
+---
 ---@commands
---- :Mason
----   UI to manage and install language tools
---- :Mason<tab>
----   Autocomplete all available commands
 --- :ConformInfo
 ---   Show current formatter status
 ---
@@ -17,8 +16,6 @@
 --- gq : format selection
 ---
 
-MiniDeps.add("williamboman/mason.nvim")
-require("mason").setup()
 
 local prettier_cmd = { "prettierd", "prettier", stop_after_first = true }
 
