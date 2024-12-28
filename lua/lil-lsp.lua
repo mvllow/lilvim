@@ -58,13 +58,14 @@ local servers = {
 require("mason").setup()
 require("mason-lspconfig").setup({
 	handlers = {
-		function(server_name)
-			local server = servers[server_name] or {}
-			server.capabilities = capabilities
-			require("lspconfig")[server_name].setup(server)
+		function(server)
+			local opts = servers[server] or {}
+			opts.capabilities = capabilities
+			require("lspconfig")[server].setup(opts)
 		end,
 	},
 })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("CustomLspAttach", { clear = false }),
 	callback = function(event)
