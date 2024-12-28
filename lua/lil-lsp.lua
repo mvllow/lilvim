@@ -16,21 +16,23 @@
 ---
 ---@keymaps :help lsp-defaults
 --- |NORMAL|
---- K          : hover
---- gra        : code action
---- grn        : rename
---- grr        : references
+--- K          : show symbol documentation
+--- gra        : list code actions
+--- gri        : list implementations
+--- grn        : rename symbol
+--- grr        : list references
 --- <c-]>      : goto definition
+--- <c-w>d     : show line diagnostics
 --- |VISUAL|
 --- gq         : format selection
 --- |INSERT|
 --- <c-s>      : signature help
---- <c-x><c-o> : show completions
----   <c-n>    :   focus next result
----   <c-p>    :   focus previous result
----   <c-y>    :   select result
+--- <c-x><c-o> : show completions in pmenu (popup menu)
+--- |PMENU|
+--- <c-n>      : focus next result
+--- <c-p>      : focus previous result
+--- <c-y>      : select result
 
-vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
 
 MiniDeps.add({
