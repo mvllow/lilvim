@@ -2,10 +2,9 @@
 --- lil-formatting.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Setup formatters with format on save.
+--- Setup formatters.
 ---
---- Formatters must be available in your runtimepath.
----@see |runtimepath|
+--- Formatters must be available in your |runtimepath|.
 ---
 ---@commands
 --- :ConformInfo
@@ -50,10 +49,5 @@ require("conform").setup({
 		svelte = prettier_cmd,
 	},
 })
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
-	pattern = "*",
-	callback = function()
-		require("conform").format()
-	end,
-})
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
