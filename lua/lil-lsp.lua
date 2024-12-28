@@ -7,10 +7,11 @@
 --- Servers must be available in your |runtimepath|.
 ---
 ---@commands
---- :LspInfo
----   Show current LSP status
+--- |lspconfig|
 --- :Lsp<tab>
 ---   Autocomplete all available commands
+--- :checkhealth lsp
+---   Show current LSP status
 ---
 ---@keymaps :help lsp-defaults
 --- |NORMAL|

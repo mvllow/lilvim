@@ -7,6 +7,7 @@
 --- Formatters must be available in your |runtimepath|.
 ---
 ---@commands
+--- |conform|
 --- :ConformInfo
 ---   Show current formatter status
 ---

@@ -5,6 +5,7 @@
 --- Setup treesitter and interface.
 ---
 --- @commands
+--- |treesitter|
 --- :TS<tab>
 ---   Autocomplete all available commands
 ---
