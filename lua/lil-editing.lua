@@ -11,21 +11,21 @@
 --- gc  : comment selection
 
 -- Indentation
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 -- Continue wrapped lines with matching indentation
-vim.opt.breakindent = true
-vim.opt.linebreak = true
+vim.o.breakindent = true
+vim.o.linebreak = true
 -- Visually show indented lines, e.g. if this line were to naturally wrap
 -- \\you would see "\\" as demonstrated at the start of this line
-vim.opt.showbreak = [[\\]]
+vim.o.showbreak = [[\\]]
 
 -- Persistent undo between sessions
-vim.opt.undofile = true
+vim.o.undofile = true
 
 -- Start scrolling before reaching the edge of the screen
-vim.opt.scrolloff = 3
+vim.o.scrolloff = 3
 
 -- Copy and paste via clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })

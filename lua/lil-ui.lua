@@ -9,8 +9,8 @@
 ---   Autocomplete all available commands
 ---
 
-vim.opt.guicursor = ""
-vim.opt.signcolumn = "yes"
+vim.o.guicursor = ""
+vim.o.signcolumn = "yes"
 
 vim.api.nvim_create_autocmd("VimResized", {
 	command = "tabdo wincmd =",

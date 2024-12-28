@@ -30,8 +30,8 @@
 ---
 
 -- Case-insensitive search, unless search contains uppercase
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 vim.keymap.set("n", "<leader>e", ":Ex<cr>")
 
