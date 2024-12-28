@@ -29,12 +29,6 @@ require("nvim-treesitter.configs").setup({
 	-- Install missing parsers when entering new buffers
 	auto_install = true,
 	ensure_installed = { "lua", "vimdoc", "markdown" },
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = { "ruby" },
-	},
-	indent = {
-		enable = true,
-		disable = { "ruby" },
-	},
+	highlight = { enable = true },
+	indent = { enable = true },
 })
