@@ -27,9 +27,6 @@ All modules are loaded in `init.lua`. If using a standalone module, please handl
 _**[lil-editing](lua/lil-editing.lua)**_\
 General options and keymaps
 
-_**[lil-formatting](lua/lil-formatting.lua)**_\
-Formatters and only formatters
-
 _**[lil-lsp](lua/lil-lsp.lua)**_\
 Language servers and diagnostics
 

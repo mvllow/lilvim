@@ -26,7 +26,6 @@ require("mini.deps").setup({ path = { package = path_package } })
 
 -- Modules
 require("lil-editing")
-require("lil-formatting")
 require("lil-lsp")
 require("lil-search")
 require("lil-ui")

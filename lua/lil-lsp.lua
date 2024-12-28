@@ -16,6 +16,7 @@
 ---@keymaps :help lsp-defaults
 --- |NORMAL|
 --- K          : show symbol documentation
+--- gq         : format file
 --- gra        : list code actions
 --- gri        : list implementations
 --- grn        : rename symbol
@@ -33,6 +34,12 @@
 --- <c-y>      : select result
 
 MiniDeps.add("neovim/nvim-lspconfig")
+vim.keymap.set("n", "gq", function()
+	vim.lsp.buf.format()
+	-- Workaround for diagnostics disappearing when formatting with no changes
+	-- https://github.com/neovim/neovim/issues/25014
+	vim.diagnostic.enable()
+end, { desc = "Format file" })
 
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({
