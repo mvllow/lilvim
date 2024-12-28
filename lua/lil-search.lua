@@ -37,7 +37,7 @@
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.keymap.set("n", "<leader>e", ":Ex<cr>")
+vim.keymap.set("n", "<leader>e", ":Ex<cr>", { desc = "Explore" })
 
 if vim.fn.executable("rg") ~= 0 then
 	-- Use `:grep <string>` to search
@@ -47,5 +47,5 @@ end
 if vim.fn.executable("fzf") ~= 0 then
 	-- NOTE: This path can be found via `which fzf` in your terminal
 	vim.opt.runtimepath:append("/opt/homebrew/opt/fzf")
-	vim.keymap.set("n", "<leader>f", ":FZF<cr>")
+	vim.keymap.set("n", "<leader>f", ":FZF<cr>", { desc = "Fuzzy find" })
 end
