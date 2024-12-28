@@ -10,7 +10,7 @@ vim.g.mapleader = " "
 -- We use mini.deps to have a globally available way to manage packages
 local path_package = vim.fn.stdpath("data") .. "/site/"
 local mini_path = path_package .. "pack/deps/start/mini.deps"
-if not vim.loop.fs_stat(mini_path) then
+if not vim.uv.fs_stat(mini_path) then
 	vim.cmd('echo "Installing `mini.deps`" | redraw')
 	vim.fn.system({
 		"git",
