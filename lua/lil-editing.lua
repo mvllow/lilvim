@@ -36,7 +36,3 @@ vim.keymap.set({ "n", "v" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"'
 vim.keymap.set({ "n", "v" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 vim.keymap.set({ "n", "v" }, "<up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 vim.keymap.set({ "n", "v" }, "<down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-
--- Navigate quickfix list
-vim.keymap.set("n", "]q", ":cnext<cr>zz", { desc = "Next quickfix" })
-vim.keymap.set("n", "[q", ":cprev<cr>zz", { desc = "Previous quickfix" })
