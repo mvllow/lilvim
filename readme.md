@@ -18,11 +18,11 @@ git clone https://github.com/mvllow/lilvim ~/.config/lilvim
 NVIM_APPNAME=lilvim nvim
 ```
 
-Alternatively, you may pull any module into your own config. Individual modules rely on [mini.deps](https://github.com/echasnovski/mini.deps) for managing packages. You may opt for your own package manager or manually cloning the required dependencies. See `:help packages` for more information on the builtin package manager.
+Alternatively, you may pull any module into your own config.
 
 ## Modules
 
-All modules are loaded in `init.lua`. If using a standalone module, please handle installing the necessary dependencies. For the best support, we recommended installing [mini.deps](https://github.com/echasnovski/mini.deps?tab=readme-ov-file#installation).
+All modules are loaded in `init.lua`.
 
 _**[lil-editing](lua/lil-editing.lua)**_\
 General options and keymaps
@@ -44,7 +44,7 @@ _For not-so-lil module extensions, head over to our [wiki](https://github.com/mv
 
 ### Minimal and modular by design
 
-This project includes several self-contained modules which handle their own options, keymaps, and plugins, contrary to another popular approach of isolating those three categories.
+This project includes several self-contained modules which handle their own vim options, keymaps and configurations, contrary to another popular approach of isolating those three categories.
 
 ### Prioritise built-in Neovim functionality
 
