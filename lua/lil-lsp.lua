@@ -47,7 +47,7 @@ lspconfig.lua_ls.setup({
 		Lua = {
 			workspace = {
 				checkThirdParty = false,
-				library = { vim.env.VIMRUNTIME },
+				library = { vim.env.VIMRUNTIME, "${3rd}/luv/library" },
 			},
 		},
 	},
