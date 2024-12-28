@@ -33,9 +33,6 @@ Language servers and diagnostics
 _**[lil-search](lua/lil-search.lua)**_\
 File discovery and text navigation
 
-_**[lil-ui](lua/lil-ui.lua)**_\
-Interface options
-
 _For not-so-lil module extensions, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
 
 ## Principles

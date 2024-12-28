@@ -30,6 +30,9 @@
 --- <c-p>      : focus previous result
 --- <c-y>      : select result
 
+-- Always show sign column, preventing a flicker when going from 0 diagnostics to > 0
+vim.o.signcolumn = "yes"
+
 vim.keymap.set("n", "gq", function()
 	vim.lsp.buf.format()
 	-- Workaround for diagnostics disappearing when formatting with no changes

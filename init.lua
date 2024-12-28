@@ -10,4 +10,3 @@ vim.g.mapleader = " "
 require("lil-editing")
 require("lil-lsp")
 require("lil-search")
-require("lil-ui")
