@@ -4,11 +4,9 @@
 ---
 --- Setup diagnostics and language servers.
 ---
+--- Servers must be available in your |runtimepath|.
+---
 ---@commands
---- :Mason
----   UI to manage and install language tools
---- :Mason<tab>
----   Autocomplete all available commands
 --- :LspInfo
 ---   Show current LSP status
 --- :Lsp<tab>
@@ -33,38 +31,17 @@
 --- <c-p>      : focus previous result
 --- <c-y>      : select result
 
+MiniDeps.add("neovim/nvim-lspconfig")
 
-
-MiniDeps.add({
-	source = "neovim/nvim-lspconfig",
-	depends = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-	},
-})
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local servers = {
-	lua_ls = {
-		settings = {
-			Lua = {
-				workspace = {
-					checkThirdParty = false,
-					library = { vim.env.VIMRUNTIME },
-				},
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup({
+	settings = {
+		Lua = {
+			workspace = {
+				checkThirdParty = false,
+				library = { vim.env.VIMRUNTIME },
 			},
 		},
-	},
-}
-
-require("mason").setup()
-require("mason-lspconfig").setup({
-	handlers = {
-		function(server)
-			local opts = servers[server] or {}
-			opts.capabilities = capabilities
-			require("lspconfig")[server].setup(opts)
-		end,
 	},
 })
 
