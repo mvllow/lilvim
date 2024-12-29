@@ -62,7 +62,7 @@ $ tokei ./lilvim/**/*.lua
 
 ## Related
 
-There are plenty of projects that provide a framework of abstractions to simplify the learning curve of using Neovim over something like VSCode. Check out [LunarVim](https://github.com/LunarVim/LunarVim) or [AstroVim](https://github.com/kabinspace/AstroVim) if you want a great batteries-included Neovim configuration.
+There are plenty of projects that provide a framework of abstractions to simplify the learning curve of using Neovim over something like Sublime Text or Visual Studio Code. Check out [LazyVim](https://github.com/LazyVim/LazyVim) or [AstroVim](https://github.com/kabinspace/AstroVim) if you want a great batteries-included Neovim configuration or [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)—a more robust and feature-rich starting point for your own config.
 
 ## Contributing
 
