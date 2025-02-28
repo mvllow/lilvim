@@ -46,7 +46,9 @@ if vim.fn.executable("rg") ~= 0 then
 end
 
 if vim.fn.executable("fzf") ~= 0 then
-	-- NOTE: This path can be found via `which fzf` in your terminal
-	vim.opt.runtimepath:append("/opt/homebrew/opt/fzf")
-	vim.keymap.set("n", "<leader>f", ":FZF<cr>", { desc = "Fuzzy find" })
+	local fzf_path = vim.fn.exepath("fzf")
+	if fzf_path ~= "" then
+		vim.opt.runtimepath:append(fzf_path)
+		vim.keymap.set("n", "<leader>f", ":FZF<cr>", { desc = "Fuzzy find" })
+	end
 end
