@@ -49,6 +49,8 @@ We have designed lilvim to demonstrate the capabilities of vanilla Neovim and lo
 
 ### Statistics
 
+Lines of code may not be the best metric, but NASA’s fourth rule in _[Rules for Developing Safety Critical Code](https://pixelscommander.com/wp-content/uploads/2014/12/P10.pdf)_ suggests keeping functions under 60 lines. While we’re not launching rockets here, this lil config is meant to be compact and easy to follow.
+
 ```
 $ tokei ./lilvim/**/*.lua
 ===============================================================================
@@ -61,6 +63,8 @@ $ tokei ./lilvim/**/*.lua
 ```
 
 ## Related
+
+[NativeVim](https://github.com/boltlessengineer/NativeVim) provides several features and has great documentation. This is a great place to look for inspiration without sacrificing features.
 
 There are plenty of projects that provide a framework of abstractions to simplify the learning curve of using Neovim over something like Sublime Text or Visual Studio Code. Check out [LazyVim](https://github.com/LazyVim/LazyVim) or [AstroVim](https://github.com/kabinspace/AstroVim) if you want a great batteries-included Neovim configuration or [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)—a more robust and feature-rich starting point for your own config.
 
