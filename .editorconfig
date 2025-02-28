@@ -5,4 +5,5 @@ charset = utf-8
 end_of_line = lf
 indent_style = tab
 insert_final_newline = true
+quote_style = double
 trim_trailing_whitespace = true

@@ -40,7 +40,7 @@ vim.keymap.set("n", "gq", function()
 	vim.diagnostic.enable()
 end, { desc = "Format file" })
 
-vim.lsp.config('lua_ls', {
+vim.lsp.config("lua_ls", {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
 	root_markers = { ".editorconfig", ".git", ".luarc.json", ".luarc.jsonc", vim.uv.cwd() },
