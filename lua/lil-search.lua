@@ -41,7 +41,8 @@ vim.keymap.set("n", "<leader>e", ":Ex<cr>", { desc = "Explore" })
 
 if vim.fn.executable("rg") ~= 0 then
 	-- Use `:grep <string>` to search
-	vim.o.grepprg = "rg --vimgrep --smart-case"
+	-- This is the default grepprg if 'rg' is found, with the addition of `--smart-case`
+	vim.o.grepprg = "rg --vimgrep -uu --smart-case"
 end
 
 if vim.fn.executable("fzf") ~= 0 then
