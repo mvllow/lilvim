@@ -14,10 +14,11 @@
 --- |NORMAL|
 --- K          : show symbol documentation
 --- gq         : format file
+--- g0         : list document symbols
 --- gra        : list code actions
 --- gri        : list implementations
---- grn        : rename symbol
 --- grr        : list references
+--- grn        : rename symbol
 --- <c-]>      : goto definition
 --- <c-w>d     : show line diagnostics
 --- |VISUAL|
