@@ -8,5 +8,7 @@ vim.g.mapleader = " "
 
 -- Modules
 require("lil-editing")
+require("lil-grep")
 require("lil-lsp")
 require("lil-search")
+require("lil-quickfix")

@@ -27,11 +27,17 @@ All modules are loaded in `init.lua`.
 _**[lil-editing](lua/lil-editing.lua)**_\
 General options and keymaps
 
+_**[lil-grep](lua/lil-grep.lua)**_\
+Enhanced grep functionality
+
 _**[lil-lsp](lua/lil-lsp.lua)**_\
 Language servers and diagnostics
 
+_**[lil-quickfix](lua/lil-quickfix.lua)**_\
+Enhanced quickfix window and entry management
+
 _**[lil-search](lua/lil-search.lua)**_\
-File discovery and text navigation
+File management and search utilities
 
 _For not-so-lil module extensions, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
 
@@ -46,21 +52,6 @@ This project includes several self-contained modules which handle their own vim 
 ### Prioritise built-in Neovim functionality
 
 We have designed lilvim to demonstrate the capabilities of vanilla Neovim and lower the platform's barrier to entry for new users. Our approach encourages users to enjoy the benefits of a lightweight environment by first embracing the platform, then supplementing with plugins as needed.
-
-### Statistics
-
-Lines of code may not be the best metric, but NASA’s fourth rule in _[Rules for Developing Safety Critical Code](https://pixelscommander.com/wp-content/uploads/2014/12/P10.pdf)_ suggests keeping functions under 60 lines. While we’re not launching rockets here, this lil config is meant to be compact and easy to follow.
-
-```
-$ tokei ./lilvim/**/*.lua
-===============================================================================
- Language            Files        Lines         Code     Comments       Blanks
-===============================================================================
- Lua                     4          169           56           96           17
-===============================================================================
- Total                   4          169           56           96           17
-===============================================================================
-```
 
 ## Related
 

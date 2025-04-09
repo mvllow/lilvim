@@ -22,6 +22,9 @@
 --- <cr>      : Open file
 --- <tab>     : Mark file
 ---
+---@see lil-grep.lua
+---@see lil-quickfix.lua
+---
 
 -- Case-insensitive search, unless search contains uppercase
 vim.o.ignorecase = true
@@ -29,13 +32,7 @@ vim.o.smartcase = true
 
 vim.keymap.set("n", "<leader>e", ":Ex<cr>", { desc = "Open file explorer" })
 
-if vim.fn.executable("rg") ~= 0 then
-	-- Use `:grep <string>` to search
-	-- This is the default grepprg if 'rg' is found, with the addition of `--smart-case`
-	vim.o.grepprg = "rg --vimgrep -uu --smart-case"
-end
-
-if vim.fn.executable("fzf") ~= 0 then
+if vim.fn.executable("fzf") == 1 then
 	local fzf_path = vim.fn.exepath("fzf")
 	if fzf_path ~= "" then
 		vim.opt.runtimepath:append(fzf_path)
