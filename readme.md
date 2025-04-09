@@ -25,13 +25,13 @@ Alternatively, you may pull any module into your own config.
 All modules are loaded in `init.lua`.
 
 _**[lil-editing](lua/lil-editing.lua)**_\
-General options and keymaps
+General editing configurations with sensible defaults
 
 _**[lil-grep](lua/lil-grep.lua)**_\
 Enhanced grep functionality
 
 _**[lil-lsp](lua/lil-lsp.lua)**_\
-Language servers and diagnostics
+Language server and diagnostics setup
 
 _**[lil-places](lua/lil-places.lua)**_\
 Enhanced mark management with session-scoped persistence
@@ -50,17 +50,19 @@ _For not-so-lil module extensions, head over to our [wiki](https://github.com/mv
 
 ### Minimal and modular by design
 
-This project includes several self-contained modules which handle their own vim options, keymaps and configurations, contrary to another popular approach of isolating those three categories.
+Lilvim includes several self-contained modules which handle their own vim options, keymaps and configurations. This approach differs from the common practice of separating functionality by plugin.
 
 ### Prioritise built-in Neovim functionality
 
-We have designed lilvim to demonstrate the capabilities of vanilla Neovim and lower the platform's barrier to entry for new users. Our approach encourages users to enjoy the benefits of a lightweight environment by first embracing the platform, then supplementing with plugins as needed.
+We demonstrate Neovim's built-in capabilities and lower the platform's barrier to entry for new users. This lightweight approach encourages users to first understand the platform's features before adding plugins.
 
 ## Related
 
-[NativeVim](https://github.com/boltlessengineer/NativeVim) provides several features and has great documentation. This is a great place to look for inspiration without sacrificing features.
+If you're looking for a more robust starting point for your own config, check out [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). It provides an excellent foundation with detailed explanations of each component.
 
-There are plenty of projects that provide a framework of abstractions to simplify the learning curve of using Neovim over something like Sublime Text or Visual Studio Code. Check out [LazyVim](https://github.com/LazyVim/LazyVim) or [AstroVim](https://github.com/kabinspace/AstroVim) if you want a great batteries-included Neovim configuration or [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)—a more robust and feature-rich starting point for your own config.
+For users seeking a batteries-included experience, consider:
+- [LazyVim](https://github.com/LazyVim/LazyVim) - Modern and feature-rich config
+- [AstroVim](https://github.com/kabinspace/AstroVim) - Beautiful and customisable environment
 
 ## Contributing
 
