@@ -33,6 +33,9 @@ Enhanced grep functionality
 _**[lil-lsp](lua/lil-lsp.lua)**_\
 Language servers and diagnostics
 
+_**[lil-places](lua/lil-places.lua)**_\
+Enhanced mark management with session-scoped persistence
+
 _**[lil-quickfix](lua/lil-quickfix.lua)**_\
 Enhanced quickfix window and entry management
 
