@@ -27,7 +27,7 @@
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.keymap.set("n", "<leader>e", ":Ex<cr>", { desc = "Explore" })
+vim.keymap.set("n", "<leader>e", ":Ex<cr>", { desc = "Open file explorer" })
 
 if vim.fn.executable("rg") ~= 0 then
 	-- Use `:grep <string>` to search

@@ -63,7 +63,7 @@ vim.lsp.config("lua_ls", {
 vim.lsp.enable("lua_ls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("CustomLspAttach", { clear = false }),
+	group = vim.api.nvim_create_augroup("LilLspAttach", { clear = false }),
 	callback = function(event)
 		vim.lsp.completion.enable(true, event.data.client_id, event.buf, { autotrigger = false })
 	end,
