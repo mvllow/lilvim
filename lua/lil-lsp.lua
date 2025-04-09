@@ -14,12 +14,16 @@
 --- |NORMAL|
 --- K          : show symbol documentation
 --- gq         : format file
---- g0         : list document symbols
+--- gO         : list document symbols
 --- gra        : list code actions
 --- gri        : list implementations
 --- grr        : list references
 --- grn        : rename symbol
 --- <c-]>      : goto definition
+--- ]d         : goto next diagnostic
+--- ]D         : goto last diagnostic
+--- [d         : goto previous diagnostic
+--- [D         : goto first diagnostic
 --- <c-w>d     : show line diagnostics
 --- |VISUAL|
 --- gq         : format selection
