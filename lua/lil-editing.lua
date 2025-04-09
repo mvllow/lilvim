@@ -2,13 +2,16 @@
 --- lil-editing.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Setup general editing options and keymaps.
+--- Setup general editing options and keymaps
 ---
 ---@keymaps
 --- |NORMAL|
---- gcc : comment line
+--- <leader>y : Copy to clipboard
+--- <leader>p : Paste from clipboard
+--- j/k       : Navigate wrapped lines
+--- gcc       : Comment line
 --- |VISUAL|
---- gc  : comment selection
+--- gc        : Comment selection
 
 -- Indentation
 vim.o.tabstop = 4

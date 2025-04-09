@@ -7,33 +7,32 @@
 --- Servers must be available in your |runtimepath|.
 ---
 ---@commands
---- :checkhealth lsp
----   Show current LSP status
+--- :checkhealth lsp : Show current LSP status
 ---
 ---@keymaps :help lsp-defaults
 --- |NORMAL|
---- K          : show symbol documentation
---- gq         : format file
---- gO         : list document symbols
---- gra        : list code actions
---- gri        : list implementations
---- grr        : list references
---- grn        : rename symbol
---- <c-]>      : goto definition
---- ]d         : goto next diagnostic
---- ]D         : goto last diagnostic
---- [d         : goto previous diagnostic
---- [D         : goto first diagnostic
---- <c-w>d     : show line diagnostics
+--- K          : Show symbol documentation
+--- gq         : Format file
+--- gO         : List document symbols
+--- gra        : List code actions
+--- gri        : List implementations
+--- grr        : List references
+--- grn        : Rename symbol
+--- <c-]>      : Goto definition
+--- ]d         : Goto next diagnostic
+--- ]D         : Goto last diagnostic
+--- [d         : Goto previous diagnostic
+--- [D         : Goto first diagnostic
+--- <c-w>d     : Show line diagnostics
 --- |VISUAL|
---- gq         : format selection
+--- gq         : Format selection
 --- |INSERT|
---- <c-s>      : signature help
---- <c-x><c-o> : show completions in pmenu (popup menu)
+--- <c-s>      : Signature help
+--- <c-x><c-o> : Show completions in pmenu (popup menu)
 --- |PMENU|
---- <c-n>      : focus next result
---- <c-p>      : focus previous result
---- <c-y>      : select result
+--- <c-n>      : Focus next result
+--- <c-p>      : Focus previous result
+--- <c-y>      : Select result
 
 -- Always show sign column, preventing a flicker when going from 0 diagnostics to > 0
 vim.o.signcolumn = "yes"

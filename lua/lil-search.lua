@@ -2,35 +2,25 @@
 --- lil-search.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Setup file management and search.
+--- Setup file management and search
 ---
 ---@commands
---- |netrw|
---- :Explore
----   Open file explorer
---- |grep|
---- :grep <string>
----   Fuzzy search file contents, sending the results to the quickfix list
---- |quickfix|
---- :copen
----   Open the quickfix list
---- :cnext or ]q
----   Goto next quickfix item
---- :cprev or [q
----   Goto previous quickfix item
---- |FZF|
---- :FZF <directory?>
----   Fuzzy search files
+--- :Explore : Open file explorer
+--- :FZF     : Fuzzy search files
+--- :grep    : Fuzzy search file contents
 ---
 ---@keymaps
---- |netrw|
---- <cr>  : Open file
---- %     : Create a new file
---- d     : Create a new directory
---- D     : Delete a file or empty directory
+--- |NORMAL|
+--- <leader>e : Open file explorer
+--- <leader>f : Fuzzy find files
+--- |NETRW|
+--- <cr>      : Open file
+--- %         : Create a new file
+--- d         : Create a new directory
+--- D         : Delete a file or empty directory
 --- |FZF|
---- <cr>  : Open file
----	<tab> : Mark file
+--- <cr>      : Open file
+--- <tab>     : Mark file
 ---
 
 -- Case-insensitive search, unless search contains uppercase
