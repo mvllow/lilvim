@@ -156,7 +156,7 @@ end
 load_maps()
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
-	group = vim.api.nvim_create_augroup("LilPlaces", { clear = true }),
+	group = vim.api.nvim_create_augroup("LilPlacesDelmarks", { clear = true }),
 	callback = function()
 		local cmdline = vim.fn.getcmdline()
 		if cmdline:match("^delmarks%s+(.+)$") then
@@ -169,7 +169,7 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 })
 
 vim.api.nvim_create_autocmd("VimLeave", {
-	group = vim.api.nvim_create_augroup("LilPlaces", { clear = true }),
+	group = vim.api.nvim_create_augroup("LilPlacesQuit", { clear = true }),
 	callback = save_maps
 })
 

@@ -74,7 +74,7 @@ local function toggle_quickfix()
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("LilQuickfix", { clear = true }),
+	group = vim.api.nvim_create_augroup("LilQuickfixFiletype", { clear = true }),
 	pattern = "qf",
 	callback = function()
 		vim.keymap.set("n", "dd", delete_quickfix_entries, { buffer = true, desc = "Delete quickfix entry" })
@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
-	group = vim.api.nvim_create_augroup("LilQuickfix", { clear = true }),
+	group = vim.api.nvim_create_augroup("LilQuickfixOpen", { clear = true }),
 	pattern = { "[^l]*" },
 	command = "cwindow"
 })
