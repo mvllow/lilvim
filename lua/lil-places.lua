@@ -99,7 +99,7 @@ local function handle_delmarks(args)
 	elseif args:match("^[a-z]$") then
 		-- Remove single mark (a)
 		maps[map_id][args] = nil
-	elseif args:match("^[a-z]-[a-z]$") then
+	elseif args:match("^[a-z]%-[a-z]$") then
 		-- Remove range (a-c)
 		local start_char, end_char = args:match("([a-z])-([a-z])")
 		for char = string.byte(start_char), string.byte(end_char) do
