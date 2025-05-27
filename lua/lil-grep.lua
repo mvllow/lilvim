@@ -2,7 +2,7 @@
 --- lil-grep.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Extend builtin grep behaviour with silenced output and automatic
+--- Extend built-in grep behaviour with silenced output and automatic
 --- quickfix management
 ---
 --- Based on the vimscript implementation
@@ -41,7 +41,8 @@ vim.api.nvim_create_user_command("Grep", function(opts)
 	vim.cmd("cwindow")
 end, {
 	nargs = "+",
-	complete = "file_in_path"
+	complete = "file_in_path",
+	desc = "Search file contents"
 })
 
 -- Transform `:grep` into the user command `:Grep`

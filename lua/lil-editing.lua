@@ -12,6 +12,7 @@
 --- gcc       : Comment line
 --- |VISUAL|
 --- gc        : Comment selection
+---
 
 -- Indentation
 vim.o.tabstop = 4
@@ -20,8 +21,8 @@ vim.o.shiftwidth = 4
 -- Continue wrapped lines with matching indentation
 vim.o.breakindent = true
 vim.o.linebreak = true
--- Visually show indented lines, e.g. if this line were to naturally wrap
--- \\you would see "\\" as demonstrated at the start of this line
+-- Visually show indented lines, e.g. if this line were to naturally wrap you
+-- \\would see "\\" as demonstrated at the start of this line
 vim.o.showbreak = [[\\]]
 
 -- Persistent undo between sessions

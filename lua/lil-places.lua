@@ -2,7 +2,7 @@
 --- lil-places.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Extend builtin mark behaviour with persistent storage
+--- Extend built-in mark behaviour with persistent storage
 ---
 --- @commands
 --- :LilPlaces    : Show marked places
@@ -173,4 +173,4 @@ vim.api.nvim_create_autocmd("VimLeave", {
 	callback = save_maps
 })
 
-vim.api.nvim_create_user_command("LilPlaces", view, {})
+vim.api.nvim_create_user_command("LilPlaces", view, { desc = "View project marks" })

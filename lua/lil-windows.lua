@@ -4,10 +4,10 @@
 ---
 --- Setup window management
 ---
---- This module is currently quite small. We have added commented out
---- sections that are common but not necessarily recommended. Lilvim's
---- philosophy is to only configure after being dissatisfied with the
---- default behaviours, which of course varies person to person.
+--- This module is currently quite small. We have added commented out sections
+--- that are common but not necessarily recommended. Lilvim's philosophy is to
+--- only configure after being dissatisfied with the default behaviours, which
+--- of course varies person to person.
 ---
 
 -- Create new windows in a more (subjectively) natural position

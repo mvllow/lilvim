@@ -33,8 +33,10 @@
 --- <c-n>      : Focus next result
 --- <c-p>      : Focus previous result
 --- <c-y>      : Select result
+---
 
--- Always show sign column, preventing a flicker when going from 0 diagnostics to > 0
+-- Always show sign column, preventing a flicker when going from 0 diagnostics
+-- to > 0
 vim.o.signcolumn = "yes"
 
 vim.keymap.set("n", "gq", function()

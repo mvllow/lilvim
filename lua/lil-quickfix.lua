@@ -2,7 +2,7 @@
 --- lil-quickfix.lua
 --- https://github.com/mvllow/lilvim
 ---
---- Extend builtin quickfix behaviour with entry and window management
+--- Extend built-in quickfix behaviour with entry and window management
 ---
 ---@commands
 --- :LilQuickfix : Toggle quickfix window
@@ -27,7 +27,8 @@ local function delete_quickfix_entries()
 
 	local start_line, end_line
 
-	-- If in visual mode, delete the selected lines. Otherwise, delete the current line
+	-- If in visual mode, delete the selected lines. Otherwise, delete the
+	-- current line
 	if vim.fn.mode():lower() == "v" then
 		start_line = vim.fn.line("v")
 		end_line = vim.fn.line(".")
@@ -73,6 +74,7 @@ local function toggle_quickfix()
 	end
 end
 
+-- Set keymaps scoped to the quickfix window
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("LilQuickfixFiletype", { clear = true }),
 	pattern = "qf",
@@ -82,10 +84,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	end
 })
 
+-- Automatically open quickfix after population
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 	group = vim.api.nvim_create_augroup("LilQuickfixOpen", { clear = true }),
 	pattern = { "[^l]*" },
 	command = "cwindow"
 })
 
-vim.api.nvim_create_user_command("LilQuickfix", toggle_quickfix, {})
+vim.api.nvim_create_user_command("LilQuickfix", toggle_quickfix, { desc = "Toggle quickfix window" })
