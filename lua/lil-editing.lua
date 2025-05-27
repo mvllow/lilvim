@@ -39,9 +39,3 @@ vim.keymap.set({ "n", "v" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"'
 vim.keymap.set({ "n", "v" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 vim.keymap.set({ "n", "v" }, "<up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 vim.keymap.set({ "n", "v" }, "<down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-
-vim.api.nvim_create_autocmd("VimResized", {
-	group = vim.api.nvim_create_augroup("LilEditingResize", { clear = true }),
-	command = "tabdo wincmd =",
-	desc = "Maintain window ratios after resize",
-})
