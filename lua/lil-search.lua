@@ -33,9 +33,10 @@ vim.o.smartcase = true
 vim.keymap.set("n", "<leader>e", ":Ex<cr>", { desc = "Open file explorer" })
 
 if vim.fn.executable("fzf") == 1 then
-	local fzf_path = vim.fn.exepath("fzf")
-	if fzf_path ~= "" then
-		vim.opt.runtimepath:append(fzf_path)
+	local fzf_bin_path = vim.fn.exepath("fzf")
+	if fzf_bin_path ~= "" then
+		local fzf_plugin_path = string.gsub(fzf_bin_path, "bin", "opt")
+		vim.opt.runtimepath:append(fzf_plugin_path)
 		vim.keymap.set("n", "<leader>f", ":FZF<cr>", { desc = "Fuzzy find" })
 	end
 end
