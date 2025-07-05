@@ -10,6 +10,7 @@ vim.g.mapleader = " "
 require("lil-editing")
 require("lil-grep")
 require("lil-lsp")
-require("lil-search")
 require("lil-places")
 require("lil-quickfix")
+require("lil-search")
+require("lil-windows")
