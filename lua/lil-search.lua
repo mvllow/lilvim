@@ -1,34 +1,39 @@
+---@tag lil-search
+---@signature require"lil-search"
+---@text File management and search
 ---
---- lil-search.lua
---- https://github.com/mvllow/lilvim
+--- Features:
 ---
---- Setup file management and search
+--- - Enable case-insensitive search for lowercase queries
+--- - Enable FZF if available
 ---
----@commands
---- :Explore : Open file explorer
---- :FZF     : Fuzzy search files
---- :grep    : Fuzzy search file contents
+--- # Commands ~
 ---
----@keymaps
---- |NORMAL|
---- <leader>e : Open file explorer
---- <leader>f : Fuzzy find files
---- |NETRW|
---- <cr>      : Open file
---- %         : Create a new file
---- d         : Create a new directory
---- D         : Delete a file or empty directory
---- |FZF|
---- <cr>      : Open file
---- <tab>     : Mark file
+--- - :Explore : Open file explorer
+--- - :FZF     : Fuzzy search files
+--- - :grep    : Fuzzy search file contents
 ---
----@see lil-grep.lua
----@see lil-quickfix.lua
+--- # Keymaps ~
 ---
-
--- Case-insensitive search, unless search contains uppercase
-vim.o.ignorecase = true
-vim.o.smartcase = true
+--- - Normal
+---   - <leader>e : Open file explorer
+---   - <leader>f : Fuzzy find files
+--- - Netrw
+---   - <cr>      : Open file
+---   - %         : Create a new file
+---   - d         : Create a new directory
+---   - D         : Delete a file or empty directory
+--- - FZF
+---   - <cr>      : Open file
+---   - <tab>     : Mark file
+---
+--- # Options ~
+---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
+vim.o.ignorecase = true -- ignore case
+vim.o.smartcase  = true -- unless search contains uppercase
+--minidoc_afterlines_end
+---
+---@seealso lil-grep lil-quickfix
 
 vim.keymap.set("n", "<leader>e", ":Ex<cr>", { desc = "Open file explorer" })
 

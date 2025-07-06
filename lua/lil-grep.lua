@@ -1,18 +1,20 @@
+---@tag lil-grep
+---@signature require"lil-grep"
+---@text Extend built-in grep behaviour
 ---
---- lil-grep.lua
---- https://github.com/mvllow/lilvim
+--- Features:
 ---
---- Extend built-in grep behaviour with silenced output and automatic
---- quickfix management
+--- - Silences output
+--- - Automatically manages the quickfix window
 ---
---- Based on the vimscript implementation
+--- Based on the vimscript implementation:
 --- https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
 ---
----@commands
---- :Grep <query> : Search files
+--- # Commands ~
 ---
----@see lil-quickfix.lua
+--- - :Grep <query> : Search files
 ---
+---@seealso lil-quickfix
 
 if vim.fn.executable("rg") == 1 then
 	-- Add `--smart-case` and remove `-uu` from the default grepprg

@@ -1,55 +1,57 @@
+---@tag lil-lsp
+---@signature require"lil-lsp"
+---@text Language servers and diagnostics
 ---
---- lil-lsp.lua
---- https://github.com/mvllow/lilvim
+--- Features:
 ---
---- Setup diagnostics and language servers.
+---   - Configure diagnostics
+---   - Configure language servers
 ---
---- Servers must be available in your |runtimepath|.
+--- NOTE: Server executables must be available in your |runtimepath|.
 ---
----@commands
---- :checkhealth lsp : Show current LSP status
+--- # Commands ~
 ---
----@keymaps :help lsp-defaults
---- |NORMAL|
---- K          : Show symbol documentation
---- gq         : Format file
---- gO         : List document symbols
---- gra        : List code actions
---- gri        : List implementations
---- grr        : List references
---- grn        : Rename symbol
---- <c-]>      : Goto definition
---- ]d         : Goto next diagnostic
---- ]D         : Goto last diagnostic
---- [d         : Goto previous diagnostic
---- [D         : Goto first diagnostic
---- <c-w>d     : Show line diagnostics
---- |VISUAL|
---- gq         : Format selection
---- |INSERT|
---- <c-s>      : Signature help
---- <c-x><c-o> : Show completions in pmenu (popup menu)
---- |PMENU|
---- <c-n>      : Focus next result
---- <c-p>      : Focus previous result
---- <c-y>      : Select result
+--- - :checkhealth lsp : Show current LSP status
 ---
+--- # Keymaps ~
+---
+--- - Normal
+---   - K          : Show symbol documentation
+---   - gq         : Format file
+---   - gO         : List document symbols
+---   - gra        : List code actions
+---   - gri        : List implementations
+---   - grr        : List references
+---   - grn        : Rename symbol
+---   - <c-]>      : Goto definition
+---   - ]d         : Goto next diagnostic
+---   - ]D         : Goto last diagnostic
+---   - [d         : Goto previous diagnostic
+---   - [D         : Goto first diagnostic
+---   - <c-w>d     : Show line diagnostics
+--- - Visual
+---   - gq         : Format selection
+--- - Insert
+---   - <c-s>      : Signature help
+---   - <c-x><c-o> : Show completions in pmenu (popup menu)
+--- - Pmenu
+---   - <c-n>      : Focus next result
+---   - <c-p>      : Focus previous result
+---   - <c-y>      : Select result
+---
+--- # Options ~
+---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
+vim.o.signcolumn = "yes" -- always show sign column (reduce layout shift)
+--minidoc_afterlines_end
+---
+---@seealso lsp-defaults
 
--- Always show sign column, preventing a flicker when going from 0 diagnostics
--- to > 0
-vim.o.signcolumn = "yes"
-
-vim.keymap.set("n", "gq", function()
-	vim.lsp.buf.format()
-	-- Workaround for diagnostics disappearing when formatting with no changes
-	-- https://github.com/neovim/neovim/issues/25014
-	vim.diagnostic.enable()
-end, { desc = "Format file" })
+vim.keymap.set("n", "gq", function() vim.lsp.buf.format() end, { desc = "Format file" })
 
 vim.lsp.config("lua_ls", {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
-	root_markers = { ".editorconfig", ".git", ".luarc.json", ".luarc.jsonc", vim.uv.cwd() },
+	root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
 	settings = {
 		Lua = {
 			runtime = {

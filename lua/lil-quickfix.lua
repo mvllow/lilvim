@@ -1,23 +1,27 @@
+---@tag lil-quickfix
+---@signature require"lil-quickfix"
+---@text Extend built-in quickfix behaviour
 ---
---- lil-quickfix.lua
---- https://github.com/mvllow/lilvim
+--- Features:
 ---
---- Extend built-in quickfix behaviour with entry and window management
+---   - Delete entries
+---   - Manage the quickfix window
 ---
----@commands
---- :LilQuickfix : Toggle quickfix window
---- :copen       : Open the quickfix window
---- :cnext       : Goto next quickfix entry
---- :cprev       : Goto previous quickfix entry
+--- # Commands ~
 ---
----@keymaps
---- |NORMAL|
---- ]q : Goto next quickfix entry
---- [q : Goto previous quickfix entry
---- dd : Delete selected quickfix entry
---- |VISUAL|
---- d  : Delete selected quickfix entries
+--- - :LilQuickfix : Toggle quickfix window
+--- - :copen       : Open the quickfix window
+--- - :cnext       : Goto next quickfix entry
+--- - :cprev       : Goto previous quickfix entry
 ---
+--- # Keymaps ~
+---
+--- - Normal
+---   - ]q : Goto next quickfix entry
+---   - [q : Goto previous quickfix entry
+---   - dd : Delete selected quickfix entry
+--- - Visual
+---   - d  : Delete selected quickfix entries
 
 local function delete_quickfix_entries()
 	local is_quickfix = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1].quickfix == 1

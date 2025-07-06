@@ -1,0 +1,239 @@
+*lilvim* A modular and opinionated starting point for Neovim
+*Lilvim*
+
+MIT License Copyright (c) mvllow
+
+==============================================================================
+
+Features:
+
+- Self-contained modules
+- Prioritised built-in functionality
+- Deliciously simple to extend
+
+Modules:
+
+- |lil-editing|
+- |lil-grep|
+- |lil-lsp|
+- |lil-places|
+- |lil-quickfix|
+- |lil-search|
+- |lil-windows|
+
+# Setup ~
+
+Lilvim modules can be directly copied into your own config or consumed
+similar to other plugins. Either path allows requiring individual modules:
+>lua
+  require("lil-editing")
+  require("lil-grep")
+  require("lil-lsp")
+  require("lil-places")
+  require("lil-quickfix")
+  require("lil-search")
+  require("lil-windows")
+<
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                   *lil-editing*
+                             `require"lil-editing"`
+General editing keymaps and options
+
+# Keymaps ~
+
+- Normal
+  - <leader>y : Copy to clipboard
+  - <leader>p : Paste from clipboard
+  - j/k       : Navigate wrapped lines
+  - gcc       : Comment line
+- Visual
+  - gc        : Comment selection
+
+# Options ~
+>lua
+  vim.o.tabstop     = 4      -- tab size
+  vim.o.shiftwidth  = 4      -- auto-indent tab size
+  vim.o.breakindent = true   -- visually indent wrapped lines
+  vim.o.linebreak   = true   -- avoid wrapping mid-word
+  vim.o.showbreak   = [[\\]] -- show "\\" at the beginning of wrapped lines
+  vim.o.undofile    = true   -- persistent undo between sessions
+  vim.o.scrolloff   = 3      -- scroll before reaching the edge of buffer
+<
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                      *lil-grep*
+                              `require"lil-grep"`
+Extend built-in grep behaviour
+
+Features:
+
+- Silences output
+- Automatically manages the quickfix window
+
+Based on the vimscript implementation:
+https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
+
+# Commands ~
+
+- :Grep <query> : Search files
+
+See also ~
+lil-quickfix
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                       *lil-lsp*
+                               `require"lil-lsp"`
+Language servers and diagnostics
+
+Features:
+
+  - Configure diagnostics
+  - Configure language servers
+
+NOTE: Server executables must be available in your |runtimepath|.
+
+# Commands ~
+
+- :checkhealth lsp : Show current LSP status
+
+# Keymaps ~
+
+- Normal
+  - K          : Show symbol documentation
+  - gq         : Format file
+  - gO         : List document symbols
+  - gra        : List code actions
+  - gri        : List implementations
+  - grr        : List references
+  - grn        : Rename symbol
+  - <c-]>      : Goto definition
+  - ]d         : Goto next diagnostic
+  - ]D         : Goto last diagnostic
+  - [d         : Goto previous diagnostic
+  - [D         : Goto first diagnostic
+  - <c-w>d     : Show line diagnostics
+- Visual
+  - gq         : Format selection
+- Insert
+  - <c-s>      : Signature help
+  - <c-x><c-o> : Show completions in pmenu (popup menu)
+- Pmenu
+  - <c-n>      : Focus next result
+  - <c-p>      : Focus previous result
+  - <c-y>      : Select result
+
+# Options ~
+>lua
+  vim.o.signcolumn = "yes" -- always show sign column (reduce layout shift)
+<
+------------------------------------------------------------------------------
+
+See also ~
+lsp-defaults
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                    *lil-places*
+                             `require"lil-places"`
+Extend built-in mark behaviour
+
+Features:
+
+- Persist marks between sessions
+
+# Commands ~
+
+- :LilPlaces    : Show marked places
+- :delmarks a-z : Delete marks
+
+# Keymaps ~
+
+- Normal
+  - m[a-z] : Mark place
+  - '[a-z] : Visit place
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                  *lil-quickfix*
+                            `require"lil-quickfix"`
+Extend built-in quickfix behaviour
+
+Features:
+
+  - Delete entries
+  - Manage the quickfix window
+
+# Commands ~
+
+- :LilQuickfix : Toggle quickfix window
+- :copen       : Open the quickfix window
+- :cnext       : Goto next quickfix entry
+- :cprev       : Goto previous quickfix entry
+
+# Keymaps ~
+
+- Normal
+  - ]q : Goto next quickfix entry
+  - [q : Goto previous quickfix entry
+  - dd : Delete selected quickfix entry
+- Visual
+  - d  : Delete selected quickfix entries
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                    *lil-search*
+                             `require"lil-search"`
+File management and search
+
+Features:
+
+- Enable case-insensitive search for lowercase queries
+- Enable FZF if available
+
+# Commands ~
+
+- :Explore : Open file explorer
+- :FZF     : Fuzzy search files
+- :grep    : Fuzzy search file contents
+
+# Keymaps ~
+
+- Normal
+  - <leader>e : Open file explorer
+  - <leader>f : Fuzzy find files
+- Netrw
+  - <cr>      : Open file
+  - %         : Create a new file
+  - d         : Create a new directory
+  - D         : Delete a file or empty directory
+- FZF
+  - <cr>      : Open file
+  - <tab>     : Mark file
+
+# Options ~
+>lua
+  vim.o.ignorecase = true -- ignore case
+  vim.o.smartcase  = true -- unless search contains uppercase
+<
+------------------------------------------------------------------------------
+
+See also ~
+lil-grep lil-quickfix
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                   *lil-windows*
+                             `require"lil-windows"`
+Window management
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
