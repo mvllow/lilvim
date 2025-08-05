@@ -19,6 +19,7 @@ Modules:
 - |lil-places|
 - |lil-quickfix|
 - |lil-search|
+- |lil-subs|
 - |lil-windows|
 
 # Setup ~
@@ -32,6 +33,7 @@ similar to other plugins. Either path allows requiring individual modules:
   require("lil-places")
   require("lil-quickfix")
   require("lil-search")
+  require("lil-subs")
   require("lil-windows")
 <
 
@@ -227,6 +229,56 @@ Features:
 
 See also ~
 lil-grep lil-quickfix
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                      *lil-subs*
+                              `require"lil-subs"`
+Substitute your text, with different text!
+
+Features:
+
+- Automatic text replacements when spell checking is enabled
+- Shows virtual text previews for HTML entities
+- Expands unicode shortcuts prefixed with "_" (e.g. _middot becomes •)
+- Displays ASCII equivalents for special characters (e.g. em dash shows --)
+
+# Commands ~
+
+- :ab : List abbreviations
+
+# Highlights ~
+
+- LilSubsHint : Virtual text color (default links to Comment)
+
+# Options ~
+>lua
+  vim.o.spell = true
+<
+------------------------------------------------------------------------------
+                                                                    *entity_map*
+                                  `entity_map`
+Unicode symbols. Type `_name` to insert or `&name;` to preview.
+
+Type ~
+`(table<string, string>)`
+
+------------------------------------------------------------------------------
+                                                                   *display_map*
+                                 `display_map`
+Special characters with ASCII hints shown as virtual text.
+
+Type ~
+`(table<string, string>)`
+
+------------------------------------------------------------------------------
+                                                                   *replace_map*
+                                 `replace_map`
+Text shortcuts. Type the key to expand to the value.
+
+Type ~
+`(table<string, string>)`
 
 
 ==============================================================================

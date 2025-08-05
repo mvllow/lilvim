@@ -19,6 +19,7 @@
 --- - |lil-places|
 --- - |lil-quickfix|
 --- - |lil-search|
+--- - |lil-subs|
 --- - |lil-windows|
 ---
 --- # Setup ~
@@ -32,5 +33,6 @@ require("lil-lsp")
 require("lil-places")
 require("lil-quickfix")
 require("lil-search")
+require("lil-subs")
 require("lil-windows")
 --minidoc_afterlines_end

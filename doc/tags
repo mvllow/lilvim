@@ -1,9 +1,13 @@
 Lilvim	lilvim.txt	/*Lilvim*
+display_map	lilvim.txt	/*display_map*
+entity_map	lilvim.txt	/*entity_map*
 lil-editing	lilvim.txt	/*lil-editing*
 lil-grep	lilvim.txt	/*lil-grep*
 lil-lsp	lilvim.txt	/*lil-lsp*
 lil-places	lilvim.txt	/*lil-places*
 lil-quickfix	lilvim.txt	/*lil-quickfix*
 lil-search	lilvim.txt	/*lil-search*
+lil-subs	lilvim.txt	/*lil-subs*
 lil-windows	lilvim.txt	/*lil-windows*
 lilvim	lilvim.txt	/*lilvim*
+replace_map	lilvim.txt	/*replace_map*
