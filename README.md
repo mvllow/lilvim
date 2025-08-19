@@ -52,6 +52,9 @@ Extend built-in quickfix behaviour
 _**[lil-search](lua/lil-search.lua)**_\
 File management and search
 
+_**[lil-subs](lua/lil-subs.lua)**_\
+Substitute your text, with different text
+
 _**[lil-windows](lua/lil-windows.lua)**_\
 Window management
 
