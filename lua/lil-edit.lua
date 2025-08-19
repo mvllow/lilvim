@@ -1,5 +1,5 @@
----@tag lil-editing
----@signature require"lil-editing"
+---@tag lil-edit
+---@signature require"lil-edit"
 ---@text General editing keymaps and options
 ---
 --- # Keymaps ~
