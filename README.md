@@ -34,7 +34,7 @@ vim.pack.add({
 
 > If installed as a plugin, you may run `:help lilvim` for the complete documentation.
 
-_**[lil-editing](lua/lil-editing.lua)**_\
+_**[lil-edit](lua/lil-edit.lua)**_\
 General editing keymaps and options
 
 _**[lil-grep](lua/lil-grep.lua)**_\

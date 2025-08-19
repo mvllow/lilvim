@@ -13,7 +13,7 @@
 ---
 --- Modules:
 ---
---- - |lil-editing|
+--- - |lil-edit|
 --- - |lil-grep|
 --- - |lil-lsp|
 --- - |lil-places|
@@ -27,7 +27,7 @@
 --- Lilvim modules can be directly copied into your own config or consumed
 --- similar to other plugins. Either path allows requiring individual modules:
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
-require("lil-editing")
+require("lil-edit")
 require("lil-grep")
 require("lil-lsp")
 require("lil-places")

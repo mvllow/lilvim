@@ -13,7 +13,7 @@ Features:
 
 Modules:
 
-- |lil-editing|
+- |lil-edit|
 - |lil-grep|
 - |lil-lsp|
 - |lil-places|
@@ -27,7 +27,7 @@ Modules:
 Lilvim modules can be directly copied into your own config or consumed
 similar to other plugins. Either path allows requiring individual modules:
 >lua
-  require("lil-editing")
+  require("lil-edit")
   require("lil-grep")
   require("lil-lsp")
   require("lil-places")
@@ -39,8 +39,8 @@ similar to other plugins. Either path allows requiring individual modules:
 
 ==============================================================================
 ------------------------------------------------------------------------------
-                                                                   *lil-editing*
-                             `require"lil-editing"`
+                                                                      *lil-edit*
+                              `require"lil-edit"`
 General editing keymaps and options
 
 # Keymaps ~
