@@ -1,18 +1,21 @@
+---@tag lil-places
+---@signature require"lil-places"
+---@text Extend built-in mark behaviour
 ---
---- lil-places.lua
---- https://github.com/mvllow/lilvim
+--- Features:
 ---
---- Extend built-in mark behaviour with persistent storage
+--- - Persist marks between sessions
 ---
---- @commands
---- :LilPlaces    : Show marked places
---- :delmarks a-z : Delete marks
+--- # Commands ~
 ---
----@keymaps
---- |NORMAL|
---- m[a-z] : Mark place
---- '[a-z] : Visit place
+--- - :LilPlaces    : Show marked places
+--- - :delmarks a-z : Delete marks
 ---
+--- # Keymaps ~
+---
+--- - Normal
+---   - m[a-z] : Mark place
+---   - '[a-z] : Visit place
 
 local STORAGE_PATH = vim.fn.stdpath("data") .. "/lil-places.json"
 local maps = {}

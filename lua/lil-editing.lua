@@ -1,41 +1,33 @@
+---@tag lil-editing
+---@signature require"lil-editing"
+---@text General editing keymaps and options
 ---
---- lil-editing.lua
---- https://github.com/mvllow/lilvim
+--- # Keymaps ~
 ---
---- Setup general editing options and keymaps
+--- - Normal
+---   - <leader>y : Copy to clipboard
+---   - <leader>p : Paste from clipboard
+---   - j/k       : Navigate wrapped lines
+---   - gcc       : Comment line
+--- - Visual
+---   - gc        : Comment selection
 ---
----@keymaps
---- |NORMAL|
---- <leader>y : Copy to clipboard
---- <leader>p : Paste from clipboard
---- j/k       : Navigate wrapped lines
---- gcc       : Comment line
---- |VISUAL|
---- gc        : Comment selection
----
-
--- Indentation
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-
--- Continue wrapped lines with matching indentation
-vim.o.breakindent = true
-vim.o.linebreak = true
--- Visually show indented lines, e.g. if this line were to naturally wrap you
--- \\would see "\\" as demonstrated at the start of this line
-vim.o.showbreak = [[\\]]
-
--- Persistent undo between sessions
-vim.o.undofile = true
-
--- Start scrolling before reaching the edge of the screen
-vim.o.scrolloff = 3
+--- # Options ~
+---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
+vim.o.tabstop     = 4      -- tab size
+vim.o.shiftwidth  = 4      -- auto-indent tab size
+vim.o.breakindent = true   -- visually indent wrapped lines
+vim.o.linebreak   = true   -- avoid wrapping mid-word
+vim.o.showbreak   = [[\\]] -- show "\\" at the beginning of wrapped lines
+vim.o.undofile    = true   -- persistent undo between sessions
+vim.o.scrolloff   = 3      -- scroll before reaching the edge of buffer
+--minidoc_afterlines_end
 
 -- Copy and paste via clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
--- Navigate through wrapped lines via j/<down>, k/<up>
+-- Navigate through wrapped lines
 vim.keymap.set({ "n", "v" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
 vim.keymap.set({ "n", "v" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 vim.keymap.set({ "n", "v" }, "<up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })

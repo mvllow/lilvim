@@ -1,11 +1,11 @@
 # lilvim
 
-> a lil, modular config
+> A modular and opinionated starting point for Neovim
 
 ## Features
 
 - 🪴 Self-contained modules
-- 📦 Prioritised built-in functionality
+- 📦 Documented built-in functionality
 - 🥟 Deliciously simple to extend
 
 ## Usage
@@ -14,33 +14,46 @@
 # Notice the destination folder is lilvim, not nvim
 git clone https://github.com/mvllow/lilvim ~/.config/lilvim
 
+# Optionally, use the included init.lua as your starting point
+cd ~/.config/lilvim
+mv example-init.lua init.lua
+
 # Run lilvim by setting the NVIM_APPNAME environment variable
 NVIM_APPNAME=lilvim nvim
 ```
 
-Alternatively, you may pull any module into your own config.
+Alternatively, you may pull any module into your own config or install as a plugin:
+
+```lua
+vim.pack.add({
+	"https://github.com/mvllow/lilvim"
+})
+```
 
 ## Modules
 
-All modules are loaded in `init.lua`.
+> If installed as a plugin, you may run `:help lilvim` for the complete documentation.
 
 _**[lil-editing](lua/lil-editing.lua)**_\
-General editing configurations with sensible defaults
+General editing keymaps and options
 
 _**[lil-grep](lua/lil-grep.lua)**_\
-Enhanced grep functionality
+Extend built-in grep behaviour
 
 _**[lil-lsp](lua/lil-lsp.lua)**_\
-Language server and diagnostics setup
+Language servers and diagnostics
 
 _**[lil-places](lua/lil-places.lua)**_\
-Enhanced mark management with session-scoped persistence
+Extend built-in mark behaviour
 
 _**[lil-quickfix](lua/lil-quickfix.lua)**_\
-Enhanced quickfix window and entry management
+Extend built-in quickfix behaviour
 
 _**[lil-search](lua/lil-search.lua)**_\
-File management and search utilities
+File management and search
+
+_**[lil-windows](lua/lil-windows.lua)**_\
+Window management
 
 _For not-so-lil module extensions, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
 
@@ -61,6 +74,7 @@ We demonstrate Neovim's built-in capabilities and lower the platform's barrier t
 If you're looking for a more robust starting point for your own config, check out [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). It provides an excellent foundation with detailed explanations of each component.
 
 For users seeking a batteries-included experience, consider:
+
 - [LazyVim](https://github.com/LazyVim/LazyVim) - Modern and feature-rich config
 - [AstroVim](https://github.com/kabinspace/AstroVim) - Beautiful and customisable environment
 
