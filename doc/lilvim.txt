@@ -13,6 +13,7 @@ Features:
 
 Modules:
 
+- |lil-complete|
 - |lil-edit|
 - |lil-grep|
 - |lil-lsp|
@@ -27,6 +28,7 @@ Modules:
 Lilvim modules can be directly copied into your own config or consumed
 similar to other plugins. Either path allows requiring individual modules:
 >lua
+  require("lil-complete")
   require("lil-edit")
   require("lil-grep")
   require("lil-lsp")
@@ -36,6 +38,31 @@ similar to other plugins. Either path allows requiring individual modules:
   require("lil-subs")
   require("lil-windows")
 <
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                  *lil-complete*
+                            `require"lil-complete"`
+Text (auto)completion
+
+# Keymaps ~
+
+- Normal
+  - <c-n> : Focus next result
+  - <c-p> : Focus previous result
+  - <c-y> : Select result
+
+# Options ~
+>lua
+  vim.o.complete     = ".,o"                    -- complete from buffer and omnifunc
+  vim.o.completeopt  = "fuzzy,menuone,noselect" -- complete popup behaviour
+  vim.o.autocomplete = true                     -- suggest while typing
+<
+------------------------------------------------------------------------------
+
+See also ~
+lil-lsp
+
 
 ==============================================================================
 ------------------------------------------------------------------------------

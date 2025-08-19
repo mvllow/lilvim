@@ -1,6 +1,7 @@
 Lilvim	lilvim.txt	/*Lilvim*
 display_map	lilvim.txt	/*display_map*
 entity_map	lilvim.txt	/*entity_map*
+lil-complete	lilvim.txt	/*lil-complete*
 lil-edit	lilvim.txt	/*lil-edit*
 lil-grep	lilvim.txt	/*lil-grep*
 lil-lsp	lilvim.txt	/*lil-lsp*
