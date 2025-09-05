@@ -140,6 +140,7 @@ NOTE: Server executables must be available in your |runtimepath|.
   - gri        : List implementations
   - grr        : List references
   - grn        : Rename symbol
+  - gro        : Organise imports
   - <c-]>      : Goto definition
   - ]d         : Goto next diagnostic
   - ]D         : Goto last diagnostic
