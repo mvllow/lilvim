@@ -1,4 +1,4 @@
-.PHONE: all
+.PHONY: all
 all: docs clean
 
 .PHONY: docs
