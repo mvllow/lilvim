@@ -199,6 +199,7 @@ Features:
 
   - Delete entries
   - Manage the quickfix window
+  - Persist quickfix items across sessions
 
 # Commands ~
 
