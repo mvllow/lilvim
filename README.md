@@ -55,6 +55,9 @@ Extend built-in quickfix behaviour
 _**[lil-search](lua/lil-search.lua)**_\
 File management and search
 
+_**[lil-stats](lua/lil-stats.lua)**_\
+Show file statistics
+
 _**[lil-subs](lua/lil-subs.lua)**_\
 Substitute your text, with different text
 

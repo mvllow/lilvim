@@ -20,6 +20,7 @@ Modules:
 - |lil-places|
 - |lil-quickfix|
 - |lil-search|
+- |lil-stats|
 - |lil-subs|
 - |lil-windows|
 
@@ -35,6 +36,7 @@ similar to other plugins. Either path allows requiring individual modules:
   require("lil-places")
   require("lil-quickfix")
   require("lil-search")
+  require("lil-stats")
   require("lil-subs")
   require("lil-windows")
 <
@@ -258,6 +260,23 @@ Features:
 
 See also ~
 lil-grep lil-quickfix
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                     *lil-stats*
+                              `require"lil-stats"`
+Show file statistics
+
+Features:
+
+  - File size, format and line counts
+  - Special comment detection (TODO, FIXME, etc.)
+  - Git status and diagnostics
+
+# Commands ~
+
+- :LilStats : Show current file statistics
 
 
 ==============================================================================
