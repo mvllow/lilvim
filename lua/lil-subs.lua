@@ -178,7 +178,7 @@ local function show_virtual_text()
 
 			if symbol then
 				vim.api.nvim_buf_set_extmark(bufnr, ns_id, line_nr - 1, entity_end, {
-					virt_text = { { " (" .. symbol .. ") ", "LilSubsHint" } },
+					virt_text = { { "(" .. symbol .. ")", "LilSubsHint" } },
 					virt_text_pos = "inline",
 				})
 			end
@@ -196,7 +196,7 @@ local function show_virtual_text()
 				end
 
 				vim.api.nvim_buf_set_extmark(bufnr, ns_id, line_nr - 1, char_pos + #char - 1, {
-					virt_text = { { " (" .. display .. ")", "LilSubsHint" } },
+					virt_text = { { "(" .. display .. ")", "LilSubsHint" } },
 					virt_text_pos = "inline",
 				})
 
