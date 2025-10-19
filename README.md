@@ -40,9 +40,6 @@ Text (auto)completion
 _**[lil-edit](lua/lil-edit.lua)**_\
 General editing keymaps and options
 
-_**[lil-grep](lua/lil-grep.lua)**_\
-Extend built-in grep behaviour
-
 _**[lil-lsp](lua/lil-lsp.lua)**_\
 Language servers and diagnostics
 

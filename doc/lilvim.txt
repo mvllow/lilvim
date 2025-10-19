@@ -15,7 +15,6 @@ Modules:
 
 - |lil-complete|
 - |lil-edit|
-- |lil-grep|
 - |lil-lsp|
 - |lil-places|
 - |lil-quickfix|
@@ -31,7 +30,6 @@ similar to other plugins. Either path allows requiring individual modules:
 >lua
   require("lil-complete")
   require("lil-edit")
-  require("lil-grep")
   require("lil-lsp")
   require("lil-places")
   require("lil-quickfix")
@@ -92,28 +90,6 @@ General editing keymaps and options
   vim.o.undofile    = true   -- persistent undo between sessions
   vim.o.scrolloff   = 3      -- scroll before reaching the edge of buffer
 <
-
-==============================================================================
-------------------------------------------------------------------------------
-                                                                      *lil-grep*
-                              `require"lil-grep"`
-Extend built-in grep behaviour
-
-Features:
-
-- Silences output
-- Automatically manages the quickfix window
-
-Based on the vimscript implementation:
-https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
-
-# Commands ~
-
-- :Grep <query> : Search files
-
-See also ~
-lil-quickfix
-
 
 ==============================================================================
 ------------------------------------------------------------------------------
@@ -229,27 +205,27 @@ File management and search
 Features:
 
 - Enable case-insensitive search for lowercase queries
-- Enable FZF if available
 
 # Commands ~
 
-- :Explore : Open file explorer
-- :FZF     : Fuzzy search files
-- :grep    : Fuzzy search file contents
+- :Explore : Explore files
+- :find    : Find files
+- :grep    : Find in files (results are sent to quickfix)
 
 # Keymaps ~
 
 - Normal
-  - <leader>e : Open file explorer
-  - <leader>f : Fuzzy find files
+  - <leader>e : Explore files
+  - <leader>f : Find files
+  - <leader>/ : Find in files (results are sent to quickfix)
 - Netrw
   - <cr>      : Open file
   - %         : Create a new file
   - d         : Create a new directory
   - D         : Delete a file or empty directory
-- FZF
-  - <cr>      : Open file
-  - <tab>     : Mark file
+  - mf        : Mark file or directory
+  - mt        : Set target directory for marked actions
+  - mm        : Move marked files to the marked target
 
 # Options ~
 >lua
@@ -258,8 +234,13 @@ Features:
 <
 ------------------------------------------------------------------------------
 
+Optionally, if you have FZF installed you may enable the vim plugin: >lua
+	local fzf_path = string.gsub(vim.fn.exepath("fzf"), "bin", "opt")
+	vim.opt.runtimepath:append(fzf_path)
+	vim.keymap.set("n", "<leader>f", ":FZF<cr>", { desc = "Find files" })
+
 See also ~
-lil-grep lil-quickfix
+lil-quickfix
 
 
 ==============================================================================

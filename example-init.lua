@@ -15,7 +15,6 @@
 ---
 --- - |lil-complete|
 --- - |lil-edit|
---- - |lil-grep|
 --- - |lil-lsp|
 --- - |lil-places|
 --- - |lil-quickfix|
@@ -31,7 +30,6 @@
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
 require("lil-complete")
 require("lil-edit")
-require("lil-grep")
 require("lil-lsp")
 require("lil-places")
 require("lil-quickfix")
