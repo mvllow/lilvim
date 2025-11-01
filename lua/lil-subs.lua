@@ -77,6 +77,7 @@ local entity_map = {
 	["middot"] = "·",
 	["nabla"] = "∇",
 	["ndash"] = "–",
+	["nearr"] = "↗",
 	["neq"] = "≠",
 	["ni"] = "∋",
 	["not"] = "¬",
