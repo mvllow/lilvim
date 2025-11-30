@@ -75,6 +75,10 @@ Lilvim includes several self-contained modules which handle their own vim option
 
 We demonstrate Neovim's built-in capabilities and lower the platform's barrier to entry for new users. This lightweight approach encourages users to first understand the platform's features before adding plugins.
 
+### Idiomatic initialising
+
+The `plugin` directory is used to conditonally load lilvim modules, removing the need to manually require or 'setup' modules.
+
 ## Related
 
 If you're looking for a more robust starting point for your own config, check out [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). It provides an excellent foundation with detailed explanations of each component.

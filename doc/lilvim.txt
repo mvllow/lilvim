@@ -21,6 +21,7 @@ Modules:
 - |lil-search|
 - |lil-stats|
 - |lil-subs|
+- |lil-toggle|
 - |lil-windows|
 
 # Setup ~
@@ -36,6 +37,7 @@ similar to other plugins. Either path allows requiring individual modules:
   require("lil-search")
   require("lil-stats")
   require("lil-subs")
+  require("lil-toggle")
   require("lil-windows")
 <
 
@@ -308,6 +310,45 @@ Text shortcuts. Type the key to expand to the value.
 
 Type ~
 `(table<string, string>)`
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                    *lil-toggle*
+                             `require"lil-toggle"`
+Toggle options, augroups and more
+
+# Commands ~
+
+- :LilToggle <option> : Toggle thing
+
+# Keymaps ~
+
+No keymaps are set automatically. See the examples below.
+
+Example keymaps: >lua
+	local function map_toggle(key, option)
+		local prefix = ','
+		vim.keymap.set(
+			'n',
+			prefix .. key,
+			':LilToggle ' .. option .. '<cr>',
+			{ desc = 'toggle ' .. option }
+		)
+	end
+	map_toggle('a', 'autocomplete')
+	map_toggle('b', 'background')
+	map_toggle('c', 'cmdheight')
+	map_toggle('d', 'diagnostic')
+	map_toggle('D', 'document_color')
+	map_toggle('f', 'FormatOnSave')
+	map_toggle('i', 'inlay_hint')
+	map_toggle('l', 'list')
+	map_toggle('m', 'laststatus')
+	map_toggle('n', 'number')
+	map_toggle('q', 'quickfix')
+	map_toggle('s', 'spell')
+	map_toggle('w', 'wrap')
 
 
 ==============================================================================
