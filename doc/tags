@@ -1,6 +1,4 @@
 Lilvim	lilvim.txt	/*Lilvim*
-display_map	lilvim.txt	/*display_map*
-entity_map	lilvim.txt	/*entity_map*
 lil-complete	lilvim.txt	/*lil-complete*
 lil-edit	lilvim.txt	/*lil-edit*
 lil-lsp	lilvim.txt	/*lil-lsp*
@@ -12,4 +10,3 @@ lil-subs	lilvim.txt	/*lil-subs*
 lil-toggle	lilvim.txt	/*lil-toggle*
 lil-windows	lilvim.txt	/*lil-windows*
 lilvim	lilvim.txt	/*lilvim*
-replace_map	lilvim.txt	/*replace_map*

@@ -27,6 +27,7 @@ vim.api.nvim_set_hl(0, "LilSubsHint", { link = "Comment", default = true })
 --- Unicode symbols. Type `_name` to insert or `&name;` to preview.
 ---
 ---@type table<string, string>
+---@private
 local entity_map = {
 	["aleph"] = "ℵ",
 	["alpha"] = "α",
@@ -113,6 +114,7 @@ local entity_map = {
 --- Special characters with ASCII hints shown as virtual text.
 ---
 ---@type table<string, string>
+---@private
 local display_map = {
 	["—"] = "--", -- em dash
 	["–"] = "-", -- en dash
@@ -121,6 +123,7 @@ local display_map = {
 --- Text shortcuts. Type the key to expand to the value.
 ---
 ---@type table<string, string>
+---@private
 local replace_map = {
 	["omw"] = "On my way!",
 }
