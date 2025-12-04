@@ -21,6 +21,7 @@
 --- - |lil-search|
 --- - |lil-stats|
 --- - |lil-subs|
+--- - |lil-toggle|
 --- - |lil-windows|
 ---
 --- # Setup ~
@@ -36,5 +37,6 @@ require("lil-quickfix")
 require("lil-search")
 require("lil-stats")
 require("lil-subs")
+require("lil-toggle")
 require("lil-windows")
 --minidoc_afterlines_end
