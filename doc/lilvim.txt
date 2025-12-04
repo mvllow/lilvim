@@ -251,15 +251,12 @@ lil-quickfix
                               `require"lil-stats"`
 Show file statistics
 
-Features:
+# Variables ~
 
-  - File size, format and line counts
-  - Special comment detection (TODO, FIXME, etc.)
-  - Git status and diagnostics
+  - b:lil_stats_file
 
-# Commands ~
-
-- :LilStats : Show current file statistics
+Show stats in the winbar: >lua
+	vim.cmd([[set winbar+=%{get(b:,'lil_stats_file','')}]])
 
 
 ==============================================================================
