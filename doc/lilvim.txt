@@ -99,6 +99,13 @@ Features:
 
 NOTE: Server executables must be available in your |runtimepath|.
 
+# Variables ~
+
+  - b:lil_lsp_clients
+
+Show LSP clients in the winbar: >lua
+	vim.cmd([[set winbar+=%{get(b:,'lil_lsp_clients','')}]])
+
 # Commands ~
 
 - :checkhealth lsp : Show current LSP status

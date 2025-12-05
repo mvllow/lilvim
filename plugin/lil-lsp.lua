@@ -9,6 +9,13 @@
 ---
 --- NOTE: Server executables must be available in your |runtimepath|.
 ---
+--- # Variables ~
+---
+---   - b:lil_lsp_clients
+---
+--- Show LSP clients in the winbar: >lua
+--- 	vim.cmd([[set winbar+=%{get(b:,'lil_lsp_clients','')}]])
+---
 --- # Commands ~
 ---
 --- - :checkhealth lsp : Show current LSP status
@@ -47,6 +54,21 @@ vim.o.signcolumn = "yes" -- always show sign column (reduce layout shift)
 ---
 ---@seealso lsp-defaults
 
+local function update_lsp_clients(bufnr)
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	if #clients == 0 then
+		vim.b[bufnr].lil_lsp_clients = ""
+		return
+	end
+
+	local client_names = {}
+	for _, client in ipairs(clients) do
+		table.insert(client_names, client.name)
+	end
+
+	vim.b[bufnr].lil_lsp_clients = "󰄭 " .. table.concat(client_names, ", ")
+end
+
 vim.keymap.set("n", "gq", function() vim.lsp.buf.format() end, { desc = "Format file" })
 
 vim.lsp.config("lua_ls", {
@@ -84,6 +106,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			return
 		end
 
+		update_lsp_clients(args.buf)
+
 		vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = false })
 
 		if client:supports_method("textDocument/completion") then
@@ -116,5 +140,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				desc = "Organise imports"
 			})
 		end
+	end
+})
+
+vim.api.nvim_create_autocmd("LspDetach", {
+	group = vim.api.nvim_create_augroup("LilLspDetach", { clear = true }),
+	callback = function(args)
+		update_lsp_clients(args.buf)
 	end
 })
