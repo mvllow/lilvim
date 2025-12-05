@@ -1,5 +1,5 @@
 ---@tag lil-toggle
----@signature require"lil-toggle"
+---@signature
 ---@text Toggle options, augroups and more
 ---
 --- # Commands ~
@@ -34,8 +34,7 @@
 --- 	map_toggle('s', 'spell')
 --- 	map_toggle('w', 'wrap')
 
-LilToggle = {}
-LilToggleState = {}
+local state = {}
 
 local function notify(value, log_level)
 	vim.notify("[lil-toggle] " .. value, log_level or vim.log.levels.INFO, { title = "lil-toggle" })
@@ -70,7 +69,7 @@ local function toggle_quickfix()
 	notify("quickfix opened")
 end
 
-LilToggle.toggle = function(opt)
+local function toggle(opt)
 	if opt == "quickfix" then
 		toggle_quickfix()
 		return
@@ -89,9 +88,9 @@ LilToggle.toggle = function(opt)
 
 	if type(val) == "number" then
 		if val == 0 then
-			vim.o[opt] = LilToggleState[opt] or 1
+			vim.o[opt] = state[opt] or 1
 		else
-			LilToggleState[opt] = val
+			state[opt] = val
 			vim.o[opt] = 0
 		end
 		notify_set(opt, vim.o[opt])
@@ -114,14 +113,14 @@ LilToggle.toggle = function(opt)
 
 	local has_cmds, cmds = pcall(vim.api.nvim_get_autocmds, { group = opt })
 	if has_cmds and type(cmds) == "table" then
-		LilToggleState[opt] = cmds
+		state[opt] = cmds
 		pcall(vim.api.nvim_del_augroup_by_name, opt)
 		notify(opt .. " disabled")
 		return
 	end
 
 	vim.api.nvim_create_augroup(opt, { clear = true })
-	cmds = LilToggleState[opt]
+	cmds = state[opt]
 	if type(cmds) == "table" then
 		for _, cmd in pairs(cmds) do
 			local opts = { desc = cmd.desc or "", group = cmd.group_name or opt }
@@ -141,4 +140,6 @@ LilToggle.toggle = function(opt)
 	end
 end
 
-return LilToggle
+vim.api.nvim_create_user_command("LilToggle", function(opts)
+	toggle(opts.args)
+end, { nargs = "+", desc = "Toggle things" })

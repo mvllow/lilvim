@@ -1,5 +1,6 @@
-*lilvim* A modular and opinionated starting point for Neovim
-*Lilvim*
+                                                                        *lilvim*
+
+A modular and opinionated starting point for Neovim
 
 MIT License Copyright (c) mvllow
 
@@ -26,25 +27,17 @@ Modules:
 
 # Setup ~
 
-Lilvim modules can be directly copied into your own config or consumed
-similar to other plugins. Either path allows requiring individual modules:
->lua
-  require("lil-complete")
-  require("lil-edit")
-  require("lil-lsp")
-  require("lil-places")
-  require("lil-quickfix")
-  require("lil-search")
-  require("lil-stats")
-  require("lil-subs")
-  require("lil-toggle")
-  require("lil-windows")
-<
+When installed as a plugin via a package manager, all modules load
+automatically on startup. Run `:helptags ALL` to regenerate help tags.
+
+To use individual modules, copy any file from `plugin/` into your own
+`plugin/` directory. Each module is self-contained and works independently.
+
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                   *lil-complete*
-                            `require"lil-complete"`
+
 Text (auto)completion
 
 # Keymaps ~
@@ -69,7 +62,7 @@ lil-lsp
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                       *lil-edit*
-                              `require"lil-edit"`
+
 General editing keymaps and options
 
 # Keymaps ~
@@ -96,13 +89,13 @@ General editing keymaps and options
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                        *lil-lsp*
-                               `require"lil-lsp"`
+
 Language servers and diagnostics
 
 Features:
 
-  - Configure diagnostics
-  - Configure language servers
+- Configure diagnostics
+- Configure language servers
 
 NOTE: Server executables must be available in your |runtimepath|.
 
@@ -150,7 +143,7 @@ lsp-defaults
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                     *lil-places*
-                             `require"lil-places"`
+
 Extend built-in mark behaviour
 
 Features:
@@ -172,14 +165,14 @@ Features:
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                   *lil-quickfix*
-                            `require"lil-quickfix"`
+
 Extend built-in quickfix behaviour
 
 Features:
 
-  - Delete entries
-  - Manage the quickfix window
-  - Persist quickfix items across sessions
+- Delete entries
+- Manage the quickfix window
+- Persist quickfix items across sessions
 
 # Commands ~
 
@@ -201,7 +194,7 @@ Features:
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                     *lil-search*
-                             `require"lil-search"`
+
 File management and search
 
 Features:
@@ -248,7 +241,7 @@ lil-quickfix
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                      *lil-stats*
-                              `require"lil-stats"`
+
 Show file statistics
 
 # Variables ~
@@ -262,7 +255,7 @@ Show stats in the winbar: >lua
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                       *lil-subs*
-                              `require"lil-subs"`
+
 Substitute your text, with different text!
 
 Features:
@@ -288,7 +281,7 @@ Features:
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                     *lil-toggle*
-                             `require"lil-toggle"`
+
 Toggle options, augroups and more
 
 # Commands ~
@@ -327,7 +320,7 @@ Example keymaps: >lua
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                    *lil-windows*
-                             `require"lil-windows"`
+
 Window management
 
 

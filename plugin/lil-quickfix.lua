@@ -1,12 +1,12 @@
 ---@tag lil-quickfix
----@signature require"lil-quickfix"
+---@signature
 ---@text Extend built-in quickfix behaviour
 ---
 --- Features:
 ---
----   - Delete entries
----   - Manage the quickfix window
----   - Persist quickfix items across sessions
+--- - Delete entries
+--- - Manage the quickfix window
+--- - Persist quickfix items across sessions
 ---
 --- # Commands ~
 ---
@@ -25,7 +25,7 @@
 ---   - d  : Delete selected quickfix entries
 
 local STORAGE_PATH = vim.fn.stdpath("data") .. "/lil-quickfix.json"
-local quickfix_data = {}
+local data = {}
 
 local function notify(value, log_level)
 	vim.notify("[lil-quickfix] " .. value, log_level or vim.log.levels.INFO, { title = "lil-quickfix" })
@@ -41,18 +41,18 @@ local function get_project_id()
 	return vim.fn.getcwd()
 end
 
-local function save_quickfix_data()
+local function save_data()
 	local file = io.open(STORAGE_PATH, "w")
 	if not file then
 		return
 	end
 
-	local json = vim.fn.json_encode(quickfix_data)
+	local json = vim.fn.json_encode(data)
 	file:write(json)
 	file:close()
 end
 
-local function load_quickfix_data()
+local function load_data()
 	local file = io.open(STORAGE_PATH, "r")
 	if not file then
 		return
@@ -63,7 +63,7 @@ local function load_quickfix_data()
 
 	local ok, decoded = pcall(vim.fn.json_decode, content)
 	if ok then
-		quickfix_data = decoded
+		data = decoded
 	end
 end
 
@@ -96,13 +96,13 @@ local function save_quickfix()
 		})
 	end
 
-	quickfix_data[project_id] = serializable_list
-	save_quickfix_data()
+	data[project_id] = serializable_list
+	save_data()
 end
 
 local function restore_quickfix()
 	local project_id = get_project_id()
-	local stored_qf = quickfix_data[project_id]
+	local stored_qf = data[project_id]
 
 	if not stored_qf or vim.tbl_isempty(stored_qf) then
 		return
@@ -208,8 +208,8 @@ vim.api.nvim_create_autocmd("VimLeave", {
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = vim.api.nvim_create_augroup("LilQuickfixRestore", { clear = true }),
 	callback = function()
+		load_data()
 		vim.defer_fn(restore_quickfix, 50)
-		load_quickfix_data()
 	end,
 })
 

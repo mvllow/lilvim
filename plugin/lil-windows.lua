@@ -1,5 +1,5 @@
 ---@tag lil-windows
----@signature require"lil-windows"
+---@signature
 ---@text Window management
 
 vim.api.nvim_create_autocmd("VimResized", {

@@ -1,5 +1,5 @@
 ---@tag lil-places
----@signature require"lil-places"
+---@signature
 ---@text Extend built-in mark behaviour
 ---
 --- Features:
@@ -18,7 +18,7 @@
 ---   - '[a-z] : Visit place
 
 local STORAGE_PATH = vim.fn.stdpath("data") .. "/lil-places.json"
-local maps = {}
+local data = {}
 
 local function get_map_id()
 	local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD")
@@ -30,18 +30,18 @@ local function get_map_id()
 	return vim.fn.getcwd()
 end
 
-local function save_maps()
+local function save_data()
 	local file = io.open(STORAGE_PATH, "w")
 	if not file then
 		return
 	end
 
-	local json = vim.fn.json_encode(maps)
+	local json = vim.fn.json_encode(data)
 	file:write(json)
 	file:close()
 end
 
-local function load_maps()
+local function load_data()
 	local file = io.open(STORAGE_PATH, "r")
 	if not file then
 		return
@@ -52,7 +52,7 @@ local function load_maps()
 
 	local ok, decoded = pcall(vim.fn.json_decode, content)
 	if ok then
-		maps = decoded
+		data = decoded
 	end
 end
 
@@ -60,10 +60,10 @@ vim.keymap.set("n", "m", function()
 	local char = vim.fn.getcharstr()
 	if char:match("^[a-z]$") then
 		local map_id = get_map_id()
-		maps[map_id] = maps[map_id] or {}
+		data[map_id] = data[map_id] or {}
 
 		local pos = vim.api.nvim_win_get_cursor(0)
-		maps[map_id][char] = {
+		data[map_id][char] = {
 			file = vim.fn.expand("%:p"),
 			pos = { pos[1], pos[2] }
 		}
@@ -76,7 +76,7 @@ vim.keymap.set("n", "'", function()
 	local char = vim.fn.getcharstr()
 	if char:match("^[a-z]$") then
 		local map_id = get_map_id()
-		local marks = maps[map_id] or {}
+		local marks = data[map_id] or {}
 		local mark = marks[char]
 
 		if mark then
@@ -94,33 +94,33 @@ end, { desc = "Visit place" })
 
 local function handle_delmarks(args)
 	local map_id = get_map_id()
-	if not maps[map_id] then return end
+	if not data[map_id] then return end
 
 	if args == "!" then
 		-- Remove all
-		maps[map_id] = {}
+		data[map_id] = {}
 	elseif args:match("^[a-z]$") then
 		-- Remove single mark (a)
-		maps[map_id][args] = nil
+		data[map_id][args] = nil
 	elseif args:match("^[a-z]%-[a-z]$") then
 		-- Remove range (a-c)
 		local start_char, end_char = args:match("([a-z])-([a-z])")
 		for char = string.byte(start_char), string.byte(end_char) do
-			maps[map_id][string.char(char)] = nil
+			data[map_id][string.char(char)] = nil
 		end
 	else
 		-- Remove list (abc or a b c)
 		for char in args:gmatch("[a-z]") do
-			maps[map_id][char] = nil
+			data[map_id][char] = nil
 		end
 	end
 
-	save_maps()
+	save_data()
 end
 
 local function view()
 	local map_id = get_map_id()
-	local marks = maps[map_id] or {}
+	local marks = data[map_id] or {}
 
 	if vim.tbl_isempty(marks) then
 		vim.notify("No marks in this project")
@@ -156,7 +156,7 @@ local function view()
 	end)
 end
 
-load_maps()
+load_data()
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
 	group = vim.api.nvim_create_augroup("LilPlacesDelmarks", { clear = true }),
@@ -173,7 +173,7 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 
 vim.api.nvim_create_autocmd("VimLeave", {
 	group = vim.api.nvim_create_augroup("LilPlacesQuit", { clear = true }),
-	callback = save_maps
+	callback = save_data
 })
 
 vim.api.nvim_create_user_command("LilPlaces", view, { desc = "View project marks" })

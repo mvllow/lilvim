@@ -14,15 +14,11 @@
 # Notice the destination folder is lilvim, not nvim
 git clone https://github.com/mvllow/lilvim ~/.config/lilvim
 
-# Optionally, use the included init.lua as your starting point
-cd ~/.config/lilvim
-mv example-init.lua init.lua
-
 # Run lilvim by setting the NVIM_APPNAME environment variable
 NVIM_APPNAME=lilvim nvim
 ```
 
-Alternatively, you may pull any module into your own config or install as a plugin:
+Alternatively, install as a plugin for automatic loading:
 
 ```lua
 vim.pack.add({
@@ -30,35 +26,37 @@ vim.pack.add({
 })
 ```
 
+Or copy individual modules from `plugin/` into your own config's `plugin/` directory.
+
 ## Modules
 
 > If installed as a plugin, you may run `:help lilvim` for the complete documentation.
 
-_**[lil-complete](lua/lil-complete.lua)**_\
+_**[lil-complete](plugin/lil-complete.lua)**_\
 Text (auto)completion
 
-_**[lil-edit](lua/lil-edit.lua)**_\
+_**[lil-edit](plugin/lil-edit.lua)**_\
 General editing keymaps and options
 
-_**[lil-lsp](lua/lil-lsp.lua)**_\
+_**[lil-lsp](plugin/lil-lsp.lua)**_\
 Language servers and diagnostics
 
-_**[lil-places](lua/lil-places.lua)**_\
+_**[lil-places](plugin/lil-places.lua)**_\
 Extend built-in mark behaviour
 
-_**[lil-quickfix](lua/lil-quickfix.lua)**_\
+_**[lil-quickfix](plugin/lil-quickfix.lua)**_\
 Extend built-in quickfix behaviour
 
-_**[lil-search](lua/lil-search.lua)**_\
+_**[lil-search](plugin/lil-search.lua)**_\
 File management and search
 
-_**[lil-stats](lua/lil-stats.lua)**_\
+_**[lil-stats](plugin/lil-stats.lua)**_\
 Show file statistics
 
-_**[lil-subs](lua/lil-subs.lua)**_\
+_**[lil-subs](plugin/lil-subs.lua)**_\
 Substitute your text, with different text
 
-_**[lil-windows](lua/lil-windows.lua)**_\
+_**[lil-windows](plugin/lil-windows.lua)**_\
 Window management
 
 _For not-so-lil module extensions, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
@@ -75,9 +73,9 @@ Lilvim includes several self-contained modules which handle their own vim option
 
 We demonstrate Neovim's built-in capabilities and lower the platform's barrier to entry for new users. This lightweight approach encourages users to first understand the platform's features before adding plugins.
 
-### Idiomatic initialising
+### Idiomatic loading
 
-The `plugin` directory is used to conditonally load lilvim modules, removing the need to manually require or 'setup' modules.
+Neovim's `plugin` directory automatically loads all modules on startup. Each module is self-contained and can be copied individually.
 
 ## Related
 

@@ -1,0 +1,34 @@
+---@tag lilvim
+---@signature
+---@text A modular and opinionated starting point for Neovim
+---
+--- MIT License Copyright (c) mvllow
+---
+--- ==============================================================================
+---
+--- Features:
+---
+--- - Self-contained modules
+--- - Prioritised built-in functionality
+--- - Deliciously simple to extend
+---
+--- Modules:
+---
+--- - |lil-complete|
+--- - |lil-edit|
+--- - |lil-lsp|
+--- - |lil-places|
+--- - |lil-quickfix|
+--- - |lil-search|
+--- - |lil-stats|
+--- - |lil-subs|
+--- - |lil-toggle|
+--- - |lil-windows|
+---
+--- # Setup ~
+---
+--- When installed as a plugin via a package manager, all modules load
+--- automatically on startup. Run `:helptags ALL` to regenerate help tags.
+---
+--- To use individual modules, copy any file from `plugin/` into your own
+--- `plugin/` directory. Each module is self-contained and works independently.

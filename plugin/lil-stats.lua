@@ -1,5 +1,5 @@
 ---@tag lil-stats
----@signature require"lil-stats"
+---@signature
 ---@text Show file statistics
 ---
 --- # Variables ~
@@ -8,8 +8,6 @@
 ---
 --- Show stats in the winbar: >lua
 --- 	vim.cmd([[set winbar+=%{get(b:,'lil_stats_file','')}]])
-
-LilStats = {}
 
 --- Count lines of code for the current buffer
 ---@param include_comments boolean? Include comment lines in count
@@ -60,7 +58,7 @@ local function format_size()
 	return string.format("%.1f MB", size / (1024 * 1024))
 end
 
-LilStats.get_file_stats = function()
+local function get_file_stats()
 	local lines = vim.api.nvim_buf_line_count(0)
 	local loc = count_loc()
 	local size = format_size()
@@ -68,9 +66,6 @@ LilStats.get_file_stats = function()
 end
 
 vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
-	callback = function()
-		LilStats.get_file_stats()
-	end
+	group = vim.api.nvim_create_augroup("LilStatsFile", { clear = true }),
+	callback = get_file_stats,
 })
-
-return LilStats

@@ -1,5 +1,5 @@
 ---@tag lil-subs
----@signature require"lil-subs"
+---@signature
 ---@text Substitute your text, with different text!
 ---
 --- Features:

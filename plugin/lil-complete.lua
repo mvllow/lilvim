@@ -1,5 +1,5 @@
 ---@tag lil-complete
----@signature require"lil-complete"
+---@signature
 ---@text Text (auto)completion
 ---
 --- # Keymaps ~

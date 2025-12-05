@@ -1,5 +1,5 @@
 ---@tag lil-search
----@signature require"lil-search"
+---@signature
 ---@text File management and search
 ---
 --- Features:

@@ -1,11 +1,11 @@
 ---@tag lil-lsp
----@signature require"lil-lsp"
+---@signature
 ---@text Language servers and diagnostics
 ---
 --- Features:
 ---
----   - Configure diagnostics
----   - Configure language servers
+--- - Configure diagnostics
+--- - Configure language servers
 ---
 --- NOTE: Server executables must be available in your |runtimepath|.
 ---
