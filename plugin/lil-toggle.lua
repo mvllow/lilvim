@@ -29,6 +29,7 @@
 --- 	map_toggle('i', 'inlay_hint')
 --- 	map_toggle('l', 'list')
 --- 	map_toggle('m', 'laststatus')
+--- 	map_toggle('M', 'winbar')
 --- 	map_toggle('n', 'number')
 --- 	map_toggle('q', 'quickfix')
 --- 	map_toggle('s', 'spell')
@@ -102,6 +103,13 @@ local function toggle(opt)
 			vim.o[opt] = val == "light" and "dark" or "light"
 			notify_set(opt, vim.o[opt])
 			return
+		end
+
+		if val == "" then
+			vim.o[opt] = state[opt] or ""
+		else
+			state[opt] = val
+			vim.o[opt] = ""
 		end
 	end
 
