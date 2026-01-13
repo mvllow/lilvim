@@ -42,7 +42,7 @@ vim.o.smartcase  = true -- unless search contains uppercase
 
 vim.keymap.set("n", "<leader>e", ":Explore<cr>", { desc = "Explore files" })
 vim.keymap.set("n", "<leader>f", ":find ", { desc = "Find files" })
-vim.keymap.set("n", "<leader>/", ":grep ", { desc = "Find in files" })
+vim.keymap.set("n", "<leader>/", ":silent grep ", { desc = "Find in files" })
 
 if vim.fn.executable("fd") == 1 then
 	function _G.FindFiles(arg)
