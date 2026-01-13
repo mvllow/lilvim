@@ -20,14 +20,22 @@
 local STORAGE_PATH = vim.fn.stdpath("data") .. "/lil-places.json"
 local data = {}
 
+local map_id_cache = nil
+
 local function get_map_id()
+	if map_id_cache then
+		return map_id_cache
+	end
+
 	local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD")
 	if vim.v.shell_error == 0 then
 		local git_root = vim.fn.system("git rev-parse --show-toplevel"):gsub("%s+$", "")
-		return git_root .. ":" .. branch:gsub("%s+$", "")
+		map_id_cache = git_root .. ":" .. branch:gsub("%s+$", "")
+	else
+		map_id_cache = vim.fn.getcwd()
 	end
 
-	return vim.fn.getcwd()
+	return map_id_cache
 end
 
 local function save_data()
