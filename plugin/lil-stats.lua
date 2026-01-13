@@ -65,7 +65,14 @@ local function get_file_stats()
 	vim.b.lil_stats_file = string.format("%d lines (%d loc) · %s", lines, loc, size)
 end
 
-vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
+vim.api.nvim_create_autocmd("BufEnter", {
 	group = vim.api.nvim_create_augroup("LilStatsFile", { clear = true }),
 	callback = get_file_stats,
+})
+
+vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+	group = vim.api.nvim_create_augroup("LilStatsFileDebounced", { clear = true }),
+	callback = function()
+		vim.defer_fn(get_file_stats, 500)
+	end,
 })
