@@ -61,6 +61,7 @@ General editing keymaps and options
   vim.o.tabstop        = 4                        -- tab size
   vim.o.shiftwidth     = 4                        -- auto-indent tab size
   vim.o.breakindent    = true                     -- visually indent wrapped lines
+  vim.o.breakindentopt = "list:-1"                -- visually align wrapped list items
   vim.o.linebreak      = true                     -- avoid wrapping mid-word
   vim.o.showbreak      = [[\\]]                   -- show "\\" at the beginning of wrapped lines
   vim.o.undofile       = true                     -- persistent undo between sessions
