@@ -164,7 +164,10 @@ local function view()
 	end)
 end
 
-load_data()
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = vim.api.nvim_create_augroup("LilPlacesSetup", { clear = true }),
+	callback = load_data,
+})
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
 	group = vim.api.nvim_create_augroup("LilPlacesDelmarks", { clear = true }),
