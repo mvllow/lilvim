@@ -14,7 +14,7 @@ hooks.write_pre = function(lines)
 	return lines
 end
 
-local files = { "scripts/doc-header.lua" }
+local files = { "script/doc-header.lua" }
 local plugin_files = vim.fn.glob("plugin/*.lua", false, true)
 table.sort(plugin_files)
 
