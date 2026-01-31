@@ -23,14 +23,15 @@
 --- # Keymaps ~
 ---
 --- - Normal
----   - K          : Show symbol documentation
----   - gO         : List document symbols
----   - gra        : List code actions
----   - gri        : List implementations
----   - grr        : List references
----   - grn        : Rename symbol
+---   - gO         : Document symbol
+---   - gra        : Code action
+---   - gri        : Implementation
+---   - grn        : Rename
+---   - grr        : References
+---   - grt        : Type definition
 ---   - gq{motion} : Format file
 ---   - gro        : Organise imports
+---   - K          : Hover (documentation)
 ---   - <c-]>      : Goto definition
 ---   - ]d         : Goto next diagnostic
 ---   - ]D         : Goto last diagnostic
