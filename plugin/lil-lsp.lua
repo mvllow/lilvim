@@ -70,24 +70,6 @@ local function update_lsp_clients(bufnr)
 	vim.b[bufnr].lil_lsp_clients = "󰄭 " .. table.concat(client_names, ", ")
 end
 
-vim.lsp.config("lua_ls", {
-	cmd = { "lua-language-server" },
-	filetypes = { "lua" },
-	root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT"
-			},
-			workspace = {
-				checkThirdParty = false,
-				library = { vim.env.VIMRUNTIME, "${3rd}/luv/library" },
-			},
-		},
-	},
-})
-vim.lsp.enable("lua_ls")
-
 vim.api.nvim_create_user_command("LspCapabilities", function()
 	local clients = vim.lsp.get_clients({ bufnr = 0 })
 	for _, client in ipairs(clients) do
