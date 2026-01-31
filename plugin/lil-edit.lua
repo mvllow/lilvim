@@ -17,7 +17,6 @@
 ---
 --- # Options ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
-vim.o.autocomplete   = true                     -- suggest completions while typing
 vim.o.complete       = ".,o"                    -- complete from buffer and omnifunc
 vim.o.completeopt    = "fuzzy,menuone,noselect" -- complete popup behaviour
 vim.o.tabstop        = 4                        -- tab size
