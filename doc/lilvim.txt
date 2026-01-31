@@ -96,12 +96,12 @@ Show LSP clients in the winbar: >lua
 
 - Normal
   - K          : Show symbol documentation
-  - gq         : Format file
   - gO         : List document symbols
   - gra        : List code actions
   - gri        : List implementations
   - grr        : List references
   - grn        : Rename symbol
+  - gq{motion} : Format file
   - gro        : Organise imports
   - <c-]>      : Goto definition
   - ]d         : Goto next diagnostic

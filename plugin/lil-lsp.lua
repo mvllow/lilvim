@@ -24,12 +24,12 @@
 ---
 --- - Normal
 ---   - K          : Show symbol documentation
----   - gq         : Format file
 ---   - gO         : List document symbols
 ---   - gra        : List code actions
 ---   - gri        : List implementations
 ---   - grr        : List references
 ---   - grn        : Rename symbol
+---   - gq{motion} : Format file
 ---   - gro        : Organise imports
 ---   - <c-]>      : Goto definition
 ---   - ]d         : Goto next diagnostic
@@ -68,8 +68,6 @@ local function update_lsp_clients(bufnr)
 
 	vim.b[bufnr].lil_lsp_clients = "󰄭 " .. table.concat(client_names, ", ")
 end
-
-vim.keymap.set("n", "gq", function() vim.lsp.buf.format() end, { desc = "Format file" })
 
 vim.lsp.config("lua_ls", {
 	cmd = { "lua-language-server" },
