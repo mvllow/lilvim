@@ -210,6 +210,11 @@ local function show_virtual_text()
 	end
 end
 
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = vim.api.nvim_create_augroup("LilSubsSetup", { clear = true }),
+	callback = update_keymaps
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
 	group = vim.api.nvim_create_augroup("LilSubsVirtualText", { clear = true }),
 	pattern = "*",
@@ -224,5 +229,3 @@ vim.api.nvim_create_autocmd("OptionSet", {
 		show_virtual_text()
 	end,
 })
-
-update_keymaps()
