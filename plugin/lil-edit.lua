@@ -5,6 +5,9 @@
 --- # Keymaps ~
 ---
 --- - Normal
+---   - <c-n>     : Focus next result
+---   - <c-p>     : Focus previous result
+---   - <c-y>     : Select result
 ---   - <leader>y : Copy to clipboard
 ---   - <leader>p : Paste from clipboard
 ---   - j/k       : Navigate wrapped lines
@@ -14,13 +17,16 @@
 ---
 --- # Options ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
-vim.o.tabstop     = 4      -- tab size
-vim.o.shiftwidth  = 4      -- auto-indent tab size
-vim.o.breakindent = true   -- visually indent wrapped lines
-vim.o.linebreak   = true   -- avoid wrapping mid-word
-vim.o.showbreak   = [[\\]] -- show "\\" at the beginning of wrapped lines
-vim.o.undofile    = true   -- persistent undo between sessions
-vim.o.scrolloff   = 3      -- scroll before reaching the edge of buffer
+vim.o.autocomplete   = true                     -- suggest completions while typing
+vim.o.complete       = ".,o"                    -- complete from buffer and omnifunc
+vim.o.completeopt    = "fuzzy,menuone,noselect" -- complete popup behaviour
+vim.o.tabstop        = 4                        -- tab size
+vim.o.shiftwidth     = 4                        -- auto-indent tab size
+vim.o.breakindent    = true                     -- visually indent wrapped lines
+vim.o.linebreak      = true                     -- avoid wrapping mid-word
+vim.o.showbreak      = [[\\]]                   -- show "\\" at the beginning of wrapped lines
+vim.o.undofile       = true                     -- persistent undo between sessions
+vim.o.scrolloff      = 3                        -- scroll before reaching the edge of buffer
 --minidoc_afterlines_end
 
 -- Copy and paste via clipboard

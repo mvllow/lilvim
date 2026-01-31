@@ -36,31 +36,6 @@ To use individual modules, copy any file from `plugin/` into your own
 
 ==============================================================================
 ------------------------------------------------------------------------------
-                                                                  *lil-complete*
-
-Text (auto)completion
-
-# Keymaps ~
-
-- Normal
-  - <c-n> : Focus next result
-  - <c-p> : Focus previous result
-  - <c-y> : Select result
-
-# Options ~
->lua
-  vim.o.complete     = ".,o"                    -- complete from buffer and omnifunc
-  vim.o.completeopt  = "fuzzy,menuone,noselect" -- complete popup behaviour
-  vim.o.autocomplete = true                     -- suggest while typing
-<
-------------------------------------------------------------------------------
-
-See also ~
-lil-lsp
-
-
-==============================================================================
-------------------------------------------------------------------------------
                                                                       *lil-edit*
 
 General editing keymaps and options
@@ -68,6 +43,9 @@ General editing keymaps and options
 # Keymaps ~
 
 - Normal
+  - <c-n>     : Focus next result
+  - <c-p>     : Focus previous result
+  - <c-y>     : Select result
   - <leader>y : Copy to clipboard
   - <leader>p : Paste from clipboard
   - j/k       : Navigate wrapped lines
@@ -77,13 +55,16 @@ General editing keymaps and options
 
 # Options ~
 >lua
-  vim.o.tabstop     = 4      -- tab size
-  vim.o.shiftwidth  = 4      -- auto-indent tab size
-  vim.o.breakindent = true   -- visually indent wrapped lines
-  vim.o.linebreak   = true   -- avoid wrapping mid-word
-  vim.o.showbreak   = [[\\]] -- show "\\" at the beginning of wrapped lines
-  vim.o.undofile    = true   -- persistent undo between sessions
-  vim.o.scrolloff   = 3      -- scroll before reaching the edge of buffer
+  vim.o.autocomplete   = true                     -- suggest completions while typing
+  vim.o.complete       = ".,o"                    -- complete from buffer and omnifunc
+  vim.o.completeopt    = "fuzzy,menuone,noselect" -- complete popup behaviour
+  vim.o.tabstop        = 4                        -- tab size
+  vim.o.shiftwidth     = 4                        -- auto-indent tab size
+  vim.o.breakindent    = true                     -- visually indent wrapped lines
+  vim.o.linebreak      = true                     -- avoid wrapping mid-word
+  vim.o.showbreak      = [[\\]]                   -- show "\\" at the beginning of wrapped lines
+  vim.o.undofile       = true                     -- persistent undo between sessions
+  vim.o.scrolloff      = 3                        -- scroll before reaching the edge of buffer
 <
 
 ==============================================================================
