@@ -56,9 +56,6 @@ Show file statistics
 _**[lil-subs](plugin/lil-subs.lua)**_\
 Substitute your text, with different text
 
-_**[lil-windows](plugin/lil-windows.lua)**_\
-Window management
-
 _For not-so-lil module extensions, head over to our [wiki](https://github.com/mvllow/lilvim/wiki)_
 
 ## Principles
