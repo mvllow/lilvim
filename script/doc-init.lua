@@ -1,7 +1,7 @@
---- minimal-init.lua
+--- doc-init.lua
 ---
 ---@usage
---- nvim -u minimal-init.lua
+--- nvim -u doc-init.lua
 
 vim.opt.rtp:prepend(".")
 
