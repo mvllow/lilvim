@@ -10,23 +10,18 @@
 
 ## Usage
 
-```sh
-# Notice the destination folder is lilvim, not nvim
-git clone https://github.com/mvllow/lilvim ~/.config/lilvim
-
-# Run lilvim by setting the NVIM_APPNAME environment variable
-NVIM_APPNAME=lilvim nvim
-```
-
-Alternatively, install as a plugin for automatic loading:
+When installed via a package manager, all modules can be required:
 
 ```lua
 vim.pack.add({
 	"https://github.com/mvllow/lilvim"
 })
+require('lil-<module>')
 ```
 
-Or copy individual modules from `plugin/` into your own config's `plugin/` directory.
+Each module is self-contained and can be individually copied to your own
+configuration. Prefer the `plugin/` directory for automatic loading or the
+`lua/` directory for more control.
 
 ## Modules
 

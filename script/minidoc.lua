@@ -15,7 +15,7 @@ hooks.write_pre = function(lines)
 end
 
 local files = { "script/doc-header.lua" }
-local plugin_files = vim.fn.glob("plugin/*.lua", false, true)
+local plugin_files = vim.fn.glob("lua/*.lua", false, true)
 table.sort(plugin_files)
 
 for _, file in ipairs(plugin_files) do

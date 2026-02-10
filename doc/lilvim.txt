@@ -9,7 +9,7 @@ MIT License Copyright (c) mvllow
 Features:
 
 - Self-contained modules
-- Prioritised built-in functionality
+- Documented built-in functionality
 - Deliciously simple to extend
 
 Modules:
@@ -27,11 +27,16 @@ Modules:
 
 # Setup ~
 
-When installed as a plugin via a package manager, all modules load
-automatically on startup. Run `:helptags ALL` to regenerate help tags.
+When installed via a package manager, all modules can be required:
+	require('lil-<module>')
 
-To use individual modules, copy any file from `plugin/` into your own
-`plugin/` directory. Each module is self-contained and works independently.
+Each module is self-contained and can be individually copied to your own
+configuration. Prefer the `plugin/` directory for automatic loading or the
+`lua/` directory for more control.
+
+# Documentation ~
+
+Run `:helptags ALL` to regenerate help tags.
 
 
 ==============================================================================
