@@ -125,6 +125,8 @@ local display_map = {
 ---@type table<string, string>
 ---@private
 local replace_map = {
+	["key_command"] = "⌘",
+	["key_option"] = "⌥",
 	["omw"] = "On my way!",
 }
 
