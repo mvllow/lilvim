@@ -144,7 +144,7 @@ local function toggle(opt)
 			end
 			vim.api.nvim_create_autocmd(cmd.event, opts)
 		end
-		notify(opt .. "enabled")
+		notify(opt .. " enabled")
 	end
 end
 
