@@ -30,7 +30,6 @@
 ---   - grr        : References
 ---   - grt        : Type definition
 ---   - gq{motion} : Format file
----   - gro        : Organise imports
 ---   - K          : Hover (documentation)
 ---   - <c-]>      : Goto definition
 ---   - ]d         : Goto next diagnostic
@@ -47,6 +46,10 @@
 ---   - <c-n>      : Focus next result
 ---   - <c-p>      : Focus previous result
 ---   - <c-y>      : Select result
+---
+--- # Commands ~
+---
+--- - :OrganiseImports : Organise imports in supported files
 ---
 --- # Options ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
@@ -115,11 +118,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 					apply = true
 				})
 			end, { desc = "Organise imports" })
-
-			vim.keymap.set("n", "gro", ":OrganiseImports<cr>", {
-				buffer = args.buf,
-				desc = "Organise imports"
-			})
 		end
 	end
 })
