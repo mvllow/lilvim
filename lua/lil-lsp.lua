@@ -89,11 +89,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.completion.enable(true, client.id, args.buf)
 		end
 
-		-- "background" style is enabled by default on nightly
-		if client:supports_method("textDocument/documentColor") or vim.lsp.document_color then
-			vim.lsp.document_color.enable(true, args.buf, { style = "virtual" })
-		end
-
 		if client:supports_method("textDocument/foldingRange") then
 			local win = vim.api.nvim_get_current_win()
 			vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
