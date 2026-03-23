@@ -73,15 +73,6 @@ local function update_lsp_clients(bufnr)
 	vim.b[bufnr].lil_lsp_clients = "󰄭 " .. table.concat(client_names, ", ")
 end
 
-vim.api.nvim_create_user_command("LspCapabilities", function()
-	local clients = vim.lsp.get_clients({ bufnr = 0 })
-	for _, client in ipairs(clients) do
-		vim.print("Client: " .. client.name)
-		vim.print("Server capabilities:")
-		vim.print(client.server_capabilities)
-	end
-end, { desc = "Show LSP server capabilities" })
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LilLspAttach", { clear = false }),
 	callback = function(args)
