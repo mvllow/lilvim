@@ -29,6 +29,7 @@
 ---   - grn        : Rename
 ---   - grr        : References
 ---   - grt        : Type definition
+---   - grx        : Code lens
 ---   - gq{motion} : Format file
 ---   - K          : Hover (documentation)
 ---   - <c-]>      : Goto definition
