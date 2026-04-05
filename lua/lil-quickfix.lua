@@ -186,6 +186,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("LilQuickfixFiletype", { clear = true }),
 	pattern = "qf",
 	callback = function()
+		if not vim.g.loaded_cfilter then
+			vim.cmd("packadd cfilter")
+			vim.wo.winbar = "filter[:Cfilter] undo[:colder] delete[d]"
+		end
+
 		vim.keymap.set("n", "dd", delete_quickfix_entries, { buffer = true, desc = "Delete quickfix entry" })
 		vim.keymap.set("v", "d", delete_quickfix_entries, { buffer = true, desc = "Delete quickfix entries" })
 	end
