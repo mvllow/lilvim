@@ -42,15 +42,15 @@ end
 local function format_size()
 	local file = vim.api.nvim_buf_get_name(0)
 	if file == "" then
-		return "0 Bytes"
+		return "0 B"
 	end
 
 	local size = vim.fn.getfsize(file)
 	if size < 0 then
-		return "0 Bytes"
+		return "0 B"
 	end
 	if size < 1024 then
-		return size .. " Bytes"
+		return size .. " B"
 	end
 	if size < 1024 * 1024 then
 		return string.format("%.1f KB", size / 1024)
