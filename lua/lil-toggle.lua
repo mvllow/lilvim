@@ -111,6 +111,8 @@ local function toggle(opt)
 			state[opt] = val
 			vim.o[opt] = ""
 		end
+
+		return
 	end
 
 	::try_toggleable::
