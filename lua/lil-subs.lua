@@ -109,6 +109,10 @@ local entity_map = {
 	["uarr"] = "↑",
 	["weierp"] = "℘",
 	["yen"] = "¥",
+	["vertical"] = "│",
+	["horizontal"] = "──",
+	["tee"] = "├──",
+	["elbow"] = "└──",
 }
 
 --- Special characters with ASCII hints shown as virtual text.
