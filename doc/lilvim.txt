@@ -213,9 +213,6 @@ Commands ~
 
 Keymaps ~
 
-- `<Leader>f`  : Find files
-- `<Leader>/`  : Find in files (results in quickfix)
-
 - `*`         : Search cursorword
 - `#`         : Backward search cursorword
 
@@ -226,7 +223,8 @@ Keymaps ~
 - `<C-i>`     : Next jump list position
 - `<C-o>`     : Previous jump list position
 
-- `<Leader>e` : Open file explorer
+NETRW (:Explore)
+
 - `<CR>`      : Open file
 - `%`         : Create a new file
 - `d`         : Create a new directory

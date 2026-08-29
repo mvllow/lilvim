@@ -15,9 +15,6 @@
 ---
 --- Keymaps ~
 ---
---- - `<Leader>f`  : Find files
---- - `<Leader>/`  : Find in files (results in quickfix)
----
 --- - `*`         : Search cursorword
 --- - `#`         : Backward search cursorword
 ---
@@ -28,7 +25,8 @@
 --- - `<C-i>`     : Next jump list position
 --- - `<C-o>`     : Previous jump list position
 ---
---- - `<Leader>e` : Open file explorer
+--- NETRW (:Explore)
+---
 --- - `<CR>`      : Open file
 --- - `%`         : Create a new file
 --- - `d`         : Create a new directory
@@ -44,10 +42,6 @@ vim.o.smartcase  = true -- unless search contains uppercase
 --minidoc_afterlines_end
 ---
 ---@seealso |lil-quickfix|
-
-vim.keymap.set("n", "<leader>e", ":Explore<cr>", { desc = "Explore files" })
-vim.keymap.set("n", "<leader>f", ":find ", { desc = "Find files" })
-vim.keymap.set("n", "<leader>/", ":silent grep ", { desc = "Find in files" })
 
 if vim.fn.executable("fd") == 1 then
 	function _G.FindFiles(arg)
