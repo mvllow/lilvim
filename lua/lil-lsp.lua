@@ -39,7 +39,31 @@
 vim.o.signcolumn = "yes" -- always show sign column (reduce layout shift)
 --minidoc_afterlines_end
 
+-- Configure the Lua language server. For pre-made configurations, check out
+-- https://github.com/neovim/nvim-lspconfig
+vim.lsp.config("lua_ls", {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	root_markers = { ".git" },
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT"
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+					"${3rd}/luv/library",
+				},
+			},
+		},
+	},
+})
 
+-- Enable language servers. If you are using lspconfig (mentioned above), you
+-- can find all of the available servers by running `:help lspconfig-all`.
+vim.lsp.enable({ "lua_ls" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LilLspAttach", { clear = false }),
