@@ -24,9 +24,9 @@ press enter. That's your first command!
 Now, in your `init.lua`, require the modules you want active:
 
 ```lua
-	require("lil-edit")
-	require("lil-lsp")
-	-- etc.
+require("lil-edit")
+require("lil-lsp")
+-- etc.
 ```
 
 ## Documentation
