@@ -1,44 +1,49 @@
 ---@tag lil-search
 ---@signature
----@text File management and search
----
---- Features:
+---@text Features:
 ---
 --- - Enable case-insensitive search for lowercase queries
 ---
---- # Commands ~
+--- Commands ~
 ---
---- - :Explore : Explore files
---- - :find    : Find files
---- - :grep    : Find in files (results are sent to quickfix)
+--- - `:Explore`         : Explore files
 ---
---- # Keymaps ~
+--- - `:find PATTERN`   : Find files
+--- - `:grep PATTERN`   : Find text (results in quickfix)
 ---
---- - Normal
----   - <leader>e : Explore files
----   - <leader>f : Find files
----   - <leader>/ : Find in files (results are sent to quickfix)
---- - Netrw
----   - <cr>      : Open file
----   - %         : Create a new file
----   - d         : Create a new directory
----   - D         : Delete a file or empty directory
----   - mf        : Mark file or directory
----   - mt        : Set target directory for marked actions
----   - mm        : Move marked files to the marked target
+--- - `:s//REPLACEMENT` : replace PATTERN (search)
 ---
---- # Options ~
+--- Keymaps ~
+---
+--- - `<Leader>f`  : Find files
+--- - `<Leader>/`  : Find in files (results in quickfix)
+---
+--- - `*`         : Search cursorword
+--- - `#`         : Backward search cursorword
+---
+--- - `gf`        : Goto pattern under cursor
+--- - `gx`        : Open pattern under cursor
+---
+--- - `<C-^>`     : Goto alternate file
+--- - `<C-i>`     : Next jump list position
+--- - `<C-o>`     : Previous jump list position
+---
+--- - `<Leader>e` : Open file explorer
+--- - `<CR>`      : Open file
+--- - `%`         : Create a new file
+--- - `d`         : Create a new directory
+--- - `D`         : Delete a file or empty directory
+--- - `mf`        : Mark file or directory
+--- - `mt`        : Set target directory for marked actions
+--- - `mm`        : Move marked files to the set target
+---
+--- Options ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
 vim.o.ignorecase = true -- ignore case
 vim.o.smartcase  = true -- unless search contains uppercase
 --minidoc_afterlines_end
 ---
---- Optionally, if you have FZF installed you may enable the vim plugin: >lua
---- 	local fzf_path = string.gsub(vim.fn.exepath("fzf"), "bin", "opt")
---- 	vim.opt.runtimepath:append(fzf_path)
---- 	vim.keymap.set("n", "<leader>f", ":FZF<cr>", { desc = "Find files" })
----
----@seealso lil-quickfix
+---@seealso |lil-quickfix|
 
 vim.keymap.set("n", "<leader>e", ":Explore<cr>", { desc = "Explore files" })
 vim.keymap.set("n", "<leader>f", ":find ", { desc = "Find files" })

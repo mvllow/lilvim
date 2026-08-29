@@ -1,12 +1,16 @@
 ---@tag lil-toggle
 ---@signature
----@text Toggle options, augroups and more
+---@text Features:
 ---
---- # Commands ~
+--- - Toggle options with special handling for non-boolean values
+--- - Toggle quickfix window
+--- - Toggle autocmds
 ---
---- - :LilToggle <option> : Toggle thing
+--- Commands ~
 ---
---- # Keymaps ~
+--- - `:LilToggle {option}` : Toggle option
+---
+--- Keymaps ~
 ---
 --- No keymaps are set automatically. See the examples below.
 ---
@@ -16,8 +20,8 @@
 --- 		vim.keymap.set(
 --- 			'n',
 --- 			prefix .. key,
---- 			':LilToggle ' .. option .. '<cr>',
---- 			{ desc = 'toggle ' .. option }
+--- 			':LilToggle ' .. option .. '<CR>',
+--- 			{ desc = 'Toggle ' .. option }
 --- 		)
 --- 	end
 --- 	map_toggle('a', 'autocomplete')

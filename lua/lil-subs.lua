@@ -1,23 +1,26 @@
 ---@tag lil-subs
 ---@signature
----@text Substitute your text, with different text!
----
---- Features:
+---@text Features:
 ---
 --- - Automatic text replacements when spell checking is enabled
 --- - Shows virtual text previews for HTML entities
---- - Expands unicode shortcuts prefixed with "_" (e.g. _middot becomes •)
+--- - Expands unicode shortcuts prefixed with `_` (e.g. _middot becomes •)
 --- - Displays ASCII equivalents for special characters (e.g. em dash shows --)
 ---
---- # Commands ~
+--- Commands ~
 ---
---- - :ab : List abbreviations
+--- - `:ab`  : List abbreviations
+--- - `:dig` : List digraphs
 ---
---- # Highlights ~
+--- Highlights ~
 ---
---- - LilSubsHint : Virtual text color (default links to Comment)
+--- - `LilSubsHint` : Virtual text colour (default links to Comment)
 ---
---- # Options ~
+--- Keymaps ~
+---
+--- - `<C-k>{code}` : Digraph prefix followed by code, e.g. `<C-k>DG` for '°'
+---
+--- Options ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
 vim.o.spell = true
 --minidoc_afterlines_end

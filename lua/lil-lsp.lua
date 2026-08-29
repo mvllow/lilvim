@@ -1,63 +1,50 @@
 ---@tag lil-lsp
 ---@signature
----@text Language servers and diagnostics
+---@text Features:
 ---
---- Features:
----
---- - Configure diagnostics
 --- - Configure language servers
+--- - Configure diagnostics
 ---
 --- NOTE: Server executables must be available in your |runtimepath|.
 ---
---- # Variables ~
+--- Variables ~
 ---
----   - b:lil_lsp_clients
+--- - `b:lil_lsp_clients` : String of running LSP servers
 ---
 --- Show LSP clients in the winbar: >lua
 --- 	vim.cmd([[set winbar+=%{get(b:,'lil_lsp_clients','')}]])
 ---
---- # Commands ~
+--- Commands ~
 ---
---- - :checkhealth lsp : Show current LSP status
+--- - `:checkhealth lsp` : Show current LSP status
+--- - `:OrganiseImports` : Organise imports in supported files
 ---
---- # Keymaps ~
+--- Keymaps ~
 ---
---- - Normal
----   - gO         : Document symbol
----   - gra        : Code action
----   - gri        : Implementation
----   - grn        : Rename
----   - grr        : References
----   - grt        : Type definition
----   - grx        : Code lens
----   - gq{motion} : Format file
----   - K          : Hover (documentation)
----   - <c-]>      : Goto definition
----   - ]d         : Goto next diagnostic
----   - ]D         : Goto last diagnostic
----   - [d         : Goto previous diagnostic
----   - [D         : Goto first diagnostic
----   - <c-w>d     : Show line diagnostics
---- - Visual
----   - gq         : Format selection
---- - Insert
----   - <c-s>      : Signature help
----   - <c-x><c-o> : Show completions in pmenu (popup menu)
---- - Pmenu
----   - <c-n>      : Focus next result
----   - <c-p>      : Focus previous result
----   - <c-y>      : Select result
+--- - `gO`         : Document symbol
+--- - `gra`        : Code action
+--- - `gri`        : Implementation
+--- - `grn`        : Rename
+--- - `grr`        : References
+--- - `grt`        : Type definition
+--- - `grx`        : Code lens
+--- - `gq{motion}` : Format file
+--- - `gg`         : Format visual selection
+--- - `K`          : Hover (documentation)
+--- - `<C-]>`      : Goto definition
+--- - `]d`         : Goto next diagnostic
+--- - `]D`         : Goto last diagnostic
+--- - `[d`         : Goto previous diagnostic
+--- - `[D`         : Goto first diagnostic
+--- - `<C-w>d`     : Show line diagnostics
+--- - `<C-s>`      : Signature help in *insert mode*
 ---
---- # Commands ~
+--- See `:help lsp-defaults` for more.
 ---
---- - :OrganiseImports : Organise imports in supported files
----
---- # Options ~
+--- Options ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
 vim.o.signcolumn = "yes" -- always show sign column (reduce layout shift)
 --minidoc_afterlines_end
----
----@seealso lsp-defaults
 
 local function update_lsp_clients(bufnr)
 	local clients = vim.lsp.get_clients({ bufnr = bufnr })
@@ -71,7 +58,7 @@ local function update_lsp_clients(bufnr)
 		table.insert(client_names, client.name)
 	end
 
-	vim.b[bufnr].lil_lsp_clients = "󰄭 " .. table.concat(client_names, ", ")
+	vim.b[bufnr].lil_lsp_clients = "∷ " .. table.concat(client_names, ", ")
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {

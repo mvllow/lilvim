@@ -14,7 +14,6 @@ Features:
 
 Modules:
 
-- |lil-complete|
 - |lil-edit|
 - |lil-lsp|
 - |lil-places|
@@ -23,147 +22,156 @@ Modules:
 - |lil-stats|
 - |lil-subs|
 - |lil-toggle|
-- |lil-windows|
 
-# Setup ~
+Setup ~
 
-When installed via a package manager, all modules can be required:
-	require('lil-<module>')
+Welcome to lilvim and possibly even Neovim!
 
-Each module is self-contained and can be individually copied to your own
-configuration. Prefer the `plugin/` directory for automatic loading or the
-`lua/` directory for more control.
+To get started, copy the modules you like into your config, usually at
+`~/.config/nvim/lua/`. Feel free to copy them all — only the ones you
+enable will be active. If you're new to Neovim, you'll also want to create
+your entrypoint at `~/.config/nvim/init.lua`.
 
-# Documentation ~
+The help documentation is your friend, whether you are new or seasoned. To
+learn more about configuring Neovim, press `esc` and type `:help config`,
+then press enter. That's your first command!
 
-Run `:helptags ALL` to regenerate help tags.
+Now, in your `init.lua`, require the modules you want active: >lua
+	require("lil-edit")
+	require("lil-lsp")
+	-- etc.
+
+Documentation ~
+
+Run `:helptags ALL` to generate help tags. This is a command, just like the
+`:help` above!
+
+	Tags create a mapping behind the scenes that enable quickly jumping to
+	different parts of the documentation. Try putting your cursor on the
+	underlined module name below and pressing `<C-]>`. This will take you to
+	the next section of the docs with even more tips for navigating around!
+
+	You could scroll on to the next section, or jump directly there thanks to
+	the tags you generated. Put your cursor on the underlined module name,
+	|lil-edit|, and press `<C-]>`.
 
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                       *lil-edit*
 
-General editing keymaps and options
+Features:
 
-# Keymaps ~
+- Improve wrapped line behaviour
+- Copy and paste via the system clipboard
+- Persistent undo between sessions
 
-- Normal
-  - <c-n>     : Focus next result
-  - <c-p>     : Focus previous result
-  - <c-y>     : Select result
-  - <leader>y : Copy to clipboard
-  - <leader>p : Paste from clipboard
-  - j/k       : Navigate wrapped lines
-  - gcc       : Comment line
-- Visual
-  - gc        : Comment selection
+Keymaps ~
 
-# Options ~
+- `j/k`        : Navigate wrapped lines
+
+- `gcc`        : Comment line
+- `gc`         : Comment visual selection
+
+- `<C-x><C-o>` : Show completion options in *insert mode*
+- `<C-n>`      : Focus next item
+- `<C-p>`      : Focus previous item
+- `<C-y>`      : Select item
+
+Options ~
 >lua
-  vim.o.completeopt    = "fuzzy,menuone,noselect" -- complete popup behaviour
-  vim.o.tabstop        = 4                        -- tab size
-  vim.o.shiftwidth     = 4                        -- auto-indent tab size
-  vim.o.breakindent    = true                     -- visually indent wrapped lines
-  vim.o.breakindentopt = "list:-1"                -- visually align wrapped list items
-  vim.o.linebreak      = true                     -- avoid wrapping mid-word
-  vim.o.showbreak      = [[\\]]                   -- show "\\" at the beginning of wrapped lines
-  vim.o.undofile       = true                     -- persistent undo between sessions
-  vim.o.scrolloff      = 3                        -- scroll before reaching the edge of buffer
+  vim.o.autocomplete = false
+  if vim.o.autocomplete then
+  	vim.o.completeopt = "menuone,fuzzy,preview,noselect"
+  else
+  	vim.o.completeopt = "menuone,fuzzy,popup,noselect"
+  end
+
+  vim.o.tabstop = 4                -- tab size
+  vim.o.shiftwidth = 4             -- auto-indent tab size
+
+  vim.o.breakindent = true         -- visually indent wrapped lines
+  vim.o.breakindentopt = "list:-1" -- visually align wrapped list items
+  vim.o.linebreak = true           -- avoid wrapping mid-word
+  vim.o.showbreak = [[\\]]         -- show "\\" at the start of wrapped lines
+
+  vim.o.scrolloff = 3              -- scroll before reaching the buffer edge
+
+  vim.o.undofile = true            -- persistent undo between sessions
 <
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                        *lil-lsp*
 
-Language servers and diagnostics
-
 Features:
 
-- Configure diagnostics
 - Configure language servers
+- Configure diagnostics
 
 NOTE: Server executables must be available in your |runtimepath|.
 
-# Variables ~
+Variables ~
 
-  - b:lil_lsp_clients
+- `b:lil_lsp_clients` : String of running LSP servers
 
 Show LSP clients in the winbar: >lua
 	vim.cmd([[set winbar+=%{get(b:,'lil_lsp_clients','')}]])
 
-# Commands ~
+Commands ~
 
-- :checkhealth lsp : Show current LSP status
+- `:checkhealth lsp` : Show current LSP status
+- `:OrganiseImports` : Organise imports in supported files
 
-# Keymaps ~
+Keymaps ~
 
-- Normal
-  - gO         : Document symbol
-  - gra        : Code action
-  - gri        : Implementation
-  - grn        : Rename
-  - grr        : References
-  - grt        : Type definition
-  - grx        : Code lens
-  - gq{motion} : Format file
-  - K          : Hover (documentation)
-  - <c-]>      : Goto definition
-  - ]d         : Goto next diagnostic
-  - ]D         : Goto last diagnostic
-  - [d         : Goto previous diagnostic
-  - [D         : Goto first diagnostic
-  - <c-w>d     : Show line diagnostics
-- Visual
-  - gq         : Format selection
-- Insert
-  - <c-s>      : Signature help
-  - <c-x><c-o> : Show completions in pmenu (popup menu)
-- Pmenu
-  - <c-n>      : Focus next result
-  - <c-p>      : Focus previous result
-  - <c-y>      : Select result
+- `gO`         : Document symbol
+- `gra`        : Code action
+- `gri`        : Implementation
+- `grn`        : Rename
+- `grr`        : References
+- `grt`        : Type definition
+- `grx`        : Code lens
+- `gq{motion}` : Format file
+- `gg`         : Format visual selection
+- `K`          : Hover (documentation)
+- `<C-]>`      : Goto definition
+- `]d`         : Goto next diagnostic
+- `]D`         : Goto last diagnostic
+- `[d`         : Goto previous diagnostic
+- `[D`         : Goto first diagnostic
+- `<C-w>d`     : Show line diagnostics
+- `<C-s>`      : Signature help in *insert mode*
 
-# Commands ~
+See `:help lsp-defaults` for more.
 
-- :OrganiseImports : Organise imports in supported files
-
-# Options ~
+Options ~
 >lua
   vim.o.signcolumn = "yes" -- always show sign column (reduce layout shift)
 <
-------------------------------------------------------------------------------
-
-See also ~
-lsp-defaults
-
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                     *lil-places*
 
-Extend built-in mark behaviour
-
 Features:
 
 - Persist marks between sessions
 
-# Commands ~
+Commands ~
 
-- :LilPlaces    : Show marked places
-- :delmarks a-z : Delete marks
+- `:LilPlaces`      : Show marked places
+- `:delmarks [a-z]` : Delete marks
 
-# Keymaps ~
+Keymaps ~
 
-- Normal
-  - m[a-z] : Mark place
-  - '[a-z] : Visit place
+- `m[a-z]` : Mark place
+- `'[a-z]` : Visit place
 
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                   *lil-quickfix*
-
-Extend built-in quickfix behaviour
 
 Features:
 
@@ -171,79 +179,84 @@ Features:
 - Manage the quickfix window
 - Persist quickfix items across sessions
 
-# Commands ~
+Commands ~
 
-- :LilQuickfix : Toggle quickfix window
-- :copen       : Open the quickfix window
-- :cnext       : Goto next quickfix entry
-- :cprev       : Goto previous quickfix entry
+- `:LilQuickfix` : Toggle quickfix window
+- `:copen`       : Open the quickfix window
+- `:cnext`       : Goto next quickfix entry
+- `:cprev`       : Goto previous quickfix entry
 
-# Keymaps ~
+Keymaps ~
 
-- Normal
-  - ]q : Goto next quickfix entry
-  - [q : Goto previous quickfix entry
-  - dd : Delete selected quickfix entry
-- Visual
-  - d  : Delete selected quickfix entries
+- `]q` : Goto next quickfix entry
+- `[q` : Goto previous quickfix entry
+- `dd` : Delete quickfix entry
+- `d`  : Delete visually selected quickfix entries
 
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                     *lil-search*
 
-File management and search
-
 Features:
 
 - Enable case-insensitive search for lowercase queries
 
-# Commands ~
+Commands ~
 
-- :Explore : Explore files
-- :find    : Find files
-- :grep    : Find in files (results are sent to quickfix)
+- `:Explore`         : Explore files
 
-# Keymaps ~
+- `:find PATTERN`   : Find files
+- `:grep PATTERN`   : Find text (results in quickfix)
 
-- Normal
-  - <leader>e : Explore files
-  - <leader>f : Find files
-  - <leader>/ : Find in files (results are sent to quickfix)
-- Netrw
-  - <cr>      : Open file
-  - %         : Create a new file
-  - d         : Create a new directory
-  - D         : Delete a file or empty directory
-  - mf        : Mark file or directory
-  - mt        : Set target directory for marked actions
-  - mm        : Move marked files to the marked target
+- `:s//REPLACEMENT` : replace PATTERN (search)
 
-# Options ~
+Keymaps ~
+
+- `<Leader>f`  : Find files
+- `<Leader>/`  : Find in files (results in quickfix)
+
+- `*`         : Search cursorword
+- `#`         : Backward search cursorword
+
+- `gf`        : Goto pattern under cursor
+- `gx`        : Open pattern under cursor
+
+- `<C-^>`     : Goto alternate file
+- `<C-i>`     : Next jump list position
+- `<C-o>`     : Previous jump list position
+
+- `<Leader>e` : Open file explorer
+- `<CR>`      : Open file
+- `%`         : Create a new file
+- `d`         : Create a new directory
+- `D`         : Delete a file or empty directory
+- `mf`        : Mark file or directory
+- `mt`        : Set target directory for marked actions
+- `mm`        : Move marked files to the set target
+
+Options ~
 >lua
   vim.o.ignorecase = true -- ignore case
   vim.o.smartcase  = true -- unless search contains uppercase
 <
 ------------------------------------------------------------------------------
 
-Optionally, if you have FZF installed you may enable the vim plugin: >lua
-	local fzf_path = string.gsub(vim.fn.exepath("fzf"), "bin", "opt")
-	vim.opt.runtimepath:append(fzf_path)
-	vim.keymap.set("n", "<leader>f", ":FZF<cr>", { desc = "Find files" })
-
 See also ~
-lil-quickfix
+|lil-quickfix|
 
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                                      *lil-stats*
 
-Show file statistics
+Features:
 
-# Variables ~
+- Show line counts and file size
 
-  - b:lil_stats_file
+Variables ~
+
+- `b:lil_stats_file` : String of file information
 
 Show stats in the winbar: >lua
 	vim.cmd([[set winbar+=%{get(b:,'lil_stats_file','')}]])
@@ -253,24 +266,27 @@ Show stats in the winbar: >lua
 ------------------------------------------------------------------------------
                                                                       *lil-subs*
 
-Substitute your text, with different text!
-
 Features:
 
 - Automatic text replacements when spell checking is enabled
 - Shows virtual text previews for HTML entities
-- Expands unicode shortcuts prefixed with "_" (e.g. _middot becomes •)
+- Expands unicode shortcuts prefixed with `_` (e.g. _middot becomes •)
 - Displays ASCII equivalents for special characters (e.g. em dash shows --)
 
-# Commands ~
+Commands ~
 
-- :ab : List abbreviations
+- `:ab`  : List abbreviations
+- `:dig` : List digraphs
 
-# Highlights ~
+Highlights ~
 
-- LilSubsHint : Virtual text color (default links to Comment)
+- `LilSubsHint` : Virtual text colour (default links to Comment)
 
-# Options ~
+Keymaps ~
+
+- `<C-k>{code}` : Digraph prefix followed by code, e.g. `<C-k>DG` for '°'
+
+Options ~
 >lua
   vim.o.spell = true
 <
@@ -279,13 +295,17 @@ Features:
 ------------------------------------------------------------------------------
                                                                     *lil-toggle*
 
-Toggle options, augroups and more
+Features:
 
-# Commands ~
+- Toggle options with special handling for non-boolean values
+- Toggle quickfix window
+- Toggle autocmds
 
-- :LilToggle <option> : Toggle thing
+Commands ~
 
-# Keymaps ~
+- `:LilToggle {option}` : Toggle option
+
+Keymaps ~
 
 No keymaps are set automatically. See the examples below.
 
@@ -295,8 +315,8 @@ Example keymaps: >lua
 		vim.keymap.set(
 			'n',
 			prefix .. key,
-			':LilToggle ' .. option .. '<cr>',
-			{ desc = 'toggle ' .. option }
+			':LilToggle ' .. option .. '<CR>',
+			{ desc = 'Toggle ' .. option }
 		)
 	end
 	map_toggle('a', 'autocomplete')

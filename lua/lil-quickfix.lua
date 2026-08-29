@@ -1,28 +1,24 @@
 ---@tag lil-quickfix
 ---@signature
----@text Extend built-in quickfix behaviour
----
---- Features:
+---@text Features:
 ---
 --- - Delete entries
 --- - Manage the quickfix window
 --- - Persist quickfix items across sessions
 ---
---- # Commands ~
+--- Commands ~
 ---
---- - :LilQuickfix : Toggle quickfix window
---- - :copen       : Open the quickfix window
---- - :cnext       : Goto next quickfix entry
---- - :cprev       : Goto previous quickfix entry
+--- - `:LilQuickfix` : Toggle quickfix window
+--- - `:copen`       : Open the quickfix window
+--- - `:cnext`       : Goto next quickfix entry
+--- - `:cprev`       : Goto previous quickfix entry
 ---
---- # Keymaps ~
+--- Keymaps ~
 ---
---- - Normal
----   - ]q : Goto next quickfix entry
----   - [q : Goto previous quickfix entry
----   - dd : Delete selected quickfix entry
---- - Visual
----   - d  : Delete selected quickfix entries
+--- - `]q` : Goto next quickfix entry
+--- - `[q` : Goto previous quickfix entry
+--- - `dd` : Delete quickfix entry
+--- - `d`  : Delete visually selected quickfix entries
 
 local STORAGE_PATH = vim.fn.stdpath("data") .. "/lil-quickfix.json"
 local data = {}

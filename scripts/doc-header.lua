@@ -1,0 +1,56 @@
+---@tag lilvim
+---@signature
+---@text A modular and opinionated starting point for Neovim
+---
+--- MIT License Copyright (c) mvllow
+---
+--- ==============================================================================
+---
+--- Features:
+---
+--- - Self-contained modules
+--- - Documented built-in functionality
+--- - Deliciously simple to extend
+---
+--- Modules:
+---
+--- - |lil-edit|
+--- - |lil-lsp|
+--- - |lil-places|
+--- - |lil-quickfix|
+--- - |lil-search|
+--- - |lil-stats|
+--- - |lil-subs|
+--- - |lil-toggle|
+---
+--- Setup ~
+---
+--- Welcome to lilvim and possibly even Neovim!
+---
+--- To get started, copy the modules you like into your config, usually at
+--- `~/.config/nvim/lua/`. Feel free to copy them all — only the ones you
+--- enable will be active. If you're new to Neovim, you'll also want to create
+--- your entrypoint at `~/.config/nvim/init.lua`.
+---
+--- The help documentation is your friend, whether you are new or seasoned. To
+--- learn more about configuring Neovim, press `esc` and type `:help config`,
+--- then press enter. That's your first command!
+---
+--- Now, in your `init.lua`, require the modules you want active: >lua
+--- 	require("lil-edit")
+--- 	require("lil-lsp")
+--- 	-- etc.
+---
+--- Documentation ~
+---
+--- Run `:helptags ALL` to generate help tags. This is a command, just like the
+--- `:help` above!
+---
+---	Tags create a mapping behind the scenes that enable quickly jumping to
+---	different parts of the documentation. Try putting your cursor on the
+---	underlined module name below and pressing `<C-]>`. This will take you to
+---	the next section of the docs with even more tips for navigating around!
+---
+---	You could scroll on to the next section, or jump directly there thanks to
+---	the tags you generated. Put your cursor on the underlined module name,
+---	|lil-edit|, and press `<C-]>`.

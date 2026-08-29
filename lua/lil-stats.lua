@@ -1,10 +1,12 @@
 ---@tag lil-stats
 ---@signature
----@text Show file statistics
+---@text Features:
 ---
---- # Variables ~
+--- - Show line counts and file size
 ---
----   - b:lil_stats_file
+--- Variables ~
+---
+--- - `b:lil_stats_file` : String of file information
 ---
 --- Show stats in the winbar: >lua
 --- 	vim.cmd([[set winbar+=%{get(b:,'lil_stats_file','')}]])
@@ -20,9 +22,9 @@ local function count_loc(include_comments)
 
 	if not include_comments then
 		local commentstring = vim.bo.commentstring or ""
-		-- Remove variable placeholder, e.g. "-- %s" → "--"
+		-- Remove variable placeholder, e.g. '-- %s' → '--'
 		commentpattern = commentstring:gsub("%%s.*", ""):gsub("%s+", "")
-		-- Escape special lua pattern characters, e.g. "--" → "%-%-"
+		-- Escape special lua pattern characters, e.g. '--' → '%-%-'
 		commentpattern = commentpattern:gsub("([%^%$%(%)%%%.%[%]%*%+%-%?])", "%%%1")
 	end
 

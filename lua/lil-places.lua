@@ -1,21 +1,18 @@
 ---@tag lil-places
 ---@signature
----@text Extend built-in mark behaviour
----
---- Features:
+---@text Features:
 ---
 --- - Persist marks between sessions
 ---
---- # Commands ~
+--- Commands ~
 ---
---- - :LilPlaces    : Show marked places
---- - :delmarks a-z : Delete marks
+--- - `:LilPlaces`      : Show marked places
+--- - `:delmarks [a-z]` : Delete marks
 ---
---- # Keymaps ~
+--- Keymaps ~
 ---
---- - Normal
----   - m[a-z] : Mark place
----   - '[a-z] : Visit place
+--- - `m[a-z]` : Mark place
+--- - `'[a-z]` : Visit place
 
 local STORAGE_PATH = vim.fn.stdpath("data") .. "/lil-places.json"
 local data = {}
