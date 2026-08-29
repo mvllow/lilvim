@@ -1,3 +1,6 @@
+> [!NOTE]
+> This repository has [moved to SourceHut](https://git.sr.ht/~mellow/lilvim).
+
 # lilvim
 
 > A modular and opinionated starting point for Neovim
