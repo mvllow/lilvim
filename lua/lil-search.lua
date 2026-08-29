@@ -25,15 +25,9 @@
 --- - `<C-i>`     : Next jump list position
 --- - `<C-o>`     : Previous jump list position
 ---
---- NETRW (:Explore)
----
---- - `<CR>`      : Open file
---- - `%`         : Create a new file
---- - `d`         : Create a new directory
---- - `D`         : Delete a file or empty directory
---- - `mf`        : Mark file or directory
---- - `mt`        : Set target directory for marked actions
---- - `mm`        : Move marked files to the set target
+--- - `{count}-` : Open directory listing
+--- - `<CR>`     : Open file
+--- - `R`        : Reload directory listing
 ---
 --- Options ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
