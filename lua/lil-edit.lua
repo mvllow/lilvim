@@ -10,6 +10,9 @@
 ---
 --- - `j/k`        : Navigate wrapped lines
 ---
+--- - `<C-k>`      : Bubble lines up
+--- - `<C-j>`      : Bubble lines down
+---
 --- - `gcc`        : Comment line
 --- - `gc`         : Comment visual selection
 ---
@@ -49,6 +52,12 @@ vim.keymap.set({ "n", "v" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"'
 vim.keymap.set({ "n", "v" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 vim.keymap.set({ "n", "v" }, "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 vim.keymap.set({ "n", "v" }, "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+
+-- Bubble lines
+vim.keymap.set("n", "<C-k>", ":m .+1<cr>==", { desc = "Bubble line up" })
+vim.keymap.set("n", "<C-j>", ":m .-2<cr>==", { desc = "Bubble line down" })
+vim.keymap.set("v", "<C-k>", ":m '>+1<cr>gv=gv", { desc = "Bubble selection up" })
+vim.keymap.set("v", "<C-j>", ":m '<-2<cr>gv=gv", { desc = "Bubble selection down" })
 
 -- Configure behaviour per filetype
 -- Tip: use `:echo &filetype` to get the current buffer's filetype

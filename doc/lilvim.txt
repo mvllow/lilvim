@@ -70,6 +70,9 @@ Keymaps ~
 
 - `j/k`        : Navigate wrapped lines
 
+- `<C-k>`      : Bubble lines up
+- `<C-j>`      : Bubble lines down
+
 - `gcc`        : Comment line
 - `gc`         : Comment visual selection
 
